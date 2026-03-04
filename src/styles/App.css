@@ -1,0 +1,607 @@
+/* ====== RESET بسيط ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+/* ====== SCROLLBAR عام للموقع ====== */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a #020617;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+/* ====== APP SHELL ====== */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
+  direction: rtl;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.app-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+
+/* ====== HEADER / NAVBAR ====== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+          to bottom,
+          rgba(15, 23, 42, 0.97),
+          rgba(15, 23, 42, 0.86),
+          transparent
+  );
+  border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #f9fafb;
+}
+
+.brand-sub {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.nav-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: 0.12s ease;
+}
+
+.nav-links a:hover {
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+/* ====== HERO ====== */
+
+.hero {
+  padding: 32px 16px 8px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  margin: 0 0 10px;
+  color: #f9fafb;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+/* شارة صغيرة فوق العنوان (مستخدمة في App.js) */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+  color: #bbf7d0;
+  font-size: 0.75rem;
+}
+
+/* ====== LAYOUT ====== */
+
+.main-layout {
+  max-width: 1200px;
+  margin: 24px auto 40px;
+  padding: 0 16px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.col {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== CARDS ====== */
+
+.card {
+  background: radial-gradient(
+          circle at top left,
+          rgba(22, 163, 74, 0.07),
+          transparent 55%
+  ),
+  #020617;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow:
+          0 20px 45px rgba(15, 23, 42, 0.85),
+          0 0 0 1px rgba(15, 23, 42, 0.6);
+  padding: 18px 18px 16px;
+}
+
+.col:first-child .card,
+.col:nth-child(2) .card:first-child {
+  min-height: 460px;
+}
+
+/* كارد LiveNow لازم يكون flex */
+.col:nth-child(2) .card:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #f9fafb;
+}
+
+/* ====== CITY PRAYER TIMES ====== */
+
+.field-label {
+  display: block;
+  text-align: right;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  margin-bottom: 6px;
+}
+
+.input-city {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.input-city::placeholder {
+  color: #6b7280;
+}
+
+.input-city:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.45);
+}
+
+.btn-primary {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #022c22;
+  font-weight: 600;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition:
+          transform 0.08s ease,
+          box-shadow 0.08s ease,
+          background 0.15s ease;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+  margin-bottom: 10px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 35px rgba(34, 197, 94, 0.45);
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+}
+
+.result-block {
+  margin-top: 8px;
+  border-radius: 16px;
+  border: 1px solid #020617;
+  padding: 10px 10px 6px;
+  background: #020617;
+}
+
+.city-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+.city-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.city-meta {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.prayer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prayer-table tr {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.prayer-table tr:last-child {
+  border-bottom: none;
+}
+
+.prayer-table td {
+  padding: 6px 4px;
+}
+
+.prayer-name {
+  text-align: right;
+  color: #e5e7eb;
+}
+
+.prayer-time {
+  text-align: left;
+  color: #facc15;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ====== TEXT / ALERTS ====== */
+
+.alert-error {
+  background: #7f1d1d;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  color: #fee2e2;
+  text-align: right;
+  margin-top: 8px;
+}
+
+.muted-text {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-align: right;
+}
+
+/* ====== LIVE NOW (الآن يُؤذَّن في...) ====== */
+
+.live-card-body {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 6px 4px;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+          background 0.12s ease,
+          border-color 0.12s ease,
+          color 0.12s ease;
+}
+
+.tab-btn:hover {
+  border-color: rgba(148, 163, 184, 0.9);
+}
+
+.tab-btn-active {
+  background: radial-gradient(circle at top, #22c55e, #16a34a);
+  border-color: transparent;
+  color: #022c22;
+}
+
+/* الكونتينر اللي فيه اللست – سكرول داخلي */
+.live-list-container {
+  margin-top: 0.75rem;
+  max-height: 320px; /* تقريباً 8–10 مدن */
+  overflow-y: auto;
+  padding-inline-end: 0.5rem;
+}
+
+/* Scrollbar داخلي للقائمة */
+.live-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.live-list-container::-webkit-scrollbar-track {
+  background: #020617;
+  border-radius: 999px;
+}
+
+.live-list-container::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 999px;
+}
+
+.live-list-container::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+.live-list-container {
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a #020617;
+}
+
+/* شكل العناصر داخل القائمة */
+.live-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.live-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.live-city-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.live-city-time {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+  Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: #facc15;
+  font-variant-numeric: tabular-nums;
+}
+
+/* أوفرلاي اللودينغ */
+.live-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0.25),
+          transparent 55%
+  );
+  pointer-events: none;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====== GLOBAL NOW STATS ====== */
+
+.stats-grid {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #020617;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #020617;
+  font-size: 0.85rem;
+}
+
+.stats-row:last-child {
+  border-bottom: none;
+}
+
+.stats-prayer-name {
+  color: #e5e7eb;
+}
+
+.stats-prayer-count {
+  color: #facc15;
+  font-weight: 600;
+}
+
+/* ====== ABOUT CARD ====== */
+
+.about-card {
+  margin-top: 24px;
+}
+
+/* ====== FOOTER ====== */
+
+.site-footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.9);
+  background: radial-gradient(
+          circle at bottom,
+          rgba(15, 23, 42, 0.95),
+          #020617 70%
+  );
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  padding: 10px 20px 18px;
+  color: #9ca3af;
+}
+
+.footer-note {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+@media (min-width: 720px) {
+  .footer-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* ====== SMALL SCREENS ====== */
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    border-radius: 18px;
+    padding: 16px 14px 14px;
+  }
+}
+

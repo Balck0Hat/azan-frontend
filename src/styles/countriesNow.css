@@ -1,0 +1,60 @@
+.countries-card {
+    position: relative;
+}
+
+.countries-list {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.country-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.country-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.cities-count {
+    font-weight: 400;
+    color: #9ca3af;
+    margin-right: 4px;
+}
+
+.sample-cities {
+    margin-top: 4px;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ffffff33;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
