@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { fetchPrayerStatus, forceRecompute, fetchPrayerStats } from './adminApi';
 
 export default function PrayerTab() {
@@ -7,6 +7,8 @@ export default function PrayerTab() {
   const [recomputeResult, setRecomputeResult] = useState(null);
   const [loading, setLoading] = useState(true);
   const [recomputing, setRecomputing] = useState(false);
+  const [confirmMode, setConfirmMode] = useState(false);
+  const confirmTimer = useRef(null);
 
   useEffect(() => {
     Promise.all([fetchPrayerStatus(), fetchPrayerStats()])
@@ -16,14 +18,20 @@ export default function PrayerTab() {
   }, []);
 
   const handleRecompute = async () => {
-    if (!window.confirm('Force recompute prayer times for today + tomorrow?')) return;
+    if (!confirmMode) {
+      setConfirmMode(true);
+      confirmTimer.current = setTimeout(() => setConfirmMode(false), 5000);
+      return;
+    }
+    clearTimeout(confirmTimer.current);
+    setConfirmMode(false);
     setRecomputing(true);
     setRecomputeResult(null);
     try {
       const result = await forceRecompute();
       setRecomputeResult(result);
       if (result.success) {
-        setStatus({ ...status, todayCount: result.todayCount, tomorrowCount: result.tomorrowCount });
+        setStatus(s => ({ ...s, todayCount: result.todayCount, tomorrowCount: result.tomorrowCount }));
       }
     } catch (err) {
       setRecomputeResult({ success: false, error: err.message });
@@ -39,12 +47,9 @@ export default function PrayerTab() {
   return (
     <div className="prayer-tab">
       <div className="tab-section-title">Prayer Times Status</div>
-
       <div className="prayer-status-grid">
         <div className={`stat-card ${isHealthy ? '' : 'stat-card--warn'}`}>
-          <div className={`stat-value ${isHealthy ? 'health-good' : 'health-bad'}`}>
-            {isHealthy ? '●' : '○'}
-          </div>
+          <div className={`stat-value ${isHealthy ? 'health-good' : 'health-bad'}`}>{isHealthy ? '●' : '○'}</div>
           <div className="stat-label">Health</div>
         </div>
         <div className="stat-card">
@@ -62,18 +67,15 @@ export default function PrayerTab() {
       </div>
 
       <div className="prayer-recompute-section">
-        <button
-          onClick={handleRecompute}
-          disabled={recomputing}
-          className={`admin-btn ${recomputing ? 'admin-btn-ghost' : 'admin-btn-primary'}`}
-        >
-          {recomputing ? '⏳ Recomputing...' : '🔄 Force Recompute'}
+        <button onClick={handleRecompute} disabled={recomputing}
+          className={`admin-btn ${confirmMode ? 'admin-btn-danger' : recomputing ? 'admin-btn-ghost' : 'admin-btn-primary'}`}>
+          {recomputing ? 'Recomputing...' : confirmMode ? 'Click again to confirm' : 'Force Recompute'}
         </button>
         {recomputeResult && (
           <div className={`recompute-result ${recomputeResult.success ? 'result-success' : 'result-error'}`}>
             {recomputeResult.success
-              ? `Completed in ${recomputeResult.duration} — Today: ${recomputeResult.todayCount}, Tomorrow: ${recomputeResult.tomorrowCount}`
-              : `Failed: ${recomputeResult.error} (${recomputeResult.duration})`}
+              ? `Completed${recomputeResult.duration ? ' in ' + recomputeResult.duration : ''} — Today: ${recomputeResult.todayCount}, Tomorrow: ${recomputeResult.tomorrowCount}`
+              : `Failed: ${recomputeResult.error}${recomputeResult.duration ? ' (' + recomputeResult.duration + ')' : ''}`}
           </div>
         )}
       </div>

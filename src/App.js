@@ -24,7 +24,10 @@ function App() {
 
     useEffect(() => {
         fetchPublicSettings()
-            .then(data => setSiteSettings(prev => ({ ...prev, ...data })))
+            .then(data => {
+                setSiteSettings(prev => ({ ...prev, ...data }));
+                if (data.seo_title) document.title = data.seo_title;
+            })
             .catch(() => {});
     }, []);
 

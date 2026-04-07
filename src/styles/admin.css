@@ -407,6 +407,51 @@
   background: rgba(245,158,11,0.04);
 }
 
+/* ===================== Feedback Tab ===================== */
+.feedback-card {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; padding: 16px 20px; margin-bottom: 10px;
+}
+.feedback-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.feedback-card-badges { display: flex; gap: 6px; }
+.feedback-meta { font-size: 12px; color: var(--admin-muted); margin-bottom: 6px; }
+.feedback-message { font-size: 13px; color: var(--admin-text); line-height: 1.6; margin-bottom: 10px; }
+.feedback-actions { display: flex; gap: 8px; }
+
+/* ===================== Logs Tab ===================== */
+.logs-controls {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;
+}
+.logs-container {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; padding: 12px; max-height: 500px; overflow-y: auto;
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px;
+}
+.log-line { display: flex; gap: 8px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.02); }
+.log-level { font-weight: 700; min-width: 50px; font-size: 11px; }
+.log-timestamp { color: var(--admin-muted); min-width: 140px; flex-shrink: 0; }
+.log-message { color: var(--admin-text); word-break: break-word; }
+
+/* ===================== SEO Tab ===================== */
+.seo-google-preview {
+  background: #fff; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px;
+  direction: ltr; text-align: left;
+}
+.seo-google-title { font-size: 18px; color: #1a0dab; margin-bottom: 2px; cursor: pointer; }
+.seo-google-url { font-size: 13px; color: #006621; margin-bottom: 4px; }
+.seo-google-desc { font-size: 13px; color: #545454; line-height: 1.5; }
+
+.seo-social-preview {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; overflow: hidden; direction: ltr; text-align: left;
+}
+.seo-social-img { max-height: 200px; overflow: hidden; }
+.seo-social-img img { width: 100%; object-fit: cover; display: block; }
+.seo-social-body { padding: 12px 16px; }
+.seo-social-domain { font-size: 11px; color: var(--admin-muted); text-transform: uppercase; margin-bottom: 4px; }
+.seo-social-title { font-size: 15px; font-weight: 700; color: var(--admin-text); margin-bottom: 4px; }
+.seo-social-desc { font-size: 13px; color: var(--admin-muted); line-height: 1.4; }
+
 /* ===================== Responsive ===================== */
 @media (max-width: 768px) {
   .admin-dashboard { padding: 16px; }

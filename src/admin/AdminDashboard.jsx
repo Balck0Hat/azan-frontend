@@ -3,18 +3,25 @@ import {
   fetchTasks, fetchStats, fetchWorkerStatus, fetchCurrentTask,
   startWorker, stopWorker, subscribeSSE, clearToken
 } from './adminApi';
-import CurrentTask from './CurrentTask';
-import StatsGrid from './StatsGrid';
-import FilterBar from './FilterBar';
-import TaskCard from './TaskCard';
+import TasksTab from './TasksTab';
 import PrayerTab from './PrayerTab';
 import AnalyticsTab from './AnalyticsTab';
 import SettingsTab from './SettingsTab';
+import CronTab from './CronTab';
+import FeedbackTab from './FeedbackTab';
+import PerformanceTab from './PerformanceTab';
+import LogsTab from './LogsTab';
+import SEOTab from './SEOTab';
 
 const TABS = [
   { id: 'tasks', label: 'Tasks' },
   { id: 'prayer', label: 'Prayer Times' },
+  { id: 'cron', label: 'Cron' },
   { id: 'analytics', label: 'Analytics' },
+  { id: 'performance', label: 'Performance' },
+  { id: 'logs', label: 'Logs' },
+  { id: 'feedback', label: 'Feedback' },
+  { id: 'seo', label: 'SEO' },
   { id: 'settings', label: 'Settings' },
 ];
 
@@ -32,17 +39,11 @@ export default function AdminDashboard() {
   const loadData = useCallback(async () => {
     try {
       const [taskData, statsData, statusData, currentData] = await Promise.all([
-        fetchTasks(page, filters), fetchStats(),
-        fetchWorkerStatus(), fetchCurrentTask()
+        fetchTasks(page, filters), fetchStats(), fetchWorkerStatus(), fetchCurrentTask()
       ]);
-      setTasks(taskData.tasks);
-      setTotalPages(taskData.pages);
-      setStats(statsData);
-      setWorkerStatus(statusData);
-      setCurrentTask(currentData.task);
-    } catch {} finally {
-      setLoading(false);
-    }
+      setTasks(taskData.tasks); setTotalPages(taskData.pages);
+      setStats(statsData); setWorkerStatus(statusData); setCurrentTask(currentData.task);
+    } catch {} finally { setLoading(false); }
   }, [page, filters]);
 
   useEffect(() => { loadData(); }, [loadData]);
@@ -67,14 +68,9 @@ export default function AdminDashboard() {
     return unsub;
   }, [loadData]);
 
-  const handleStart = async () => {
-    try { await startWorker(); setWorkerStatus(s => ({ ...s, running: true })); } catch {}
-  };
-  const handleStop = async () => {
-    try { await stopWorker(); setWorkerStatus(s => ({ ...s, stopping: true })); } catch {}
-  };
+  const handleStart = async () => { try { await startWorker(); setWorkerStatus(s => ({ ...s, running: true })); } catch {} };
+  const handleStop = async () => { try { await stopWorker(); setWorkerStatus(s => ({ ...s, stopping: true })); } catch {} };
   const handleLogout = () => { clearToken(); window.location.reload(); };
-  const handleFilterChange = (f) => { setFilters(f); setPage(1); };
 
   if (loading) return <div className="admin-loading"><div className="spinner-ring" /> Loading...</div>;
 
@@ -90,7 +86,7 @@ export default function AdminDashboard() {
         <div className="admin-header-right">
           <button onClick={workerStatus.running ? handleStop : handleStart}
             className={`admin-btn ${workerStatus.running ? 'admin-btn-danger' : 'admin-btn-primary'}`}>
-            {workerStatus.running ? 'Stop Worker' : 'Start Worker'}
+            {workerStatus.running ? 'Stop' : 'Start'}
           </button>
           <button onClick={handleLogout} className="admin-btn admin-btn-ghost">Logout</button>
         </div>
@@ -98,42 +94,20 @@ export default function AdminDashboard() {
 
       <nav className="admin-tabs">
         {TABS.map(tab => (
-          <button
-            key={tab.id}
-            className={`admin-tab ${activeTab === tab.id ? 'admin-tab--active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
+          <button key={tab.id} className={`admin-tab ${activeTab === tab.id ? 'admin-tab--active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}>{tab.label}</button>
         ))}
       </nav>
 
-      {activeTab === 'tasks' && (
-        <>
-          <CurrentTask task={currentTask} />
-          <StatsGrid stats={stats} workerStatus={workerStatus} />
-          <FilterBar filters={filters} onChange={handleFilterChange} />
-          <div className="task-list">
-            {tasks.map(t => <TaskCard key={t._id} task={t} />)}
-            {tasks.length === 0 && (
-              <div className="admin-empty">
-                {filters.status || filters.category
-                  ? 'No tasks match the selected filters.'
-                  : 'No tasks yet. Start the worker to begin.'}
-              </div>
-            )}
-          </div>
-          {totalPages > 1 && (
-            <div className="admin-pagination">
-              <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
-              <span>Page {page} / {totalPages}</span>
-              <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
-            </div>
-          )}
-        </>
-      )}
+      {activeTab === 'tasks' && <TasksTab tasks={tasks} stats={stats} workerStatus={workerStatus} currentTask={currentTask}
+        filters={filters} onFilterChange={f => { setFilters(f); setPage(1); }} page={page} totalPages={totalPages} onPageChange={setPage} />}
       {activeTab === 'prayer' && <PrayerTab />}
+      {activeTab === 'cron' && <CronTab />}
       {activeTab === 'analytics' && <AnalyticsTab />}
+      {activeTab === 'performance' && <PerformanceTab />}
+      {activeTab === 'logs' && <LogsTab />}
+      {activeTab === 'feedback' && <FeedbackTab />}
+      {activeTab === 'seo' && <SEOTab />}
       {activeTab === 'settings' && <SettingsTab />}
     </div>
   );
