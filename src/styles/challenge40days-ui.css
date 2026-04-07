@@ -1,0 +1,162 @@
+/* Main Challenge UI */
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.challenge-title {
+    font-size: 1.2rem;
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+    margin: 0;
+}
+
+.challenge-progress-badge {
+    background: var(--gradient-emerald);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.days-count {
+    font-size: 1.3rem;
+    font-weight: var(--weight-bold);
+}
+
+.days-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Main Progress Bar */
+.challenge-main-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.challenge-main-progress .progress-bar {
+    flex: 1;
+    height: 12px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.challenge-main-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--emerald-500), var(--gold-400));
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.progress-percent {
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    color: var(--text-emerald);
+    min-width: 45px;
+}
+
+/* Today's Prayers */
+.today-challenge {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.today-challenge .today-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.today-progress-text {
+    font-weight: var(--weight-semibold);
+    color: var(--text-emerald);
+}
+
+.challenge-prayers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.challenge-prayer-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 15px 10px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.challenge-prayer-btn:hover {
+    border-color: var(--border-emerald);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.challenge-prayer-btn.prayed {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.challenge-prayer-btn .prayer-icon { font-size: 1.5rem; }
+.challenge-prayer-btn .prayer-name {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.challenge-prayer-btn .check-mark {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    background: var(--gradient-emerald);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: bold;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+/* Details Button */
+.show-details-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.show-details-btn:hover {
+    border-color: var(--border-emerald);
+    color: var(--text-emerald);
+    background: var(--bg-hover);
+}

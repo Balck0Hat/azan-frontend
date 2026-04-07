@@ -1,0 +1,119 @@
+/* ==================== Quran Tafsir: Bookmarks, Dark Mode & Responsive ==================== */
+
+/* Bookmarks View */
+.bookmarks-view {
+    padding: 20px 0;
+}
+
+.bookmarks-view h3 {
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.no-bookmarks {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+.bookmarks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookmark-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bookmark-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+    transform: translateY(-2px);
+}
+
+.bookmark-surah {
+    flex: 1;
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+}
+
+.bookmark-ayah {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.remove-bookmark {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--status-error);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove-bookmark:hover {
+    background: var(--status-error);
+    color: white;
+}
+
+/* Dark mode overrides removed - tokens handle theming automatically */
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quran-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .quran-nav {
+        justify-content: center;
+    }
+    .surahs-grid {
+        grid-template-columns: 1fr;
+    }
+    .reader-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .reader-controls {
+        width: 100%;
+        justify-content: center;
+    }
+    .settings-panel {
+        flex-direction: column;
+    }
+    .juz-filter {
+        justify-content: center;
+    }
+    .ayahs-flow {
+        font-size: 22px !important;
+    }
+    .bismillah {
+        font-size: var(--text-xl);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .quran-nav,
+    .settings-panel,
+    .ayah-actions,
+    .reader-controls {
+        display: none;
+    }
+    .ayahs-flow {
+        font-size: 16pt;
+    }
+}

@@ -1,0 +1,97 @@
+/* ====== Grid ====== */
+
+.qr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+/* ====== Rule card ====== */
+
+.qr-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card);
+}
+
+.qr-card:hover {
+    border-color: var(--border-emerald);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.qr-card.highlighted {
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-emerald-md);
+    animation: qr-highlight-pulse 1.5s ease-out;
+}
+
+@keyframes qr-highlight-pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: var(--glow-emerald-md);
+    }
+}
+
+.qr-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.qr-card-category {
+    font-size: var(--text-2xs);
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--text-emerald);
+    border: 1px solid var(--border-emerald);
+    font-weight: var(--weight-medium);
+}
+
+.qr-card-actions {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.qr-icon-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.qr-icon-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.qr-icon-btn.favorited {
+    color: var(--accent-gold);
+}
+
+.qr-icon-btn.copied {
+    color: var(--accent-primary);
+}

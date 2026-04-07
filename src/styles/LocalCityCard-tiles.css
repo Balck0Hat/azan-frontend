@@ -1,0 +1,86 @@
+/* ========== Prayer tiles grid ========== */
+
+.city-main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.city-tile {
+    position: relative;
+    border-radius: 18px;
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Shine animation */
+.city-tile::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-120%);
+    opacity: 0;
+}
+.city-tile:hover::before {
+    opacity: 1;
+    animation: cityTileShine 0.9s linear;
+}
+@keyframes cityTileShine {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+}
+
+.city-tile:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.city-tile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.city-tile-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.25);
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.65);
+    font-size: 1.4rem;
+    backdrop-filter: blur(4px);
+}
+
+.city-tile-time {
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+}
+
+.city-tile-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.city-tile-ar { font-weight: var(--weight-bold); font-family: var(--font-ui); }
+.city-tile-en { font-size: var(--text-xs); opacity: 0.9; font-family: var(--font-ui); }
+
+/* Tile colors - prayer-specific */
+.city-tile-fajr     { background: var(--prayer-fajr); }
+.city-tile-sunrise  { background: var(--gradient-gold); }
+.city-tile-dhuhr    { background: var(--prayer-dhuhr); }
+.city-tile-asr      { background: var(--prayer-asr); }
+.city-tile-maghrib  { background: var(--prayer-maghrib); }
+.city-tile-isha     { background: var(--prayer-isha); }

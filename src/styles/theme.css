@@ -1,0 +1,102 @@
+/* ====== CSS Variables للثيمات ====== */
+
+:root {
+    /* الوضع الليلي (الافتراضي) */
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-card: rgba(15, 23, 42, 0.8);
+    --bg-hover: rgba(34, 197, 94, 0.1);
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+
+    --accent-primary: #22c55e;
+    --accent-secondary: #16a34a;
+    --accent-glow: rgba(34, 197, 94, 0.3);
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    --gradient-bg: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
+    --gradient-header: linear-gradient(to bottom, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.86), transparent);
+
+    --scrollbar-track: #020617;
+    --scrollbar-thumb: #16a34a;
+}
+
+[data-theme="light"] {
+    /* الوضع النهاري */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #e2e8f0;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-hover: rgba(34, 197, 94, 0.15);
+
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+    --accent-primary: #16a34a;
+    --accent-secondary: #15803d;
+    --accent-glow: rgba(22, 163, 74, 0.2);
+
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    --gradient-bg: linear-gradient(180deg, #f0fdf4 0%, #f8fafc 50%, #e2e8f0 100%);
+    --gradient-header: linear-gradient(to bottom, rgba(248, 250, 252, 0.97), rgba(248, 250, 252, 0.86), transparent);
+
+    --scrollbar-track: #f8fafc;
+    --scrollbar-thumb: #16a34a;
+}
+
+/* تطبيق المتغيرات على العناصر الأساسية */
+body {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.app-shell {
+    background: var(--gradient-bg) !important;
+}
+
+.site-header {
+    background: var(--gradient-header) !important;
+    border-bottom-color: var(--border-color) !important;
+}
+
+.card, .home-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+
+.card-title {
+    color: var(--text-primary) !important;
+}
+
+.muted-text {
+    color: var(--text-muted) !important;
+}
+
+/* Scrollbar */
+html {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track) !important;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--scrollbar-track) !important;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb) !important;
+}
+
+/* Buttons and inputs */
+.btn, button {
+    transition: all 0.3s ease;
+}
+
+/* Smooth transition when changing themes */
+*, *::before, *::after {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

@@ -1,0 +1,97 @@
+/* =============== Wrapper =============== */
+
+.np-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* ============================== Tabs ============================== */
+
+.np-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.np-tab {
+    min-width: 70px;
+    padding: 0.45rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+    transition:
+            background 0.18s ease,
+            color 0.18s ease,
+            border-color 0.18s ease,
+            transform 0.18s ease,
+            box-shadow 0.22s ease;
+}
+
+.np-tab:hover:not(.np-tab--active) {
+    background: var(--bg-hover);
+    border-color: var(--border-card);
+    transform: translateY(-1px);
+}
+
+.np-tab--active {
+    background: var(--gradient-gold);
+    border-color: transparent;
+    color: var(--text-primary);
+    box-shadow:
+            var(--glow-gold-md),
+            0 0 0 1px rgba(248, 250, 252, 0.25);
+    transform: translateY(-2px);
+    animation: npTabActivate 0.22s ease-out;
+}
+
+.np-tab--active:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow:
+            var(--glow-gold-md),
+            0 0 0 1px rgba(248, 250, 252, 0.35);
+}
+
+.np-tab:active:not(.np-tab--active) {
+    transform: scale(0.95);
+}
+
+/* =============== Main card =============== */
+
+.np-pro-card {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.np-pro-card.np-is-hovered {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* =============== Card inner =============== */
+
+.np-inner {
+    position: relative;
+    z-index: 5;
+    padding: 1.8rem 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}

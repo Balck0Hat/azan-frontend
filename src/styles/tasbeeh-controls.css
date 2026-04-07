@@ -1,0 +1,47 @@
+/* Controls */
+.tasbeeh-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+    transform: scale(1.02);
+}
+
+.control-btn.active {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    color: var(--text-emerald);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.control-btn.reset {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--status-error);
+}
+
+.control-btn.reset:hover {
+    background: rgba(239, 68, 68, 0.15);
+    transform: scale(1.02);
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}

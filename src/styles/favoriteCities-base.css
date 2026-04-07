@@ -1,0 +1,126 @@
+.favorites-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.favorites-title {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0 0 15px 0;
+}
+
+.favorites-add {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.favorites-add input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    direction: ltr;
+}
+
+.favorites-add input::placeholder {
+    color: var(--text-muted);
+}
+
+.favorites-add input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.favorites-add button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent-primary);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.favorites-add button:hover {
+    background: var(--accent-secondary);
+}
+
+.favorites-add button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.favorites-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 30px;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.favorite-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.favorite-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.favorite-city {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.favorite-country {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.favorite-remove {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.favorite-remove:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.favorite-times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.favorite-times span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    padding: 4px 10px;
+    border-radius: 8px;
+}

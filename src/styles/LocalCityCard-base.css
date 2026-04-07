@@ -1,0 +1,126 @@
+/* ========== Card background ========== */
+.city-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 1.2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease;
+}
+
+.city-card:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Islamic pattern overlay */
+.city-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%234b5563' stroke-width='0.6'/%3E%3Ccircle cx='40' cy='40' r='10' fill='none' stroke='%234b5563' stroke-width='0.6'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+}
+
+.city-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ========== Header ========== */
+
+.city-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    direction: rtl;
+    margin-bottom: 0.4rem;
+}
+
+.city-header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Location link */
+.city-location-link {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    color: var(--text-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent-gold);
+    font-weight: var(--weight-semibold);
+    transition: color 0.2s ease;
+}
+
+.city-location-link:hover {
+    color: var(--gold-300);
+    text-decoration-color: var(--gold-300);
+}
+
+.city-location-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+}
+
+.city-location-label {
+    /* no underline */
+}
+
+.city-location-pin {
+    font-size: 1rem;
+}
+
+/* City chip badge */
+.city-chip {
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* Timezone row */
+.city-timezone {
+    margin: 0 0 1rem;
+    margin-top: 0.25rem;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.city-timezone-label { color: var(--text-muted); }
+.city-timezone-sep { color: var(--navy-500); }
+.city-timezone-value { color: var(--text-secondary); font-weight: var(--weight-medium); }
+.city-timezone-icon { font-size: 0.9rem; opacity: 0.8; }

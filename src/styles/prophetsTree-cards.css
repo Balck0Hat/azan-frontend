@@ -1,0 +1,115 @@
+/* ========================================
+   Prophet Card - Base Styles
+   ======================================== */
+.prophet-card {
+    background: linear-gradient(145deg,
+        rgba(30, 41, 59, 0.9),
+        rgba(15, 23, 42, 0.9)
+    );
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    border-radius: 16px;
+    padding: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+    backdrop-filter: blur(16px);
+}
+
+.prophet-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.prophet-card:hover::before {
+    left: 100%;
+}
+
+.prophet-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-gold);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        var(--glow-gold-sm);
+}
+
+/* Prophet Type Variants */
+.prophet-card.is-prophet {
+    border-color: var(--border-gold);
+}
+
+.prophet-card.is-prophet:hover {
+    border-color: var(--accent-gold);
+}
+
+.prophet-card.is-ancestor {
+    border-color: rgba(100, 116, 139, 0.3);
+    opacity: 0.85;
+}
+
+.prophet-card.main-line {
+    background: linear-gradient(145deg,
+        rgba(251, 191, 36, 0.15),
+        rgba(30, 41, 59, 0.9)
+    );
+}
+
+.prophet-card.last-prophet {
+    background: linear-gradient(145deg,
+        rgba(251, 191, 36, 0.25),
+        rgba(16, 185, 129, 0.1),
+        rgba(30, 41, 59, 0.9)
+    );
+    border-color: var(--accent-gold);
+    box-shadow: var(--glow-gold-md);
+}
+
+.prophet-card.last-prophet:hover {
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        var(--glow-gold-lg);
+}
+
+/* Card Elements */
+.prophet-icon {
+    font-size: var(--text-2xl);
+    margin-bottom: 0.5rem;
+    color: var(--accent-gold);
+    text-shadow: var(--glow-gold-sm);
+}
+
+.last-prophet .prophet-icon {
+    font-size: 2.2rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.prophet-name-ar {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: #fff;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-quran);
+}
+
+.prophet-name-en {
+    font-size: var(--text-2xs);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.prophet-title {
+    font-size: var(--text-xs);
+    color: var(--text-gold);
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}

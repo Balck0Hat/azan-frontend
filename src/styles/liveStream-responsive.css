@@ -1,0 +1,56 @@
+/* Responsive */
+@media (max-width: 768px) {
+    .stream-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stream-options {
+        grid-template-columns: 1fr;
+    }
+
+    .stream-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stream-options {
+        grid-template-columns: 1fr;
+    }
+
+    .stream-option {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .stream-icon {
+        font-size: 1.8rem;
+    }
+
+    .stream-name {
+        font-size: 0.95rem;
+    }
+
+    .stream-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .stream-option {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .stream-icon {
+        font-size: 1.5rem;
+    }
+
+    .stream-name {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,110 @@
+/* ====== Sacred Luxury — Typography Components ====== */
+
+/* ── Page Heading ── */
+.heading-page {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+/* ── Section Heading (with gold underline) ── */
+.heading-section {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4);
+  position: relative;
+  display: inline-block;
+}
+
+.heading-section::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+/* ── Card Heading ── */
+.heading-card {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3);
+}
+
+/* ── Quran Text ── */
+.text-quran {
+  font-family: var(--font-quran);
+  font-size: var(--text-xl);
+  line-height: var(--leading-quran);
+  color: var(--text-primary);
+  direction: rtl;
+}
+
+.text-quran-sm {
+  font-family: var(--font-quran);
+  font-size: var(--text-lg);
+  line-height: var(--leading-loose);
+}
+
+/* ── Gold Text ── */
+.text-gold {
+  color: var(--text-gold);
+}
+
+/* ── Emerald Text ── */
+.text-emerald {
+  color: var(--text-emerald);
+}
+
+/* ── Muted Text ── */
+.text-muted {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ── Time Display (monospace, gold) ── */
+.text-time {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-gold);
+  font-weight: var(--weight-semibold);
+}
+
+/* ── Label ── */
+.text-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ── Body Text ── */
+.text-body {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .heading-page {
+    font-size: var(--text-2xl);
+  }
+  .heading-section {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-page {
+    font-size: var(--text-xl);
+  }
+}

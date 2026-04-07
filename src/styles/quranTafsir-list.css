@@ -1,0 +1,148 @@
+/* ==================== Quran Tafsir: List & Grid Styles ==================== */
+
+/* Last Read Banner */
+.last-read-banner {
+    background: var(--gradient-emerald);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.last-read-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-emerald-md);
+}
+
+.last-read-icon {
+    font-size: 1.5rem;
+}
+
+.last-read-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.last-read-label {
+    font-size: var(--text-xs);
+    opacity: 0.9;
+}
+
+.last-read-position {
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+}
+
+.continue-arrow {
+    font-size: 1.5rem;
+}
+
+/* Juz Filter */
+.juz-filter {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.juz-filter button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.juz-filter button:hover {
+    background: var(--bg-hover);
+    color: var(--text-emerald);
+}
+
+.juz-filter button.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+/* Surahs Grid */
+.surahs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.surah-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-card);
+}
+
+.surah-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+
+.surah-number {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-gold);
+    color: var(--navy-950);
+    border-radius: 12px;
+    font-weight: var(--weight-bold);
+    font-size: var(--text-base);
+    box-shadow: var(--glow-gold-sm);
+}
+
+.surah-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.surah-name-ar {
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    font-family: var(--font-quran);
+}
+
+.surah-name-en {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.surah-meta {
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+}
+
+.surah-type-badge {
+    font-size: 1.3rem;
+}

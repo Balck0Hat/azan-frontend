@@ -1,0 +1,111 @@
+/* ========================================
+   Iftar Reminder
+   ======================================== */
+.ram-reminder-content {
+    text-align: center;
+}
+
+.ram-reminder-permission p {
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.ram-reminder-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: var(--gradient-gold);
+    color: var(--navy-950);
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-gold-sm);
+}
+
+.ram-reminder-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-gold-md);
+}
+
+.ram-reminder-btn.active {
+    background: var(--gradient-emerald);
+    color: white;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.ram-reminder-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.ram-reminder-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ram-reminder-field label {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.ram-reminder-info {
+    font-size: var(--text-xs);
+    color: rgba(251, 191, 36, 0.5);
+    margin-top: 4px;
+}
+
+/* ========================================
+   Monthly Calendar Table
+   ======================================== */
+.ram-calendar-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+.ram-calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.ram-calendar-table th {
+    padding: 10px 8px;
+    font-size: var(--text-xs);
+    color: var(--text-gold);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: var(--weight-semibold);
+}
+
+.ram-calendar-table td {
+    padding: 8px;
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-card);
+}
+
+.ram-cal-today {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.ram-cal-today td {
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+}
+
+.ram-cal-day {
+    font-weight: var(--weight-semibold);
+    color: var(--accent-gold);
+}
+
+.ram-calendar-note {
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+    text-align: center;
+}

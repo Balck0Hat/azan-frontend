@@ -1,0 +1,76 @@
+/* =============== Countdown =============== */
+
+.np-countdown {
+    margin-top: 0.7rem;
+    padding: 1rem 1rem 0.9rem;
+    border-radius: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.np-countdown-title {
+    margin: 0 0 0.7rem;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.np-countdown-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+/* Flip numbers */
+
+.flip-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flip-box {
+    position: relative;
+    min-width: 4rem;
+    padding: 0.45rem 0.9rem;
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    text-align: center;
+    color: var(--text-gold);
+    background: rgba(248, 250, 252, 0.08);
+    border-radius: 0.9rem;
+    border: 1px solid var(--border-gold);
+    box-shadow: var(--glow-gold-sm);
+    transition: transform 0.15s ease;
+}
+
+.flip-box-divider {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.flip-label {
+    margin-top: 0.25rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    opacity: 0.75;
+}
+
+.np-colon {
+    margin-top: -1.2rem;
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+    opacity: 0.7;
+}

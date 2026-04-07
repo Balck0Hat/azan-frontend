@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders Azan app without crashing', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // التأكد من أن التطبيق يعمل بدون أخطاء
+  expect(document.body).toBeTruthy();
+});
+
+test('app container exists', () => {
+  const { container } = render(<App />);
+  expect(container.firstChild).toBeTruthy();
 });

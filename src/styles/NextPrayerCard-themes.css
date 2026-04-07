@@ -1,0 +1,71 @@
+/* =============== Prayer themes =============== */
+
+/* Fajr */
+.np-theme-fajr .np-bg-layer {
+    background:
+            radial-gradient(circle at top, var(--navy-950), var(--navy-950) 40%, var(--navy-950)),
+            linear-gradient(145deg, var(--navy-950), var(--bg-primary) 40%, #1d4ed8 70%, var(--prayer-fajr) 100%);
+}
+.np-theme-fajr .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(59, 130, 246, 0.6), transparent 60%);
+}
+.np-theme-fajr .np-prayer-time {
+    background-image: linear-gradient(to left, #bfdbfe, var(--prayer-fajr));
+}
+
+/* Sunrise */
+.np-theme-sunrise .np-bg-layer {
+    background: linear-gradient(145deg, var(--bg-primary), var(--gold-600) 40%, var(--gold-200) 95%);
+}
+.np-theme-sunrise .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(250, 204, 21, 0.7), transparent 55%);
+}
+.np-theme-sunrise .np-prayer-time {
+    background-image: linear-gradient(to left, var(--gold-400), var(--gold-200));
+}
+
+/* Dhuhr */
+.np-theme-dhuhr .np-bg-layer {
+    background: linear-gradient(145deg, var(--bg-primary), var(--prayer-dhuhr) 40%, #e0f2fe 90%);
+}
+.np-theme-dhuhr .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(250, 204, 21, 0.7), transparent 55%);
+}
+.np-theme-dhuhr .np-prayer-time {
+    background-image: linear-gradient(to left, var(--gold-500), var(--gold-200));
+}
+
+/* Asr */
+.np-theme-asr .np-bg-layer {
+    background: linear-gradient(145deg, var(--navy-950), var(--prayer-asr) 35%, var(--gold-600) 90%);
+}
+.np-theme-asr .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(34, 197, 94, 0.7), transparent 55%);
+}
+.np-theme-asr .np-prayer-time {
+    background-image: linear-gradient(to left, var(--emerald-400), var(--gold-400));
+}
+
+/* Maghrib */
+.np-theme-maghrib .np-bg-layer {
+    background: linear-gradient(145deg, var(--navy-950), var(--bg-secondary) 20%, #7c2d12 60%, var(--prayer-maghrib) 95%);
+}
+.np-theme-maghrib .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(249, 115, 22, 0.7), transparent 55%);
+}
+.np-theme-maghrib .np-prayer-time {
+    background-image: linear-gradient(to left, var(--gold-200), var(--prayer-maghrib));
+}
+
+/* Isha */
+.np-theme-isha .np-bg-layer {
+    background:
+            radial-gradient(circle at top, var(--navy-950), var(--navy-950) 50%, var(--navy-950)),
+            linear-gradient(145deg, var(--navy-950), var(--bg-secondary) 25%, var(--prayer-isha) 70%, #a855f7 100%);
+}
+.np-theme-isha .np-glow-layer {
+    background: radial-gradient(circle at top, rgba(79, 70, 229, 0.6), transparent 55%);
+}
+.np-theme-isha .np-prayer-time {
+    background-image: linear-gradient(to left, #a5b4fc, #e9d5ff);
+}

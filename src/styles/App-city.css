@@ -1,0 +1,121 @@
+/* ====== CITY PRAYER TIMES ====== */
+
+.field-label {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #cbd5f5;
+    margin-bottom: 6px;
+}
+
+.input-city {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.input-city::placeholder {
+    color: #6b7280;
+}
+
+.input-city:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.45);
+}
+
+.btn-primary {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #022c22;
+    font-weight: 600;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.15s ease;
+    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    margin-bottom: 10px;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: default;
+    box-shadow: none;
+}
+
+.btn-primary:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 35px rgba(34, 197, 94, 0.45);
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+}
+
+.result-block {
+    margin-top: 8px;
+    border-radius: 16px;
+    border: 1px solid #020617;
+    padding: 10px 10px 6px;
+    background: #020617;
+}
+
+.city-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.city-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f9fafb;
+}
+
+.city-meta {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.prayer-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.prayer-table tr {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.prayer-table tr:last-child {
+    border-bottom: none;
+}
+
+.prayer-table td {
+    padding: 6px 4px;
+}
+
+.prayer-name {
+    text-align: right;
+    color: #e5e7eb;
+}
+
+.prayer-time {
+    text-align: left;
+    color: #facc15;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}

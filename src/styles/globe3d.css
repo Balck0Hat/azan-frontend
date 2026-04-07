@@ -1,0 +1,116 @@
+/* ====== 3D Globe Container ====== */
+
+.globe3d-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 520px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-card);
+  background: #000;
+  box-shadow: var(--shadow-card);
+  min-width: 0;
+}
+
+.globe3d-container canvas {
+  outline: none;
+}
+
+/* ── Tooltip ── */
+.globe3d-tip {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #e2e8f0;
+  font-family: var(--font-ui, system-ui);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.globe3d-tip strong {
+  font-size: 0.85rem;
+  color: #f8fafc;
+}
+
+.globe3d-tip em {
+  font-style: normal;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.globe3d-tip-time {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #fbbf24;
+  font-size: 0.75rem;
+}
+
+/* ── Loading / Error ── */
+.globe3d-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+.globe3d-error {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .globe3d-container { height: 400px; }
+}
+
+@media (max-width: 640px) {
+  .globe3d-container {
+    height: 300px;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .globe3d-container {
+    height: 280px;
+    border-radius: 12px;
+  }
+  .globe3d-tip {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+  .globe3d-tip strong {
+    font-size: 0.75rem;
+  }
+  .globe3d-error {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .globe3d-container {
+    height: 220px;
+    border-radius: 10px;
+  }
+}

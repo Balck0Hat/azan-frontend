@@ -1,0 +1,142 @@
+.daily-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.daily-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.verse-card::before {
+    background: linear-gradient(90deg, #8b5cf6, #6366f1);
+}
+
+.hadith-card::before {
+    background: linear-gradient(90deg, #f59e0b, #eab308);
+}
+
+.daily-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.daily-icon {
+    font-size: 1.5rem;
+}
+
+.daily-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.daily-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0 0 15px 0;
+}
+
+.verse-text {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 1.3rem;
+}
+
+.daily-source {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .daily-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .daily-card {
+        padding: 16px;
+    }
+
+    .daily-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .verse-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .daily-content {
+        gap: 12px;
+    }
+
+    .daily-card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .daily-icon {
+        font-size: 1.3rem;
+    }
+
+    .daily-label {
+        font-size: 0.85rem;
+    }
+
+    .daily-text {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .verse-text {
+        font-size: 1.1rem;
+    }
+
+    .daily-source {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .daily-card {
+        padding: 12px;
+    }
+
+    .daily-text {
+        font-size: 0.95rem;
+    }
+
+    .verse-text {
+        font-size: 1rem;
+    }
+
+    .daily-source {
+        font-size: 0.75rem;
+    }
+}

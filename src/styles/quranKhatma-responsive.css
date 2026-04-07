@@ -1,0 +1,54 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .qk-juz-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+    }
+
+    .qk-progress-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .qk-stats {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .quran-khatma {
+        padding: 16px;
+    }
+
+    .qk-juz-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4px;
+    }
+
+    .qk-juz-btn {
+        border-radius: 6px;
+    }
+
+    .qk-juz-num {
+        font-size: 0.7rem;
+    }
+
+    .qk-progress-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .qk-progress-value {
+        font-size: 1.2rem;
+    }
+
+    .qk-stat-value {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .qk-juz-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

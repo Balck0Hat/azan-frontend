@@ -1,0 +1,86 @@
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: var(--glow-gold-sm);
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: var(--glow-gold-lg);
+    }
+}
+
+@keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ========================================
+   Tree Structure
+   ======================================== */
+.tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-connector {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(180deg, var(--accent-gold), rgba(251, 191, 36, 0.3));
+}
+
+.tree-children {
+    display: flex;
+    gap: 1rem;
+}
+
+.tree-children.multiple {
+    position: relative;
+}
+
+.tree-children.multiple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: rgba(251, 191, 36, 0.5);
+}
+
+/* ========================================
+   Scrollbar Styling
+   ======================================== */
+.prophets-tree-page::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.prophets-tree-page::-webkit-scrollbar-track,
+.modal-content::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+.prophets-tree-page::-webkit-scrollbar-thumb,
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(251, 191, 36, 0.3);
+    border-radius: 4px;
+}
+
+.prophets-tree-page::-webkit-scrollbar-thumb:hover,
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(251, 191, 36, 0.5);
+}

@@ -1,0 +1,147 @@
+/* ====== Sacred Luxury — Page Layouts ====== */
+
+/* ── Main Content Layout ── */
+.main-layout {
+  max-width: var(--max-w-lg);
+  margin: var(--space-6) auto var(--space-10);
+  padding: 0 var(--space-4) var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.col {
+  min-width: 0;
+  width: 100%;
+}
+
+/* ── Cards in Main Layout ── */
+.card {
+  width: 100%;
+  max-width: 700px;
+  background: var(--gradient-card), var(--bg-card);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: repeating-conic-gradient(
+    var(--accent-primary) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 35%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 35%);
+}
+
+.card-title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  margin: 0 0 var(--space-3);
+  color: var(--text-primary);
+}
+
+/* Sizes for specific card positions */
+.col:first-child .card,
+.col:nth-child(2) .card:first-child {
+  min-height: 460px;
+}
+
+.col:nth-child(2) .card:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Home Grid ── */
+.home-grid {
+  margin: var(--space-8) auto 0;
+  max-width: var(--max-w-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.home-top-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.home-main-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.home-side-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.home-card {
+  min-height: 170px;
+}
+
+/* Globe card full width */
+.home-grid .home-card:nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+/* ── Tools Page ── */
+.tools-page {
+  margin: var(--space-8) auto;
+  max-width: 1200px;
+  padding: 0 var(--space-4);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.tools-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ── Quran Section ── */
+.quran-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ── Home Lists ── */
+.home-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.home-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+}
+
+.home-city {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-1);
+}

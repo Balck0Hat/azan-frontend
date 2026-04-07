@@ -1,0 +1,78 @@
+/* =============== Responsive =============== */
+
+@media (max-width: 600px) {
+    .hijri-card {
+        padding: 15px;
+    }
+
+    .hijri-day {
+        font-size: 2.2rem;
+        min-width: 65px;
+        padding: 8px;
+    }
+
+    .hijri-month {
+        font-size: 1.1rem;
+    }
+
+    .hijri-year {
+        font-size: 0.9rem;
+    }
+
+    .hijri-weekday {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .hijri-main {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hijri-main {
+        flex-wrap: wrap;
+    }
+
+    .hijri-day {
+        font-size: 2rem;
+        min-width: 55px;
+    }
+
+    .hijri-month {
+        font-size: 1rem;
+    }
+
+    .hijri-event {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .event-icon {
+        font-size: 1.2rem;
+    }
+
+    .event-name {
+        font-size: 0.9rem;
+    }
+
+    .event-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hijri-day {
+        font-size: 1.8rem;
+        min-width: 50px;
+    }
+
+    .hijri-month {
+        font-size: 0.95rem;
+    }
+
+    .hijri-weekday {
+        font-size: 0.8rem;
+    }
+}

@@ -280,16 +280,148 @@
   background: var(--admin-bg); gap: 12px; flex-direction: column;
 }
 
+/* ===================== Tab Navigation ===================== */
+.admin-tabs {
+  display: flex; gap: 4px; margin-bottom: 24px;
+  padding: 4px; background: var(--admin-surface); border-radius: 14px;
+  border: 1px solid var(--admin-border);
+}
+.admin-tab {
+  flex: 1; padding: 10px 16px; border-radius: 10px; border: none;
+  background: transparent; color: var(--admin-muted); font-size: 13px;
+  font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.admin-tab:hover { color: var(--admin-text); background: var(--admin-glass); }
+.admin-tab--active {
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));
+  color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3);
+}
+
+/* ===================== Tab Section Title ===================== */
+.tab-section-title {
+  font-size: 15px; font-weight: 700; color: var(--admin-text);
+  margin: 20px 0 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+/* ===================== Prayer Tab ===================== */
+.prayer-status-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-bottom: 20px;
+}
+.stat-card--warn { border-color: rgba(239,68,68,0.3); }
+.prayer-recompute-section {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.recompute-result {
+  padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 500;
+}
+.result-success { background: rgba(16,185,129,0.1); color: var(--admin-success); }
+.result-error { background: rgba(239,68,68,0.1); color: var(--admin-danger); }
+.prayer-stats-info {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; overflow: hidden;
+}
+.stat-row {
+  display: flex; justify-content: space-between; padding: 10px 16px;
+  font-size: 13px; border-bottom: 1px solid var(--admin-border);
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-row span { color: var(--admin-muted); }
+.stat-row strong { color: var(--admin-text); }
+
+/* ===================== Analytics Tab ===================== */
+.mini-chart {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; padding: 16px; margin-bottom: 20px;
+}
+.mini-chart-bars {
+  display: flex; align-items: flex-end; gap: 3px; height: 120px;
+}
+.mini-chart-col {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  height: 100%; justify-content: flex-end;
+}
+.mini-chart-bar {
+  width: 100%; background: linear-gradient(to top, #6366f1, #8b5cf6);
+  border-radius: 3px 3px 0 0; min-height: 2px; transition: height 0.3s;
+}
+.mini-chart-col:hover .mini-chart-bar { background: linear-gradient(to top, #818cf8, #a78bfa); }
+.mini-chart-label {
+  font-size: 8px; color: var(--admin-muted); margin-top: 4px;
+  writing-mode: vertical-rl; transform: rotate(180deg); max-height: 40px;
+  overflow: hidden;
+}
+.analytics-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.analytics-list-card {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; padding: 16px;
+}
+.analytics-list-title {
+  font-size: 13px; font-weight: 700; color: var(--admin-text);
+  margin-bottom: 12px;
+}
+.analytics-list-row {
+  display: flex; align-items: center; gap: 10px; padding: 6px 0;
+  font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.analytics-list-row:last-child { border-bottom: none; }
+.analytics-rank {
+  width: 20px; height: 20px; border-radius: 6px; font-size: 10px;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  background: var(--admin-glass); color: var(--admin-muted);
+}
+.analytics-path { flex: 1; color: var(--admin-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.analytics-count { color: var(--admin-muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ===================== Settings Tab ===================== */
+.settings-form { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+.settings-field { display: flex; flex-direction: column; gap: 6px; }
+.settings-label {
+  font-size: 12px; font-weight: 600; color: var(--admin-muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.settings-input {
+  padding: 10px 14px; border-radius: 10px; border: 1px solid var(--admin-border);
+  background: var(--admin-surface); color: var(--admin-text); font-size: 14px;
+  outline: none; transition: border-color 0.2s; font-family: inherit;
+}
+.settings-input:focus { border-color: var(--admin-primary); }
+.settings-textarea { resize: vertical; min-height: 60px; }
+.settings-actions { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.settings-feedback { font-size: 13px; font-weight: 500; }
+.settings-preview {
+  background: var(--admin-surface); border: 1px solid var(--admin-border);
+  border-radius: 14px; padding: 24px; text-align: center; direction: rtl;
+  margin-bottom: 16px;
+}
+.preview-badge {
+  display: inline-block; padding: 4px 14px; border-radius: 20px;
+  font-size: 12px; background: rgba(99,102,241,0.15); color: #a5b4fc;
+  margin-bottom: 8px;
+}
+.preview-title { font-size: 20px; font-weight: 700; color: var(--admin-text); margin-bottom: 6px; }
+.preview-subtitle { font-size: 13px; color: var(--admin-muted); line-height: 1.6; }
+.announcement-preview {
+  border-color: rgba(245,158,11,0.3);
+  background: rgba(245,158,11,0.04);
+}
+
 /* ===================== Responsive ===================== */
 @media (max-width: 768px) {
   .admin-dashboard { padding: 16px; }
   .admin-header { flex-direction: column; align-items: flex-start; }
+  .admin-tabs { flex-wrap: wrap; }
+  .admin-tab { flex: none; padding: 8px 12px; font-size: 12px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .prayer-status-grid { grid-template-columns: repeat(2, 1fr); }
   .filter-group { flex-direction: column; align-items: flex-start; }
   .current-task { flex-direction: column; }
   .current-task-spinner { margin: 0; }
   .task-card-header { flex-direction: column; align-items: flex-start; }
   .task-card-right { order: -1; }
+  .analytics-lists { grid-template-columns: 1fr; }
+  .mini-chart-label { display: none; }
 }
 @media (max-width: 480px) {
   .admin-login-card { margin: 16px; padding: 32px 20px; }

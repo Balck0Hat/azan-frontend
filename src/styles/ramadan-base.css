@@ -1,0 +1,152 @@
+/* ========================================
+   Ramadan - Theme Variables & Base Layout
+   ======================================== */
+
+/* --- Ramadan Theme Variables --- */
+.ramadan-page {
+    --ram-gold: var(--accent-gold);
+    --ram-gold-dim: var(--gold-600);
+    --ram-purple: #7c3aed;
+    --ram-purple-dim: #5b21b6;
+    --ram-green: var(--accent-primary);
+    --ram-green-dim: var(--accent-secondary);
+    --ram-bg-card: var(--bg-card);
+    --ram-border: var(--border-gold);
+    --ram-glow: var(--accent-gold-glow);
+}
+
+[data-theme="light"] .ramadan-page {
+    --ram-bg-card: var(--bg-card);
+    --ram-border: rgba(124, 58, 237, 0.15);
+    --ram-glow: rgba(124, 58, 237, 0.1);
+}
+
+/* --- Page Container --- */
+.ramadan-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Shared Card Style --- */
+.ram-card {
+    background: var(--ram-bg-card);
+    border: 1px solid var(--ram-border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    backdrop-filter: blur(16px);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.ram-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme="light"] .ram-card:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.ram-card-title {
+    font-size: var(--text-md);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+.ram-header {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(251, 191, 36, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.ram-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, var(--accent-gold-glow) 0%, transparent 60%);
+    animation: ramadanGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes ramadanGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.ram-greeting {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-extrabold);
+    color: var(--text-gold);
+    margin-bottom: 0.25rem;
+    position: relative;
+}
+
+[data-theme="light"] .ram-greeting {
+    color: var(--ram-purple);
+}
+
+.ram-day-info {
+    font-size: var(--text-md);
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.ram-day-number {
+    color: var(--text-gold);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-lg);
+}
+
+[data-theme="light"] .ram-day-number {
+    color: var(--ram-purple);
+}
+
+/* Progress Bar */
+.ram-progress-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ram-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.ram-progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+[data-theme="light"] .ram-progress-bar {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.ram-progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--ram-purple), var(--accent-gold));
+    transition: width 0.6s ease;
+    box-shadow: var(--glow-gold-sm);
+}

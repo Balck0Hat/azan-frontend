@@ -1,0 +1,87 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .adhkar-card {
+        padding: 15px;
+    }
+
+    .adhkar-title {
+        font-size: 1.1rem;
+    }
+
+    .dhikr-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .dhikr-text {
+        font-size: 0.95rem;
+    }
+
+    .counter-current {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .adhkar-card {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .adhkar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .adhkar-title {
+        font-size: 1rem;
+    }
+
+    .adhkar-reset {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+    .dhikr-item {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    .dhikr-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .counter-current {
+        font-size: 1.1rem;
+    }
+
+    .counter-total {
+        font-size: 0.8rem;
+    }
+
+    .dhikr-check {
+        width: 22px;
+        height: 22px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .adhkar-card {
+        padding: 10px;
+    }
+
+    .dhikr-item {
+        padding: 8px;
+    }
+
+    .dhikr-text {
+        font-size: 0.85rem;
+    }
+
+    .counter-current {
+        font-size: 1rem;
+    }
+}

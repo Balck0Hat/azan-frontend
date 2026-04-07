@@ -1,0 +1,56 @@
+/* Juz Grid */
+.qk-juz-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.qk-juz-btn {
+    position: relative;
+    aspect-ratio: 1;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qk-juz-btn:hover {
+    border-color: var(--border-emerald);
+    transform: scale(1.05);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.qk-juz-btn.completed {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--accent-primary);
+}
+
+.qk-juz-num {
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+}
+
+.qk-juz-btn.completed .qk-juz-num { color: var(--text-emerald); }
+
+.qk-juz-check {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    background: var(--gradient-gold);
+    color: var(--navy-950);
+    border-radius: 50%;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow-gold-sm);
+}

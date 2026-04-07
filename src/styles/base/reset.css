@@ -1,0 +1,88 @@
+/* ====== Sacred Luxury — Reset & Base ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: default;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Prevent text cursor on non-input elements */
+*:not(input):not(textarea) {
+  caret-color: transparent !important;
+}
+
+input,
+textarea {
+  caret-color: auto !important;
+}
+
+/* ── Scrollbar ── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald-500);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Focus Visible ── */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Images ── */
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Lists ── */
+ul, ol {
+  list-style: none;
+}
+
+/* ── Links ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Buttons ── */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}

@@ -1,0 +1,106 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .tasbeeh {
+        padding: 20px;
+    }
+
+    .tasbeeh-tap-area {
+        width: 220px;
+        height: 220px;
+    }
+
+    .tasbeeh-count {
+        font-size: 3.5rem;
+    }
+
+    .tasbeeh-text {
+        font-size: 1.1rem;
+    }
+
+    .preset-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tasbeeh {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .tasbeeh-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .tasbeeh-tap-area {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .tasbeeh-count {
+        font-size: 3rem;
+    }
+
+    .tasbeeh-text {
+        font-size: 1rem;
+    }
+
+    .tasbeeh-target {
+        font-size: 0.9rem;
+    }
+
+    .tasbeeh-controls {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .control-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .preset-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .completed-overlay span:first-child {
+        font-size: 2.5rem;
+    }
+
+    .completed-overlay span:last-child {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .tasbeeh {
+        padding: 12px;
+    }
+
+    .tasbeeh-tap-area {
+        width: 180px;
+        height: 180px;
+    }
+
+    .tasbeeh-count {
+        font-size: 2.5rem;
+    }
+
+    .tasbeeh-text {
+        font-size: 0.9rem;
+    }
+
+    .control-btn {
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+
+    .preset-btn {
+        padding: 5px 10px;
+    }
+}

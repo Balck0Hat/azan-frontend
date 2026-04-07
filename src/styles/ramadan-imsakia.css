@@ -1,0 +1,89 @@
+/* ========================================
+   Imsakia - Prayer Times & Countdown
+   ======================================== */
+.ram-imsakia {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.ram-time-box {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem 0.8rem;
+    border-radius: 14px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--ram-border);
+    transition: all 0.3s ease;
+}
+
+.ram-time-box:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+[data-theme="light"] .ram-time-box {
+    background: rgba(124, 58, 237, 0.04);
+}
+
+.ram-time-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+}
+
+.ram-time-value {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+    direction: ltr;
+}
+
+[data-theme="light"] .ram-time-value {
+    color: var(--ram-purple);
+}
+
+.ram-time-box .ram-time-remaining {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+
+.ram-countdown-box {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem 0.8rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(251, 191, 36, 0.08));
+    border: 1px solid var(--ram-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.ram-countdown-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+}
+
+.ram-countdown-timer {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-extrabold);
+    color: var(--text-gold);
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+}
+
+[data-theme="light"] .ram-countdown-timer {
+    color: var(--ram-purple);
+}
+
+.ram-countdown-target {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}

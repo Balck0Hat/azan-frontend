@@ -1,0 +1,83 @@
+/* Responsive */
+@media (max-width: 768px) {
+    .surahs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+
+    .verses-container {
+        max-height: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .surahs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .verses-text {
+        font-size: 1.3rem;
+        line-height: 2.3;
+    }
+
+    .quran-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .surahs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .verses-text {
+        font-size: 1.2rem;
+        line-height: 2.2;
+    }
+
+    .verses-container {
+        max-height: 400px;
+        padding: 15px;
+    }
+
+    .surah-item {
+        padding: 10px;
+    }
+
+    .surah-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .surah-name {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .surahs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .verses-text {
+        font-size: 1.1rem;
+        line-height: 2;
+    }
+
+    .surah-item {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .surah-number {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+    }
+
+    .surah-name {
+        font-size: 0.8rem;
+    }
+}

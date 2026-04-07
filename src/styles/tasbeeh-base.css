@@ -1,0 +1,121 @@
+.tasbeeh {
+    background: var(--bg-card);
+    background-image: var(--gradient-card);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tasbeeh:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.tasbeeh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tasbeeh-title {
+    font-size: 1.2rem;
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+    margin: 0;
+}
+
+.tasbeeh-total {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.tasbeeh-total strong {
+    color: var(--text-emerald);
+}
+
+/* Presets */
+.tasbeeh-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.preset-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+    border-color: var(--border-gold);
+    color: var(--text-gold);
+    background: var(--accent-gold-glow);
+}
+
+.preset-btn.active {
+    background: var(--gradient-gold);
+    border-color: var(--accent-gold);
+    color: var(--navy-950);
+    font-weight: var(--weight-semibold);
+    box-shadow: var(--glow-gold-sm);
+}
+
+/* Tap Area */
+.tasbeeh-tap-area {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 24px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease;
+}
+
+.tasbeeh-tap-area:active {
+    transform: scale(0.95);
+}
+
+.tasbeeh-tap-area:hover {
+    filter: drop-shadow(0 0 20px var(--accent-glow));
+}
+
+.tasbeeh-progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tasbeeh-progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: var(--bg-secondary);
+    stroke-width: 8;
+}
+
+.progress-fill {
+    fill: none;
+    stroke: var(--accent-primary);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+    filter: drop-shadow(0 0 6px var(--accent-glow));
+}

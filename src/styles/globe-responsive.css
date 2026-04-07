@@ -1,0 +1,173 @@
+/* ====== Globe: Responsive Styles ====== */
+
+@media (max-width: 900px) {
+    .globe-main-row {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+    }
+    .globe-map-wrapper {
+        height: 360px;
+    }
+    .globe-wide-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .globe-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .globe-toolbar {
+        justify-content: center;
+        gap: 6px;
+    }
+    .globe-icon-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+    .globe-title-pill {
+        width: 100%;
+        justify-content: space-between;
+        padding: 6px 10px;
+    }
+    .globe-utc-pill {
+        align-self: center;
+    }
+    .globe-footer-stats {
+        justify-content: space-between;
+        padding: 6px 8px;
+        gap: 6px;
+    }
+    .globe-map-wrapper {
+        height: 280px;
+        border-radius: 14px;
+    }
+    .globe-side-card {
+        padding: 10px;
+        border-radius: 14px;
+    }
+    .globe-now-strip {
+        padding: 8px 10px;
+        border-radius: 14px;
+    }
+    .globe-prayers-tabs {
+        gap: 4px;
+    }
+    .globe-prayers-tabs .tab-btn {
+        font-size: var(--text-xs);
+        padding: 5px 3px;
+    }
+    .globe-legend {
+        left: 8px;
+        bottom: 8px;
+        padding: 6px 8px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+        min-width: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .globe-wide-card {
+        padding: 12px;
+    }
+    .globe-map-wrapper {
+        height: 230px;
+        border-radius: 12px;
+    }
+    .globe-title-pill {
+        padding: 5px 8px;
+        gap: 6px;
+    }
+    .globe-title-main {
+        font-size: var(--text-xs);
+    }
+    .globe-title-sub {
+        font-size: 0.65rem;
+    }
+    .globe-utc-pill {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    .globe-icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+    .globe-footer-stats {
+        font-size: 0.7rem;
+        border-radius: 12px;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 5px 6px;
+    }
+    .globe-footer-item {
+        font-size: 0.7rem;
+    }
+    .globe-legend {
+        padding: 5px 6px;
+        font-size: 0.6rem;
+        min-width: 80px;
+        border-radius: 8px;
+    }
+    .globe-side-city {
+        font-size: var(--text-sm);
+    }
+    .globe-side-value {
+        font-size: var(--text-xs);
+    }
+    .globe-now-chip {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+    .globe-now-chip-row {
+        gap: 4px;
+    }
+    .globe-prayers-tabs {
+        gap: 3px;
+    }
+    .globe-prayers-tabs .tab-btn {
+        font-size: 0.65rem;
+        padding: 4px 2px;
+        border-radius: 12px;
+    }
+    .globe-sound-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .globe-map-wrapper {
+        height: 190px;
+        border-radius: 10px;
+    }
+    .globe-wide-card {
+        padding: 10px;
+    }
+    .globe-title-main {
+        font-size: 0.7rem;
+    }
+    .globe-footer-stats {
+        gap: 3px;
+        font-size: 0.6rem;
+    }
+    .globe-prayers-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+    .globe-prayers-tabs .tab-btn {
+        font-size: 0.65rem;
+        padding: 5px 2px;
+        border-radius: 10px;
+        flex: none;
+    }
+    .globe-legend {
+        display: none;
+    }
+}

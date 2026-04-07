@@ -1,0 +1,82 @@
+/* Verses */
+.verses-container {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.bismillah {
+    text-align: center;
+    font-size: var(--text-xl);
+    color: var(--text-emerald);
+    padding: 20px;
+    font-family: var(--font-quran);
+}
+
+.verses-text {
+    font-family: var(--font-quran);
+    font-size: 1.4rem;
+    line-height: var(--leading-quran);
+    text-align: justify;
+    direction: rtl;
+}
+
+.verse {
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.verse:hover { background: rgba(16, 185, 129, 0.1); }
+
+.verse.read {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--text-emerald);
+}
+
+.verse-number {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin: 0 5px;
+}
+
+/* Reset Button */
+.reset-quran-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 20px;
+    color: var(--status-error);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-quran-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Scrollbar */
+.surahs-grid::-webkit-scrollbar,
+.verses-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.surahs-grid::-webkit-scrollbar-track,
+.verses-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.surahs-grid::-webkit-scrollbar-thumb,
+.verses-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.surahs-grid::-webkit-scrollbar-thumb:hover,
+.verses-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}

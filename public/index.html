@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="alternate icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="theme-color" content="#020617" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="الأذان مباشر - مواقيت الصلاة لأكثر من 200,000 مدينة حول العالم. تابع أوقات الصلاة، اتجاه القبلة، التقويم الهجري والأذكار. Azan Live - Prayer Times Worldwide" />
+    <meta name="keywords" content="مواقيت الصلاة, أوقات الصلاة, الأذان, القبلة, التقويم الهجري, prayer times, azan, adhan, qibla, islamic calendar" />
+    <meta name="author" content="Azan Live" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://azanlive.com/" />
+    <meta property="og:title" content="الأذان مباشر | Azan Live - مواقيت الصلاة حول العالم" />
+    <meta property="og:description" content="تابع أوقات الصلاة لأكثر من 200,000 مدينة حول العالم مع اتجاه القبلة والتقويم الهجري" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:locale" content="ar_AR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://azanlive.com/" />
+    <meta name="twitter:title" content="الأذان مباشر | Azan Live" />
+    <meta name="twitter:description" content="مواقيت الصلاة لأكثر من 200,000 مدينة حول العالم" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://azanlive.com/" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "الأذان مباشر - Azan Live",
+      "description": "مواقيت الصلاة لأكثر من 200,000 مدينة حول العالم مع اتجاه القبلة والتقويم الهجري. Prayer times for over 200,000 cities worldwide.",
+      "url": "https://azanlive.com",
+      "applicationCategory": "ReligiousApp",
+      "operatingSystem": "Web",
+      "inLanguage": ["ar", "en"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- PWA -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="الأذان مباشر" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+
+    <title>الأذان مباشر | Azan Live - مواقيت الصلاة حول العالم</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>يرجى تفعيل JavaScript لتشغيل التطبيق</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

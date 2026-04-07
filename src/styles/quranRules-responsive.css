@@ -1,0 +1,74 @@
+/* ====== Responsive ====== */
+
+@media (max-width: 600px) {
+    .qr-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .qr-daily-verse {
+        font-size: 1.15rem;
+    }
+
+    .qr-daily-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .qr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-toolbar {
+        flex-direction: column;
+    }
+
+    .qr-random-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .qr-categories {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .qr-daily-verse {
+        font-size: 1.05rem;
+    }
+
+    .qr-card-verse {
+        font-size: 1.05rem;
+    }
+
+    .qr-card {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .qr-daily-card {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .quran-rules-page {
+        padding: 0.5rem 0;
+    }
+
+    .qr-header h2 {
+        font-size: 1.15rem;
+    }
+
+    .qr-daily-verse {
+        font-size: 1rem;
+    }
+
+    .qr-card {
+        padding: 0.85rem;
+        border-radius: 12px;
+    }
+}

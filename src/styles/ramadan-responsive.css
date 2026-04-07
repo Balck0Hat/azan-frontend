@@ -1,0 +1,100 @@
+/* ========================================
+   Responsive - Ramadan Page
+   ======================================== */
+
+@media (max-width: 600px) {
+    .ramadan-page {
+        gap: 1rem;
+    }
+
+    .ram-card {
+        padding: 1.2rem;
+        border-radius: 14px;
+    }
+
+    .ram-greeting {
+        font-size: 1.6rem;
+    }
+
+    .ram-imsakia {
+        flex-direction: column;
+    }
+
+    .ram-fasting-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.4rem;
+    }
+
+    .ram-khatma-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.4rem;
+    }
+
+    .ram-countdown-timer {
+        font-size: 1.4rem;
+    }
+
+    .ram-time-value {
+        font-size: 1.3rem;
+    }
+
+    .ram-zakat-form {
+        flex-direction: column;
+    }
+
+    .ram-sadaqa-form {
+        flex-direction: column;
+    }
+
+    .ram-sadaqa-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .ram-last-ten-grid {
+        gap: 6px;
+    }
+
+    .ram-night-chip {
+        width: 42px;
+        height: 46px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ram-header {
+        padding: 1.5rem 1rem;
+    }
+
+    .ram-greeting {
+        font-size: 1.4rem;
+    }
+
+    .ram-fasting-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .ram-khatma-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ram-virtue-text {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .ram-fasting-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.3rem;
+    }
+
+    .ram-khatma-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ram-khatma-juz-range {
+        display: none;
+    }
+}

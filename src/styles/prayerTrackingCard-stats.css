@@ -1,0 +1,92 @@
+/* Statistics Panel */
+.pt-stats-panel {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pt-stats-header h4 {
+    margin: 0 0 16px 0;
+    font-size: 1rem;
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+}
+
+/* Streak */
+.pt-streak {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--accent-gold-glow), rgba(251, 191, 36, 0.08));
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: var(--glow-gold-sm);
+}
+
+.pt-streak-icon { font-size: 1.5rem; }
+
+.pt-streak-count {
+    font-size: 1.8rem;
+    font-weight: var(--weight-bold);
+    color: var(--accent-gold);
+}
+
+.pt-streak-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Overall Progress Circle */
+.pt-overall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pt-overall-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.pt-overall-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.pt-circle-bg { fill: none; stroke: var(--bg-secondary); stroke-width: 3; }
+
+.pt-circle-fill {
+    fill: none;
+    stroke: var(--accent-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+    filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.pt-overall-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-emerald);
+}
+
+.pt-overall-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}

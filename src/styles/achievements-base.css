@@ -1,0 +1,157 @@
+.achievements {
+    position: relative;
+}
+
+/* New Badge Popup */
+.new-badge-popup {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--gradient-gold);
+    padding: 15px 25px;
+    border-radius: 16px;
+    box-shadow: var(--glow-gold-lg);
+    z-index: 1000;
+    animation: slide-down 0.5s ease, fade-out 0.5s ease 2.5s forwards;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+@keyframes slide-down {
+    from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes fade-out {
+    to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+.new-badge-popup .badge-icon {
+    font-size: 2.5rem;
+    animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.new-badge-popup .badge-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-badge-popup .badge-title {
+    font-size: 0.8rem;
+    color: var(--navy-800);
+    opacity: 0.7;
+}
+
+.new-badge-popup .badge-name {
+    font-size: 1.2rem;
+    font-weight: var(--weight-bold);
+    color: var(--navy-950);
+}
+
+.new-badge-popup .badge-points {
+    font-size: 1.5rem;
+    font-weight: var(--weight-bold);
+    color: var(--navy-950);
+}
+
+/* Level Card */
+.level-card {
+    background: var(--bg-card);
+    background-image: radial-gradient(circle at top left, var(--accent-gold-glow), transparent 55%);
+    border: 1px solid var(--border-gold);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card), var(--glow-gold-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.level-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover), var(--glow-gold-md);
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.level-icon {
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 8px var(--shadow-color));
+}
+
+.level-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.level-name {
+    font-size: 1.4rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+}
+
+.level-number {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.points-display {
+    text-align: center;
+    background: var(--bg-secondary);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gold);
+}
+
+.points-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: var(--weight-bold);
+    color: var(--accent-gold);
+    text-shadow: 0 0 15px var(--accent-gold-glow);
+}
+
+.points-label {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.level-progress { margin-top: 20px; }
+
+.level-progress .progress-bar {
+    height: 10px;
+    background: var(--bg-secondary);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.level-progress .progress-fill {
+    height: 100%;
+    background: var(--gradient-gold);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+    box-shadow: var(--glow-gold-sm);
+}
+
+.progress-text {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}

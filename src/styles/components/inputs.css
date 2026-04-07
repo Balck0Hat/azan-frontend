@@ -1,0 +1,84 @@
+/* ====== Sacred Luxury — Input Components ====== */
+
+/* ── Base Input ── */
+.input-base {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  outline: none;
+  transition: border-color var(--duration-normal) var(--ease-default),
+              box-shadow var(--duration-normal) var(--ease-default);
+  min-height: var(--touch-min);
+}
+
+.input-base::placeholder {
+  color: var(--text-muted);
+}
+
+.input-base:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ── Error State ── */
+.input-error {
+  border-color: var(--status-error);
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.input-error-message {
+  color: var(--status-error);
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+}
+
+/* ── Search Input ── */
+.input-search {
+  padding-inline-start: var(--space-10);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) center;
+}
+
+[dir="ltr"] .input-search {
+  background-position: 14px center;
+}
+
+/* ── Select ── */
+.select-base {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  padding-inline-end: var(--space-10);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  min-height: var(--touch-min);
+  transition: border-color var(--duration-normal) var(--ease-default);
+}
+
+.select-base:focus {
+  border-color: var(--accent-primary);
+}
+
+/* ── Field Label ── */
+.field-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}

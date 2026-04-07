@@ -1,0 +1,67 @@
+/* Prayer Selection */
+.notif-prayers { margin-top: 15px; }
+
+.notif-prayers-title {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.notif-prayers-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.notif-prayer-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notif-prayer-btn:hover {
+    border-color: var(--border-emerald);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.notif-prayer-btn.active {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.notif-prayer-icon { font-size: 1.3rem; }
+
+.notif-prayer-name {
+    font-size: var(--text-xs);
+    color: var(--text-primary);
+}
+
+/* Test Button */
+.notif-test-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notif-test-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+    transform: scale(1.02);
+    box-shadow: var(--glow-emerald-sm);
+}

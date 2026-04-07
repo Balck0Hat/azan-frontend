@@ -1,0 +1,60 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .countdown-value {
+        font-size: 2rem;
+    }
+
+    .countdown-unit {
+        min-width: 60px;
+    }
+
+    .countdown-units {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-value {
+        font-size: 1.8rem;
+    }
+
+    .countdown-unit {
+        min-width: 55px;
+        padding: 10px 8px;
+    }
+
+    .countdown-prayer-name {
+        font-size: 1.2rem;
+    }
+
+    .countdown-units {
+        gap: 8px;
+    }
+
+    .countdown-label {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .countdown-value {
+        font-size: 1.5rem;
+    }
+
+    .countdown-unit {
+        min-width: 48px;
+        padding: 8px 6px;
+    }
+
+    .countdown-prayer-name {
+        font-size: 1.1rem;
+    }
+
+    .countdown-units {
+        gap: 6px;
+    }
+
+    .countdown-card {
+        padding: 15px;
+    }
+}

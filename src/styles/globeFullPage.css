@@ -1,0 +1,611 @@
+/* ====== Globe Page Layout (replaces main-layout for globe) ====== */
+.globe-page-layout {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ====== Globe Full Page ====== */
+
+.globe-fullpage {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.globe-fullpage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.globe-fullpage-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.globe-fullpage-title {
+  font-family: var(--font-ui);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.globe-fullpage-back {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+
+.globe-fullpage-back:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+/* ====== 2D/3D Toggle ====== */
+.globe-mode-toggle {
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+}
+
+.globe-mode-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 14px;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.globe-mode-btn:hover {
+  background: var(--bg-hover);
+}
+
+.globe-mode-btn-active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+}
+
+.globe-mode-btn-active:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+/* ====== Map Fade Transition ====== */
+.globe-map-transition {
+  transition: opacity 0.25s ease;
+  opacity: 1;
+}
+
+.globe-map-fading {
+  opacity: 0;
+}
+
+/* ====== Geolocation Button ====== */
+.globe-geo-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+  flex-shrink: 0;
+}
+
+.globe-geo-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-emerald);
+  transform: translateY(-1px);
+}
+
+.globe-geo-btn-loading {
+  animation: globe-geo-pulse 1s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes globe-geo-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ====== 3D Fallback ====== */
+.globe3d-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 20px;
+  border-radius: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-card);
+  text-align: center;
+  min-height: 280px;
+}
+
+.globe3d-fallback-icon {
+  font-size: 2rem;
+}
+
+.globe3d-fallback-msg {
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  margin: 0;
+}
+
+.globe3d-fallback-sub {
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  margin: 0;
+}
+
+/* ====== Fullscreen Mode ====== */
+.globe-fullpage--fs {
+  background: var(--bg-primary);
+  padding: 12px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.globe-fullpage--fs .globe-fullpage-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.globe-fullpage--fs .globe3d-container,
+.globe-fullpage--fs .globe-map-wrapper {
+  height: calc(100vh - 220px);
+  max-height: none;
+}
+
+.globe-fullpage--fs .globe-cities-scroll {
+  max-height: calc(100vh - 300px);
+}
+
+/* Prayer Tabs row */
+.globe-fullpage-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.globe-fullpage-tabs .tab-btn {
+  min-width: 0;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+}
+
+/* Main Content */
+.globe-fullpage-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.globe-fullpage-map-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Right panel (sidebar + cities list) */
+.globe-fullpage-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Cities List */
+.globe-cities-list {
+  border-radius: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  flex: 1;
+  min-height: 0;
+}
+
+.globe-cities-search {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.globe-cities-search:focus {
+  border-color: var(--border-emerald);
+  box-shadow: var(--glow-emerald-sm);
+}
+
+.globe-cities-search::placeholder {
+  color: var(--text-muted);
+}
+
+.globe-cities-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 380px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-card) transparent;
+}
+
+.globe-city-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  text-align: start;
+  width: 100%;
+  transition: background 0.12s ease;
+}
+
+.globe-city-item:hover {
+  background: var(--bg-hover);
+}
+
+.globe-city-item-active {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid var(--border-emerald);
+}
+
+.globe-city-name {
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.globe-city-country {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.globe-city-prayer-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+.globe-cities-empty {
+  text-align: center;
+  padding: 20px 10px;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+/* ====== Responsive ====== */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .globe-page-layout {
+    padding: 0 10px;
+    margin: 0.75rem auto;
+  }
+  .globe-fullpage {
+    gap: 10px;
+  }
+  .globe-fullpage-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .globe-cities-scroll {
+    max-height: 260px;
+  }
+}
+
+/* Mobile landscape / small tablet */
+@media (max-width: 640px) {
+  .globe-page-layout {
+    /* Pull out of .app-container padding (20px each side) */
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    padding: 0 8px;
+    max-width: none;
+    width: auto;
+  }
+  .globe-fullpage {
+    gap: 8px;
+  }
+  .globe-fullpage-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .globe-fullpage-title-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .globe-fullpage-title {
+    font-size: var(--text-base);
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .globe-fullpage-back {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .globe-mode-toggle {
+    flex-shrink: 0;
+    order: 3;
+  }
+  .globe-mode-btn {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+  .globe-utc-pill {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    gap: 6px;
+    flex-shrink: 0;
+    order: 4;
+  }
+  .globe-fullpage-tabs {
+    gap: 4px;
+  }
+  .globe-fullpage-tabs .tab-btn {
+    font-size: var(--text-xs);
+    padding: 6px 4px;
+  }
+  /* Horizontal scroll for now-strip chips on mobile */
+  .globe-now-chip-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .globe-now-chip-row::-webkit-scrollbar {
+    display: none;
+  }
+  .globe-now-chip {
+    flex-shrink: 0;
+  }
+  .globe-cities-scroll {
+    max-height: 220px;
+  }
+  .globe-cities-list {
+    padding: 10px;
+    border-radius: 14px;
+  }
+  .globe-side-card {
+    padding: 10px;
+    border-radius: 14px;
+  }
+  .muted-text {
+    font-size: 0.75rem;
+  }
+  .globe-footer-stats {
+    border-radius: 14px;
+    padding: 5px 8px;
+    gap: 6px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .globe-page-layout {
+    margin-left: -14px;
+    margin-right: -14px;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+    padding: 0 6px;
+    max-width: none;
+    width: auto;
+  }
+  .globe-fullpage {
+    gap: 6px;
+  }
+  .globe-fullpage-top {
+    gap: 6px;
+  }
+  .globe-fullpage-title-row {
+    gap: 6px;
+  }
+  .globe-fullpage-title {
+    font-size: 0.85rem;
+  }
+  .globe-fullpage-back {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+  .globe-mode-btn {
+    padding: 4px 8px;
+    font-size: 0.65rem;
+  }
+  .globe-utc-pill {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    gap: 4px;
+  }
+  .globe-utc-label {
+    padding: 1px 6px;
+    font-size: 0.6rem;
+  }
+  .globe-fullpage-tabs {
+    gap: 3px;
+  }
+  .globe-fullpage-tabs .tab-btn {
+    font-size: 0.65rem;
+    padding: 5px 3px;
+  }
+  .globe-fullpage-body {
+    gap: 8px;
+  }
+  .globe-fullpage-map-col {
+    gap: 6px;
+  }
+  .globe-fullpage-panel {
+    gap: 8px;
+  }
+  .globe-now-strip {
+    padding: 8px 8px 6px;
+    border-radius: 12px;
+  }
+  .globe-now-chip {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+  .globe-cities-scroll {
+    max-height: 200px;
+  }
+  .globe-city-item {
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+  .globe-city-prayer-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+  .globe-cities-search {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    border-radius: 10px;
+  }
+  .globe-side-card {
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .globe-footer-stats {
+    border-radius: 12px;
+    padding: 4px 6px;
+    gap: 4px;
+    font-size: 0.7rem;
+  }
+  .globe-footer-item {
+    font-size: 0.7rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .globe-page-layout {
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 4px;
+    max-width: none;
+    width: auto;
+  }
+  .globe-fullpage-title {
+    font-size: 0.75rem;
+  }
+  .globe-mode-btn {
+    padding: 3px 6px;
+    font-size: 0.6rem;
+  }
+  .globe-utc-pill {
+    padding: 3px 6px;
+    font-size: 0.65rem;
+  }
+  .globe-fullpage-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .globe-fullpage-tabs .tab-btn {
+    font-size: 0.6rem;
+    padding: 5px 2px;
+    border-radius: 10px;
+    flex: none;
+  }
+  .globe-cities-scroll {
+    max-height: 180px;
+  }
+  .globe-now-strip {
+    padding: 6px 6px 4px;
+    border-radius: 10px;
+  }
+  .globe-footer-stats {
+    font-size: 0.6rem;
+    gap: 3px;
+  }
+}
+
+/* Reduced motion: disable pulse animation */
+@media (prefers-reduced-motion: reduce) {
+    .globe-geo-btn-loading {
+        animation: none;
+    }
+}

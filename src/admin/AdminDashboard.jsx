@@ -7,8 +7,19 @@ import CurrentTask from './CurrentTask';
 import StatsGrid from './StatsGrid';
 import FilterBar from './FilterBar';
 import TaskCard from './TaskCard';
+import PrayerTab from './PrayerTab';
+import AnalyticsTab from './AnalyticsTab';
+import SettingsTab from './SettingsTab';
+
+const TABS = [
+  { id: 'tasks', label: 'Tasks' },
+  { id: 'prayer', label: 'Prayer Times' },
+  { id: 'analytics', label: 'Analytics' },
+  { id: 'settings', label: 'Settings' },
+];
 
 export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState('tasks');
   const [tasks, setTasks] = useState([]);
   const [stats, setStats] = useState({});
   const [workerStatus, setWorkerStatus] = useState({});
@@ -36,23 +47,15 @@ export default function AdminDashboard() {
 
   useEffect(() => { loadData(); }, [loadData]);
 
-  // SSE live updates
   useEffect(() => {
     const unsub = subscribeSSE((evt) => {
       if (evt.type === 'task:update') {
         const t = evt.data;
-        if (t.status === 'running') {
-          setCurrentTask(t);
-        } else if (t.status === 'completed' || t.status === 'failed') {
-          setCurrentTask(null);
-        }
+        if (t.status === 'running') setCurrentTask(t);
+        else if (t.status === 'completed' || t.status === 'failed') setCurrentTask(null);
         setTasks(prev => {
           const idx = prev.findIndex(x => x._id === t._id);
-          if (idx >= 0) {
-            const next = [...prev];
-            next[idx] = t;
-            return next;
-          }
+          if (idx >= 0) { const next = [...prev]; next[idx] = t; return next; }
           return [t, ...prev];
         });
         fetchStats().then(setStats).catch(() => {});
@@ -79,9 +82,9 @@ export default function AdminDashboard() {
     <div className="admin-dashboard">
       <header className="admin-header">
         <div className="admin-header-left">
-          <h1>Auto-Task Engine</h1>
+          <h1>Admin Panel</h1>
           <span className={`worker-badge ${workerStatus.running ? 'active' : ''}`}>
-            {workerStatus.running ? (workerStatus.stopping ? 'Stopping...' : 'Running') : 'Stopped'}
+            {workerStatus.running ? (workerStatus.stopping ? 'Stopping...' : 'Worker Running') : 'Worker Stopped'}
           </span>
         </div>
         <div className="admin-header-right">
@@ -93,28 +96,45 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <CurrentTask task={currentTask} />
-      <StatsGrid stats={stats} workerStatus={workerStatus} />
-      <FilterBar filters={filters} onChange={handleFilterChange} />
+      <nav className="admin-tabs">
+        {TABS.map(tab => (
+          <button
+            key={tab.id}
+            className={`admin-tab ${activeTab === tab.id ? 'admin-tab--active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </nav>
 
-      <div className="task-list">
-        {tasks.map(t => <TaskCard key={t._id} task={t} />)}
-        {tasks.length === 0 && (
-          <div className="admin-empty">
-            {filters.status || filters.category
-              ? 'No tasks match the selected filters.'
-              : 'No tasks yet. Start the worker to begin.'}
+      {activeTab === 'tasks' && (
+        <>
+          <CurrentTask task={currentTask} />
+          <StatsGrid stats={stats} workerStatus={workerStatus} />
+          <FilterBar filters={filters} onChange={handleFilterChange} />
+          <div className="task-list">
+            {tasks.map(t => <TaskCard key={t._id} task={t} />)}
+            {tasks.length === 0 && (
+              <div className="admin-empty">
+                {filters.status || filters.category
+                  ? 'No tasks match the selected filters.'
+                  : 'No tasks yet. Start the worker to begin.'}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="admin-pagination">
-          <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
-          <span>Page {page} / {totalPages}</span>
-          <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
-        </div>
+          {totalPages > 1 && (
+            <div className="admin-pagination">
+              <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
+              <span>Page {page} / {totalPages}</span>
+              <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
+            </div>
+          )}
+        </>
       )}
+      {activeTab === 'prayer' && <PrayerTab />}
+      {activeTab === 'analytics' && <AnalyticsTab />}
+      {activeTab === 'settings' && <SettingsTab />}
     </div>
   );
 }

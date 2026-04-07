@@ -1,0 +1,123 @@
+/* ========================================
+   Sadaqa Tracker
+   ======================================== */
+.ram-sadaqa-total {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.ram-sadaqa-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.ram-sadaqa-form input {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.ram-sadaqa-form input::placeholder {
+    color: var(--text-muted);
+}
+
+.ram-sadaqa-form input:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.ram-sadaqa-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient-emerald);
+    color: white;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.ram-sadaqa-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--glow-emerald-md);
+}
+
+.ram-sadaqa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ram-sadaqa-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    border: 1px solid var(--border-card);
+    transition: all 0.3s ease;
+}
+
+.ram-sadaqa-item:hover {
+    border-color: var(--border-emerald);
+    transform: translateY(-1px);
+}
+
+.ram-sadaqa-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ram-sadaqa-amount {
+    font-weight: var(--weight-bold);
+    font-size: var(--text-md);
+    color: var(--text-gold);
+}
+
+.ram-sadaqa-note {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.ram-sadaqa-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ram-sadaqa-date {
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+}
+
+.ram-sadaqa-remove {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--status-error);
+    cursor: pointer;
+    font-size: var(--text-2xs);
+    transition: all 0.3s ease;
+}
+
+.ram-sadaqa-remove:hover {
+    background: var(--status-error);
+    color: white;
+}

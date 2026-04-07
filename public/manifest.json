@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "الأذان مباشر",
+  "name": "الأذان مباشر | Azan Live - مواقيت الصلاة",
+  "description": "مواقيت الصلاة لأكثر من 200,000 مدينة حول العالم مع اتجاه القبلة والتقويم الهجري",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,38 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["lifestyle", "utilities"],
+  "shortcuts": [
+    {
+      "name": "أوقات الصلاة",
+      "short_name": "الأوقات",
+      "description": "عرض أوقات الصلاة لمدينتك",
+      "url": "/?view=times",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "اتجاه القبلة",
+      "short_name": "القبلة",
+      "description": "بوصلة اتجاه القبلة",
+      "url": "/?view=qibla",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    }
+  ]
 }

@@ -1,0 +1,114 @@
+/* ==================== Quran Tafsir: Panels & Actions ==================== */
+
+/* Ayah Actions */
+.ayah-actions {
+    display: inline-flex;
+    gap: 4px;
+    margin-inline-end: 8px;
+    vertical-align: middle;
+}
+
+.action-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 44px;
+    min-height: 44px;
+    border: none;
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    font-size: var(--text-xs);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+.action-btn.play:hover,
+.action-btn.play.active {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--text-gold);
+}
+
+.action-btn.bookmark.active {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.action-btn.tafsir:hover {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--text-emerald);
+}
+
+/* Tafsir Panel */
+.tafsir-panel {
+    display: block;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    border-right: 4px solid var(--accent-primary);
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.tafsir-loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+}
+
+.mini-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.tafsir-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tafsir-tab {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.tafsir-tab:hover {
+    color: var(--text-emerald);
+    background: var(--bg-hover);
+}
+
+.tafsir-tab.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.tafsir-content {
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--text-primary);
+    font-family: var(--font-quran);
+}

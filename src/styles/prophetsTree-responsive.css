@@ -1,0 +1,65 @@
+/* Responsive Design - Prophets Tree */
+
+@media (max-width: 768px) {
+    .prophets-tree-page { padding: 1rem 0.5rem; }
+    .page-title { font-size: 1.8rem; }
+    .page-subtitle { font-size: 0.95rem; }
+    .prophets-stats { gap: 0.75rem; }
+    .stat-card { padding: 1rem 1.25rem; min-width: 100px; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.75rem; }
+
+    .prophets-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+
+    .prophet-card { padding: 1rem; min-width: 100px; }
+    .prophet-name-ar { font-size: 1rem; }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        padding: 0;
+        flex-direction: column;
+    }
+
+    .timeline-content { width: 100%; padding: 0.5rem; }
+    .timeline-line { left: 20px; }
+    .timeline-dot { left: 20px; }
+    .modal-content { padding: 1.5rem; border-radius: 20px; }
+    .modal-name-ar { font-size: 1.6rem; }
+    .ulu-alazm-grid { gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+    .view-toggle { flex-direction: column; align-items: center; }
+    .toggle-btn { width: 100%; max-width: 200px; justify-content: center; }
+    .prophets-stats { flex-direction: column; align-items: center; }
+    .stat-card { width: 100%; max-width: 200px; }
+
+    .prophets-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .prophet-card { padding: 0.75rem; }
+    .prophet-name-ar { font-size: 0.9rem; }
+    .modal-content { max-width: 95%; padding: 1rem; }
+    .modal-name-ar { font-size: 1.4rem; }
+}
+
+@media (max-width: 360px) {
+    .page-title { font-size: 1.5rem; }
+    .page-subtitle { font-size: 0.85rem; }
+
+    .prophets-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .prophet-card { padding: 0.6rem; min-width: auto; }
+    .prophet-name-ar { font-size: 0.85rem; }
+    .prophet-order { font-size: 0.65rem; }
+    .stat-number { font-size: 1.2rem; }
+    .tab-btn { padding: 0.6rem 1rem; font-size: 0.8rem; }
+}

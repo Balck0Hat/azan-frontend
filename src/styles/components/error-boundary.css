@@ -1,0 +1,71 @@
+/* ====== Sacred Luxury — Error Boundary ====== */
+
+.error-boundary-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  padding: var(--space-8);
+}
+
+.error-boundary-card {
+  text-align: center;
+  padding: var(--space-10) var(--space-8);
+  border-radius: var(--radius-2xl);
+  background: var(--gradient-card), var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  max-width: 480px;
+  width: 100%;
+}
+
+.error-boundary-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+  color: var(--status-warning);
+}
+
+.error-boundary-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-1);
+  color: var(--text-primary);
+}
+
+.error-boundary-message {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+.error-boundary-detail {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-6);
+  word-break: break-word;
+}
+
+.error-boundary-button {
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--gradient-emerald);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--glow-emerald-btn);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.error-boundary-button:hover {
+  box-shadow: var(--glow-emerald-btn-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .error-boundary-card {
+    padding: var(--space-8) var(--space-6);
+    border-radius: var(--radius-xl);
+  }
+}

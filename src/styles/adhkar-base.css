@@ -1,0 +1,133 @@
+.adhkar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.adhkar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.adhkar-title {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.adhkar-reset {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.adhkar-reset:hover {
+    background: var(--bg-hover);
+    color: var(--accent-primary);
+}
+
+.adhkar-progress {
+    position: relative;
+    height: 8px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.adhkar-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.adhkar-progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.adhkar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dhikr-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.dhikr-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+}
+
+.dhikr-item:active { transform: scale(0.98); }
+
+.dhikr-item.completed {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.dhikr-text {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.dhikr-counter {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: 'Courier New', monospace;
+}
+
+.counter-current {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.counter-sep { color: var(--text-muted); }
+
+.counter-total {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.dhikr-check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+}

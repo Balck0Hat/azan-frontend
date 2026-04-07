@@ -1,0 +1,127 @@
+/* ===========================
+   NAVBAR — Core styles
+   =========================== */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    position: relative;
+}
+
+/* Mobile toggle — hidden on desktop */
+.navbar-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Nav links list */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each nav item */
+.nav-item {
+    position: relative;
+}
+
+/* Nav button */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    font-family: var(--font-ui);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-icon { font-size: 1rem; line-height: 1; }
+.nav-label { line-height: 1; }
+
+/* Arrow for dropdowns */
+.nav-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    margin-inline-end: -2px;
+    opacity: 0.5;
+}
+
+.nav-arrow.open {
+    transform: rotate(-90deg);
+}
+
+/* Hover */
+.nav-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+/* Active */
+.nav-btn-active {
+    background: var(--gradient-emerald);
+    border-color: transparent;
+    color: var(--emerald-950);
+    box-shadow: var(--glow-emerald-btn);
+}
+
+.nav-btn-active:hover {
+    box-shadow: var(--glow-emerald-btn-hover);
+    transform: translateY(-1px);
+}
+
+.nav-btn-active .nav-arrow {
+    opacity: 0.7;
+}
+
+/* Press */
+.nav-btn:active {
+    transform: scale(0.97);
+}

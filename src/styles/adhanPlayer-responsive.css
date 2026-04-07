@@ -1,0 +1,86 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .adhan-player {
+        padding: 18px;
+    }
+
+    .adhan-play-btn {
+        width: 55px;
+        height: 55px;
+    }
+
+    .adhan-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .adhan-controls {
+        flex-wrap: wrap;
+    }
+
+    .adhan-volume {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .adhan-player {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .adhan-play-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .adhan-play-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .adhan-select-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .muezzin-option {
+        padding: 10px 12px;
+    }
+
+    .muezzin-icon {
+        font-size: 1.3rem;
+    }
+
+    .muezzin-name {
+        font-size: 0.9rem;
+    }
+
+    .muezzin-desc {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .adhan-player {
+        padding: 12px;
+    }
+
+    .adhan-play-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .adhan-title {
+        font-size: 0.9rem;
+    }
+
+    .adhan-current {
+        font-size: 0.8rem;
+    }
+
+    .adhan-icon {
+        font-size: 2rem;
+    }
+}

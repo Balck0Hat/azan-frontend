@@ -1,0 +1,102 @@
+/* Week Stats */
+.week-stats {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.week-title {
+    font-size: 1rem;
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+    margin: 0 0 16px 0;
+}
+
+.week-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.day-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.bar-container {
+    width: 30px;
+    height: 70px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar-fill {
+    width: 100%;
+    background: var(--gradient-emerald);
+    border-radius: 6px;
+    transition: height 0.5s ease;
+    min-height: 4px;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.day-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.day-count {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+}
+
+/* Week Summary */
+.week-summary {
+    display: flex;
+    gap: 20px;
+}
+
+.summary-item {
+    flex: 1;
+    background: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border-card);
+    transition: all 0.3s ease;
+}
+
+.summary-item:hover {
+    border-color: var(--border-emerald);
+    box-shadow: var(--glow-emerald-sm);
+}
+
+.summary-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-emerald);
+}
+
+.summary-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .prayers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bar-container {
+        width: 20px;
+    }
+}

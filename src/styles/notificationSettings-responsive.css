@@ -1,0 +1,35 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .notification-settings {
+        padding: 16px;
+    }
+
+    .notif-prayers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .notif-prayers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .notif-prayer-btn {
+        padding: 10px 6px;
+    }
+
+    .notif-prayer-icon {
+        font-size: 1.1rem;
+    }
+
+    .notif-prayer-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .notif-prayers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

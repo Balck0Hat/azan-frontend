@@ -1,0 +1,62 @@
+/* ====== Card content ====== */
+
+.qr-card-verse {
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-quran);
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+    font-family: var(--font-quran);
+}
+
+.qr-card-surah {
+    font-size: var(--text-xs);
+    color: var(--text-emerald);
+    margin: 0 0 0.75rem;
+    font-weight: var(--weight-medium);
+}
+
+.qr-card-rule {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin: 0 0 0.35rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.qr-card-explanation {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+    flex: 1;
+}
+
+/* ====== Empty state ====== */
+
+.qr-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+.qr-empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.5;
+}
+
+.qr-empty p {
+    margin: 0;
+    font-size: var(--text-sm);
+}
+
+/* ====== Results count ====== */
+
+.qr-count {
+    text-align: center;
+    font-size: var(--text-2xs);
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,112 @@
+/* ========================================
+   Zakat Calculator
+   ======================================== */
+.ram-zakat-form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.ram-zakat-field {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ram-zakat-field label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.ram-zakat-field select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.ram-zakat-field select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.ram-zakat-counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.ram-zakat-counter button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    color: var(--text-primary);
+    font-size: var(--text-lg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ram-zakat-counter button:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-gold);
+    color: var(--text-gold);
+}
+
+.ram-zakat-counter span {
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    min-width: 80px;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.ram-zakat-result {
+    text-align: center;
+    padding: 20px;
+    background: rgba(251, 191, 36, 0.08);
+    border-radius: 14px;
+    border: 1px solid var(--border-gold);
+    backdrop-filter: blur(12px);
+}
+
+.ram-zakat-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.ram-zakat-amount {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+}
+
+.ram-zakat-currency {
+    font-size: var(--text-md);
+    color: var(--text-secondary);
+}
+
+.ram-zakat-note {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.ram-zakat-info {
+    font-size: var(--text-xs);
+    color: rgba(251, 191, 36, 0.5);
+}

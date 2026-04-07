@@ -1,0 +1,148 @@
+/* Modal - Lineage & Children */
+.modal-lineage,
+.modal-children {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+}
+
+.lineage-label {
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    margin-inline-start: 0.5rem;
+}
+
+.lineage-link {
+    color: var(--text-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.lineage-link:hover {
+    background: rgba(251, 191, 36, 0.15);
+    text-decoration: underline;
+}
+
+.children-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Modal - Story & Info Grid */
+.modal-story {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+}
+
+.modal-story h4 {
+    color: var(--text-gold);
+    margin-bottom: 0.5rem;
+    font-size: var(--text-sm);
+}
+
+.modal-story p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: var(--leading-loose);
+    font-size: var(--text-sm);
+}
+
+.modal-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-section {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+}
+
+.info-section h4 {
+    color: var(--text-gold);
+    font-size: var(--text-sm);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Modal - Miracles & Info Items */
+.miracles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.miracles-list li {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.4rem 0;
+    padding-inline-end: 1.5rem;
+    position: relative;
+    font-size: var(--text-sm);
+}
+
+.miracles-list li::before {
+    content: "\2726";
+    position: absolute;
+    right: 0;
+    color: var(--accent-gold);
+    font-size: var(--text-2xs);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.info-label { color: var(--text-secondary); font-size: var(--text-xs); }
+.info-value { color: rgba(255, 255, 255, 0.9); font-size: var(--text-sm); }
+.info-value.highlight { color: var(--text-gold); font-weight: var(--weight-medium); }
+
+/* Modal - Badge Variants */
+.modal-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.info-badge.ulu-badge {
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid var(--border-gold);
+    color: var(--text-gold);
+}
+
+.info-badge.quran-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--border-emerald);
+    color: var(--text-emerald);
+}
+
+.info-badge.sunnah-badge {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #60a5fa;
+}
+
+.info-badge.died-badge {
+    background: rgba(156, 163, 175, 0.15);
+    border: 1px solid rgba(156, 163, 175, 0.4);
+    color: var(--text-muted);
+}

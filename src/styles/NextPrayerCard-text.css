@@ -1,0 +1,78 @@
+/* =============== Icon =============== */
+
+.np-icon-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.np-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.np-pro-card.np-is-hovered .np-icon-circle {
+    transform: scale(1.06);
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.np-icon { display: block; }
+
+/* =============== Text =============== */
+
+.np-main-text { text-align: center; }
+
+.np-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-primary);
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    opacity: 0.95;
+}
+
+.np-prayer-name {
+    margin: 0.3rem 0 0.4rem;
+    font-family: var(--font-ui);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.np-prayer-time {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.np-footer-text {
+    margin: 0.9rem 0 0;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+}

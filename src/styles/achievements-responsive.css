@@ -1,0 +1,122 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .new-badge-popup {
+        width: 90%;
+        padding: 12px 20px;
+        gap: 12px;
+    }
+
+    .new-badge-popup .badge-icon {
+        font-size: 2rem;
+    }
+
+    .new-badge-popup .badge-name {
+        font-size: 1rem;
+    }
+
+    .level-card {
+        padding: 20px;
+    }
+
+    .level-icon {
+        font-size: 2.5rem;
+    }
+
+    .level-name {
+        font-size: 1.2rem;
+    }
+
+    .points-value {
+        font-size: 1.5rem;
+    }
+
+    .badges-section {
+        padding: 20px;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-badge-popup {
+        top: 80px;
+        padding: 10px 15px;
+    }
+
+    .level-card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .level-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .level-icon {
+        font-size: 2.2rem;
+    }
+
+    .level-name {
+        font-size: 1.1rem;
+    }
+
+    .points-display {
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    .points-value {
+        font-size: 1.4rem;
+    }
+
+    .badges-section {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .badge-item {
+        padding: 12px 8px;
+        border-radius: 12px;
+    }
+
+    .badge-item .badge-icon {
+        font-size: 1.7rem;
+    }
+
+    .badge-item .badge-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .level-card {
+        padding: 12px;
+    }
+
+    .level-icon {
+        font-size: 2rem;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .badge-item {
+        padding: 10px 6px;
+    }
+
+    .badge-item .badge-icon {
+        font-size: 1.5rem;
+    }
+}

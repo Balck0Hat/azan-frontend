@@ -1,0 +1,70 @@
+/* ========================================
+   Prophet Card - Size & Type Variants
+   ======================================== */
+
+/* Small Card Size */
+.prophet-card.small {
+    padding: 0.9rem;
+    min-width: 100px;
+}
+
+.prophet-card.small .prophet-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
+}
+
+.prophet-card.small .prophet-name-ar {
+    font-size: var(--text-sm);
+}
+
+.prophet-card.small .prophet-name-en {
+    font-size: var(--text-2xs);
+}
+
+.prophet-card.small .prophet-title {
+    font-size: var(--text-2xs);
+    padding: 0.2rem 0.5rem;
+}
+
+/* Wife Card Styling */
+.prophet-card.wife-card {
+    border-color: rgba(236, 72, 153, 0.4);
+    background: linear-gradient(145deg, rgba(236, 72, 153, 0.1), rgba(30, 41, 59, 0.9));
+}
+
+.prophet-card.wife-card:hover {
+    border-color: rgba(236, 72, 153, 0.7);
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
+}
+
+.prophet-card.wife-card .prophet-icon {
+    color: #ec4899;
+}
+
+/* Khalifa Card Styling */
+.prophet-card.khalifa-card {
+    border-color: var(--border-emerald);
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(30, 41, 59, 0.9));
+}
+
+.prophet-card.khalifa-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-emerald-md);
+}
+
+.prophet-card.khalifa-card .prophet-icon {
+    color: var(--accent-primary);
+}
+
+/* Not in Quran Badge */
+.not-in-quran-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: var(--text-2xs);
+    padding: 0.15rem 0.4rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 8px;
+    color: #60a5fa;
+}

@@ -1,0 +1,146 @@
+/* ========================================
+   Prophets Tree - Base Layout & Header
+   ======================================== */
+
+/* Page Container */
+.prophets-tree-page {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background: linear-gradient(180deg,
+        var(--navy-950) 0%,
+        var(--navy-800) 50%,
+        var(--navy-950) 100%
+    );
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Pattern */
+.prophets-tree-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ========================================
+   Header Section
+   ======================================== */
+.prophets-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.header-decoration {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+    margin: 0.5rem 0;
+    text-shadow: var(--glow-gold-md);
+    font-family: var(--font-quran);
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--text-md);
+    margin: 0;
+}
+
+/* ========================================
+   View Toggle
+   ======================================== */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-gold);
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    color: var(--text-secondary);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: var(--text-sm);
+}
+
+.toggle-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--text-gold);
+    transform: translateY(-2px);
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1));
+    border-color: var(--accent-gold);
+    color: var(--text-gold);
+    box-shadow: var(--glow-gold-md);
+}
+
+.btn-icon {
+    font-size: var(--text-md);
+}
+
+/* ========================================
+   Stats Section
+   ======================================== */
+.prophets-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    box-shadow: var(--glow-gold-md);
+}
+
+.stat-number {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-gold);
+    line-height: var(--leading-none);
+}
+
+.stat-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}

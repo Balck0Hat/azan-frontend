@@ -1,0 +1,101 @@
+.qibla-card {
+    background: var(--bg-card);
+    background-image: var(--gradient-card);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qibla-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.qibla-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 15px;
+    color: var(--text-secondary);
+}
+
+.qibla-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.qibla-title {
+    font-size: 1.3rem;
+    color: var(--text-gold);
+    font-weight: var(--weight-semibold);
+    margin-bottom: 20px;
+}
+
+.qibla-compass-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.qibla-compass {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    box-shadow:
+        var(--glow-emerald-md),
+        inset 0 0 20px var(--shadow-color);
+    transition: transform 0.3s ease-out;
+    border: 2px solid var(--border-emerald);
+}
+
+.compass-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    opacity: 0.3;
+}
+
+.compass-ring.outer { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+.compass-ring.inner { top: 30px; left: 30px; right: 30px; bottom: 30px; }
+
+.compass-directions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.direction {
+    position: absolute;
+    font-size: 0.9rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-secondary);
+}
+
+.direction.north {
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-emerald);
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.direction.south { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.direction.east { right: 15px; top: 50%; transform: translateY(-50%); }
+.direction.west { left: 15px; top: 50%; transform: translateY(-50%); }

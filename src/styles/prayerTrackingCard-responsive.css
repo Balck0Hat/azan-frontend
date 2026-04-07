@@ -1,0 +1,70 @@
+/* Responsive */
+@media (max-width: 600px) {
+    .pt-prayers-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .pt-prayer-btn {
+        padding: 10px 4px;
+    }
+
+    .pt-prayer-icon {
+        font-size: 1.2rem;
+    }
+
+    .pt-prayer-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .prayer-tracking-card {
+        padding: 16px;
+    }
+
+    .pt-prayers-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+
+    .pt-prayer-btn {
+        padding: 8px 2px;
+        border-radius: 10px;
+    }
+
+    .pt-prayer-icon {
+        font-size: 1rem;
+    }
+
+    .pt-prayer-name {
+        font-size: 0.65rem;
+    }
+
+    .pt-prayer-check {
+        font-size: 0.85rem;
+    }
+
+    .pt-streak-count {
+        font-size: 1.5rem;
+    }
+
+    .pt-overall-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pt-overall-percentage {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .pt-prayer-btn {
+        padding: 6px 2px;
+    }
+
+    .pt-prayer-icon {
+        font-size: 0.9rem;
+    }
+}

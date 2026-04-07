@@ -1,0 +1,64 @@
+/* ====== Sacred Luxury — Grid & Layout Components ====== */
+
+/* ── 2 Column Grid ── */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+/* ── Responsive Auto-fit Grid ── */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+/* ── Bento Grid ── */
+.grid-bento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.grid-bento-wide {
+  grid-column: 1 / -1;
+}
+
+/* ── Flex Row ── */
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Stack (vertical flex) ── */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-sm { gap: var(--space-2); }
+.stack-md { gap: var(--space-4); }
+.stack-lg { gap: var(--space-6); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-responsive,
+  .grid-bento {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}

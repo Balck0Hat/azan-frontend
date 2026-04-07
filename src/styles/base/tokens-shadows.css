@@ -1,0 +1,32 @@
+/* ====== Sacred Luxury — Shadow & Glow Tokens ====== */
+
+:root {
+  /* ── Standard Shadows ── */
+  --shadow-xs:  0 1px 2px var(--shadow-color);
+  --shadow-sm:  0 2px 6px var(--shadow-color);
+  --shadow-md:  0 4px 12px var(--shadow-color);
+  --shadow-lg:  0 12px 30px var(--shadow-color);
+  --shadow-xl:  0 20px 45px var(--shadow-color);
+
+  /* ── Card Shadow (layered for depth) ── */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.2),
+                 0 0 0 1px var(--border-card);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.3),
+                       0 0 0 1px var(--border-emerald);
+
+  /* ── Emerald Glow ── */
+  --glow-emerald-sm: 0 0 12px rgba(16, 185, 129, 0.15);
+  --glow-emerald-md: 0 0 20px rgba(16, 185, 129, 0.2);
+  --glow-emerald-lg: 0 0 35px rgba(16, 185, 129, 0.3);
+  --glow-emerald-btn: 0 8px 25px rgba(16, 185, 129, 0.3);
+  --glow-emerald-btn-hover: 0 12px 35px rgba(16, 185, 129, 0.45);
+
+  /* ── Gold Glow ── */
+  --glow-gold-sm: 0 0 12px rgba(251, 191, 36, 0.15);
+  --glow-gold-md: 0 0 20px rgba(251, 191, 36, 0.2);
+  --glow-gold-lg: 0 0 35px rgba(251, 191, 36, 0.3);
+
+  /* ── Inset Shadows ── */
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-inset-glow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}

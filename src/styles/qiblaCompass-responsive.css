@@ -1,0 +1,89 @@
+/* =============== Responsive =============== */
+
+@media (max-width: 600px) {
+    .qibla-card {
+        padding: 15px;
+    }
+
+    .qibla-compass {
+        width: 180px;
+        height: 180px;
+    }
+
+    .qibla-arrow {
+        height: 65px;
+        margin-top: -65px;
+    }
+
+    .qibla-arrow::before {
+        height: 50px;
+    }
+
+    .qibla-title {
+        font-size: 1.1rem;
+    }
+
+    .degree-value {
+        font-size: 1.6rem;
+    }
+
+    .direction {
+        font-size: 0.8rem;
+    }
+
+    .direction.north {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .qibla-compass {
+        width: 160px;
+        height: 160px;
+    }
+
+    .qibla-arrow {
+        height: 55px;
+        margin-top: -55px;
+    }
+
+    .qibla-arrow::before {
+        height: 40px;
+    }
+
+    .qibla-compass-container {
+        padding: 10px;
+    }
+
+    .qibla-loading {
+        min-height: 250px;
+    }
+
+    .degree-value {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .qibla-compass {
+        width: 140px;
+        height: 140px;
+    }
+
+    .qibla-arrow {
+        height: 45px;
+        margin-top: -45px;
+    }
+
+    .degree-value {
+        font-size: 1.2rem;
+    }
+
+    .direction {
+        font-size: 0.7rem;
+    }
+
+    .direction.north {
+        font-size: 0.85rem;
+    }
+}

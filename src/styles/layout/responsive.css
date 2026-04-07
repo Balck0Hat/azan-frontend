@@ -1,0 +1,116 @@
+/* ====== Sacred Luxury — Global Responsive Rules ====== */
+
+/* ── Medium screens ── */
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Tablets ── */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: var(--space-2) var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .home-top-section,
+  .home-main-section {
+    grid-template-columns: 1fr;
+  }
+
+  .home-side-section {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* ── Large phones ── */
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .card {
+    border-radius: var(--radius-xl);
+    padding: var(--space-4) var(--space-3) var(--space-3);
+  }
+
+  .home-grid {
+    gap: var(--space-4);
+    margin: var(--space-4) auto 0;
+    padding: 0 var(--space-3);
+  }
+
+  .home-top-section,
+  .home-main-section,
+  .home-side-section {
+    gap: var(--space-4);
+  }
+}
+
+/* ── Small phones ── */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: var(--text-xl);
+  }
+
+  .card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+  }
+
+  .home-list li {
+    font-size: var(--text-xs);
+  }
+
+  .home-city {
+    font-size: var(--text-base);
+  }
+
+  .home-side-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Extra small ── */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: var(--text-lg);
+  }
+
+  .card {
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .home-list li {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ── Prevent iOS zoom on input focus ── */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ── Backdrop-filter fallback ── */
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header::before {
+    background: var(--bg-primary);
+    opacity: 0.97;
+  }
+
+  .card-glass {
+    background: var(--bg-card-solid);
+  }
+}

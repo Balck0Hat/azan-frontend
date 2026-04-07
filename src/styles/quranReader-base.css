@@ -1,0 +1,85 @@
+.quran-reader {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+}
+
+.quran-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.quran-title {
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.juz-badge {
+    background: var(--gradient-gold);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--navy-950);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-sm);
+    box-shadow: var(--glow-gold-sm);
+}
+
+/* Main Progress */
+.quran-main-progress {
+    margin-bottom: 20px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+.progress-info span:last-child {
+    font-weight: var(--weight-semibold);
+    color: var(--accent-primary);
+}
+
+.quran-main-progress .progress-bar {
+    height: 12px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quran-main-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    box-shadow: var(--glow-emerald-sm);
+}
+
+/* Toggle Button */
+.toggle-surahs-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.toggle-surahs-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-emerald);
+    background: var(--bg-hover);
+}

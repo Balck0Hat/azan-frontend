@@ -1,0 +1,12 @@
+/* Ramadan Page - Barrel Imports */
+@import './ramadan-base.css';
+@import './ramadan-imsakia.css';
+@import './ramadan-trackers.css';
+@import './ramadan-components.css';
+@import './ramadan-duas.css';
+@import './ramadan-features.css';
+@import './ramadan-planner.css';
+@import './ramadan-zakat.css';
+@import './ramadan-sadaqa.css';
+@import './ramadan-extras.css';
+@import './ramadan-responsive.css';

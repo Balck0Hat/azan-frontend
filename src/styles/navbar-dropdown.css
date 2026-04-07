@@ -1,0 +1,147 @@
+/* ===========================
+   DROPDOWN
+   =========================== */
+
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 260px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 8px;
+    z-index: 1000;
+    box-shadow: var(--shadow-xl), 0 0 0 1px var(--border-card);
+    animation: dropdownIn 0.2s ease;
+}
+
+@keyframes dropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: var(--font-ui);
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.nav-dropdown-item.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--text-emerald);
+}
+
+.dropdown-icon {
+    font-size: 1.3rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--overlay-glass);
+    border-radius: 10px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-dropdown-item.active .dropdown-icon {
+    background: var(--accent-glow);
+}
+
+.dropdown-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dropdown-label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.dropdown-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.nav-dropdown-item.active .dropdown-desc {
+    color: rgba(16, 185, 129, 0.6);
+}
+
+/* ===========================
+   LIGHT / DARK THEME
+   =========================== */
+
+[data-theme="light"] .nav-btn {
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .nav-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+    border-color: var(--border-emerald);
+}
+
+[data-theme="light"] .nav-btn-active {
+    color: var(--emerald-950);
+    background: var(--gradient-emerald);
+}
+
+[data-theme="light"] .nav-dropdown {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-card);
+}
+
+[data-theme="light"] .nav-dropdown-item {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .nav-dropdown-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .nav-dropdown-item.active {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--text-emerald);
+}
+
+[data-theme="light"] .dropdown-icon {
+    background: var(--overlay-glass);
+}
+
+[data-theme="light"] .dropdown-desc {
+    color: var(--text-muted);
+}
+
+[data-theme="light"] .hamburger span {
+    background: var(--text-secondary);
+}

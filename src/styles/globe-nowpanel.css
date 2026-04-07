@@ -1,0 +1,114 @@
+/* ====== Globe: Now Panel, Waves & Prayer Tabs ====== */
+
+.globe-now-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.globe-now-icon {
+    font-size: 0.9rem;
+}
+
+.globe-now-title {
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+}
+
+.globe-now-chip {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--gradient-emerald);
+    color: var(--navy-950);
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    box-shadow: var(--glow-emerald-md);
+    transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.globe-now-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--glow-emerald-lg);
+}
+
+.globe-now-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    overflow-x: visible;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.globe-now-chip-row::-webkit-scrollbar {
+    display: none;
+}
+
+/* Now Waves Animation */
+.globe-now-waves {
+    transform-origin: center;
+}
+
+.globe-now-wave {
+    fill: transparent;
+    stroke: var(--emerald-400);
+    stroke-width: 1.5;
+    animation: globeWave 2.4s ease-out infinite;
+}
+
+.globe-now-wave-2 {
+    animation-delay: 0.4s;
+}
+
+.globe-now-wave-3 {
+    animation-delay: 0.8s;
+}
+
+@keyframes globeWave {
+    0% {
+        transform: scale(0.4);
+        opacity: 0.9;
+    }
+    70% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Prayer Tabs */
+.globe-prayers-tabs {
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+    row-gap: 6px;
+}
+
+.globe-prayers-tabs .tab-btn {
+    min-width: 0;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+}
+
+/* Reduced motion: disable wave animations */
+@media (prefers-reduced-motion: reduce) {
+    .globe-now-wave {
+        animation: none !important;
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,135 @@
+/* ====== Sacred Luxury — Color Tokens ====== */
+
+:root {
+  /* ── Core Palette ── */
+  --emerald-50:  #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+  --emerald-950: #022c22;
+
+  --gold-50:  #fffbeb;
+  --gold-100: #fef3c7;
+  --gold-200: #fde68a;
+  --gold-300: #fcd34d;
+  --gold-400: #fbbf24;
+  --gold-500: #f59e0b;
+  --gold-600: #d97706;
+  --gold-700: #b45309;
+  --gold-800: #92400e;
+  --gold-900: #78350f;
+
+  --navy-50:  #f0f4ff;
+  --navy-100: #e0e7ff;
+  --navy-200: #c7d2fe;
+  --navy-800: #0f172a;
+  --navy-900: #0b1120;
+  --navy-950: #020617;
+
+  /* ── Prayer-Specific Colors ── */
+  --prayer-fajr:     #7c3aed;
+  --prayer-sunrise:  #f59e0b;
+  --prayer-dhuhr:    #fbbf24;
+  --prayer-asr:      #f97316;
+  --prayer-maghrib:  #ef4444;
+  --prayer-isha:     #6366f1;
+
+  --prayer-fajr-bg:     rgba(124, 58, 237, 0.12);
+  --prayer-sunrise-bg:  rgba(245, 158, 11, 0.12);
+  --prayer-dhuhr-bg:    rgba(251, 191, 36, 0.12);
+  --prayer-asr-bg:      rgba(249, 115, 22, 0.12);
+  --prayer-maghrib-bg:  rgba(239, 68, 68, 0.12);
+  --prayer-isha-bg:     rgba(99, 102, 241, 0.12);
+}
+
+/* ── Dark Theme (default) ── */
+:root {
+  --bg-primary:   var(--navy-950);
+  --bg-secondary: var(--navy-800);
+  --bg-card:      rgba(15, 23, 42, 0.75);
+  --bg-card-solid: #0d1526;
+  --bg-hover:     rgba(16, 185, 129, 0.08);
+  --bg-input:     rgba(15, 23, 42, 0.9);
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --text-gold:      var(--gold-400);
+  --text-emerald:   var(--emerald-400);
+
+  --accent-primary:   var(--emerald-500);
+  --accent-secondary: var(--emerald-600);
+  --accent-gold:      var(--gold-400);
+  --accent-glow:      rgba(16, 185, 129, 0.25);
+  --accent-gold-glow: rgba(251, 191, 36, 0.2);
+
+  --border-color:  rgba(148, 163, 184, 0.1);
+  --border-card:   rgba(148, 163, 184, 0.08);
+  --border-gold:   rgba(251, 191, 36, 0.25);
+  --border-emerald: rgba(16, 185, 129, 0.25);
+  --border-focus:  var(--emerald-500);
+
+  --shadow-color: rgba(0, 0, 0, 0.4);
+
+  --gradient-bg:     radial-gradient(ellipse at top, var(--navy-800) 0%, var(--navy-950) 50%, #000 100%);
+  --gradient-header: linear-gradient(to bottom, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.86), transparent);
+  --gradient-emerald: linear-gradient(135deg, var(--emerald-500), var(--emerald-700));
+  --gradient-gold:    linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  --gradient-card:    radial-gradient(circle at top left, rgba(16, 185, 129, 0.06), transparent 55%);
+
+  --overlay-glass:  rgba(15, 23, 42, 0.6);
+  --overlay-dark:   rgba(0, 0, 0, 0.5);
+
+  --scrollbar-track: var(--navy-950);
+  --scrollbar-thumb: var(--emerald-600);
+
+  --status-success: var(--emerald-500);
+  --status-error:   #ef4444;
+  --status-warning: var(--gold-500);
+  --status-info:    #3b82f6;
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --bg-primary:   #faf9f6;
+  --bg-secondary: #f0ece4;
+  --bg-card:      rgba(255, 255, 255, 0.85);
+  --bg-card-solid: #ffffff;
+  --bg-hover:     rgba(5, 150, 105, 0.06);
+  --bg-input:     rgba(255, 255, 255, 0.9);
+
+  --text-primary:   #1e293b;
+  --text-secondary: #475569;
+  --text-muted:     #64748b;
+  --text-gold:      var(--gold-700);
+  --text-emerald:   var(--emerald-700);
+
+  --accent-primary:   var(--emerald-600);
+  --accent-secondary: var(--emerald-700);
+  --accent-gold:      var(--gold-600);
+  --accent-glow:      rgba(5, 150, 105, 0.15);
+  --accent-gold-glow: rgba(217, 119, 6, 0.15);
+
+  --border-color:  rgba(0, 0, 0, 0.08);
+  --border-card:   rgba(0, 0, 0, 0.06);
+  --border-gold:   rgba(217, 119, 6, 0.2);
+  --border-emerald: rgba(5, 150, 105, 0.2);
+
+  --shadow-color: rgba(0, 0, 0, 0.08);
+
+  --gradient-bg:     linear-gradient(180deg, #f5f0e8 0%, #faf9f6 50%, #f0ece4 100%);
+  --gradient-header: linear-gradient(to bottom, rgba(250, 249, 246, 0.97), rgba(250, 249, 246, 0.86), transparent);
+  --gradient-card:   radial-gradient(circle at top left, rgba(5, 150, 105, 0.04), transparent 55%);
+
+  --overlay-glass:  rgba(255, 255, 255, 0.6);
+  --overlay-dark:   rgba(0, 0, 0, 0.3);
+
+  --scrollbar-track: #faf9f6;
+  --scrollbar-thumb: var(--emerald-600);
+}

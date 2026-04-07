@@ -1,0 +1,69 @@
+/* Responsive */
+@media (max-width: 768px) {
+    .challenge-prayers {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .challenge-prayers {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
+
+    .prayer-btn {
+        padding: 8px 4px;
+        font-size: 0.7rem;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .challenge-prayers {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .prayer-btn {
+        padding: 10px 6px;
+        font-size: 0.75rem;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+
+    .calendar-day {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .challenge-prayers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .calendar-day {
+        padding: 5px;
+        font-size: 0.7rem;
+    }
+
+    .reset-challenge-btn {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+}
