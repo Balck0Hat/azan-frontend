@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
 import "../../../styles/NextPrayerCard.css";
 import FlipNumber from "./FlipNumber";
 import NextPrayerSkeleton from "./NextPrayerSkeleton";
 import StarsLayer from "./StarsLayer";
+import PrayerTabs from "./PrayerTabs";
 import usePrayerData from "./usePrayerData";
 import {
-  PRAYERS,
   PRAYER_NAMES_AR,
   PRAYER_ICONS,
   PRAYER_THEME_KEY,
@@ -15,108 +17,100 @@ import {
 
 export default function NextPrayerProCard() {
   const {
-    times,
-    selectedPrayer,
-    setSelectedPrayer,
-    countdown,
-    isUrgent,
-    prayerTime,
+    times, selectedPrayer, setSelectedPrayer,
+    countdown, isUrgent, prayerTime,
   } = usePrayerData();
 
   const [isHovered, setIsHovered] = useState(false);
 
-  if (!times || !selectedPrayer) {
-    return <NextPrayerSkeleton />;
-  }
+  if (!times || !selectedPrayer) return <NextPrayerSkeleton />;
 
-  const themeKey = selectedPrayer
-    ? PRAYER_THEME_KEY[selectedPrayer] || "maghrib"
-    : "maghrib";
-
-  const rootClasses = [
-    "np-pro-card",
-    `np-theme-${themeKey}`,
-    isHovered ? "np-is-hovered" : "",
-    isUrgent ? "np-is-urgent" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
+  const themeKey = PRAYER_THEME_KEY[selectedPrayer] || "maghrib";
   const isSunrise = selectedPrayer === "Sunrise";
   const isNight = NIGHT_PRAYERS.includes(selectedPrayer);
 
   const footerText = prayerTime
-    ? `${isSunrise ? "\u0648\u0642\u062A \u0627\u0644\u0634\u0631\u0648\u0642 \u0627\u0644\u0642\u0627\u062F\u0645" : "\u0648\u0642\u062A \u0627\u0644\u0623\u0630\u0627\u0646 \u0627\u0644\u0642\u0627\u062F\u0645"}: ${formatWithAmPm(prayerTime)}`
-    : isSunrise
-      ? "\u062C\u0627\u0631\u064A \u062D\u0633\u0627\u0628 \u0648\u0642\u062A \u0627\u0644\u0634\u0631\u0648\u0642 \u0627\u0644\u0642\u0627\u062F\u0645\u2026"
-      : "\u062C\u0627\u0631\u064A \u062D\u0633\u0627\u0628 \u0648\u0642\u062A \u0627\u0644\u0623\u0630\u0627\u0646 \u0627\u0644\u0642\u0627\u062F\u0645\u2026";
+    ? `${isSunrise ? "وقت الشروق القادم" : "وقت الأذان القادم"}: ${formatWithAmPm(prayerTime)}`
+    : isSunrise ? "جاري حساب وقت الشروق القادم…" : "جاري حساب وقت الأذان القادم…";
 
   return (
-    <div className="np-wrapper" dir="rtl">
-      <div className="np-tabs">
-        {PRAYERS.map((p) => (
-          <button
-            key={p}
-            type="button"
-            className={
-              "np-tab" +
-              (selectedPrayer === p ? " np-tab--active" : "")
-            }
-            onClick={() => setSelectedPrayer(p)}
-          >
-            {PRAYER_NAMES_AR[p] || p}
-          </button>
-        ))}
-      </div>
+    <motion.div
+      className="np-wrapper" dir="rtl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <PrayerTabs selectedPrayer={selectedPrayer} setSelectedPrayer={setSelectedPrayer} />
 
-      <div
-        className={rootClasses}
+      <motion.div
+        className={clsx("np-pro-card", `np-theme-${themeKey}`, isHovered && "np-is-hovered", isUrgent && "np-is-urgent")}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={{ borderRadius: '1rem', overflow: 'hidden', position: 'relative' }}
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3 }}
       >
         <div className="np-bg-layer" />
         <div className="np-glow-layer" />
         <div className="np-pattern-layer" />
-
         <StarsLayer isHovered={isHovered} isNight={isNight} />
-
         <div className="np-mosque-layer" />
 
         <div className="np-inner">
           <div className="np-icon-wrap">
-            <div className="np-icon-circle">
-              <span className="np-icon">
-                {selectedPrayer ? PRAYER_ICONS[selectedPrayer] : "\uD83D\uDD70"}
-              </span>
-            </div>
+            <motion.div
+              className="np-icon-circle"
+              animate={isUrgent ? { scale: [1, 1.1, 1] } : {}}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              <span className="np-icon">{PRAYER_ICONS[selectedPrayer] || "🕰"}</span>
+            </motion.div>
           </div>
 
           <div className="np-main-text">
-            <p className="np-label">
-              {isSunrise ? "\u0627\u0644\u0648\u0642\u062A \u0627\u0644\u0642\u0627\u062F\u0645" : "\u0627\u0644\u0635\u0644\u0627\u0629 \u0627\u0644\u0642\u0627\u062F\u0645\u0629"}
+            <p className="np-label" style={{ color: '#94a3b8' }}>
+              {isSunrise ? "الوقت القادم" : "الصلاة القادمة"}
             </p>
-            <h2 className="np-prayer-name">
-              {selectedPrayer ? PRAYER_NAMES_AR[selectedPrayer] : "\u2014"}
-            </h2>
-            <p className="np-prayer-time">
-              {prayerTime ? formatWithAmPm(prayerTime) : "\u2014 : \u2014"}
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.h2
+                key={selectedPrayer}
+                className="np-prayer-name"
+                style={{
+                  background: 'linear-gradient(135deg, #e2e8f0, #a5b4fc)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {PRAYER_NAMES_AR[selectedPrayer] || "—"}
+              </motion.h2>
+            </AnimatePresence>
+            <p className="np-prayer-time">{prayerTime ? formatWithAmPm(prayerTime) : "— : —"}</p>
           </div>
 
           <div className="np-countdown">
-            <p className="np-countdown-title">{"\u0627\u0644\u0648\u0642\u062A \u0627\u0644\u0645\u062A\u0628\u0642\u064A"}</p>
+            <p className="np-countdown-title flex items-center justify-center gap-2">
+              {isUrgent && (
+                <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ background: '#f59e0b', boxShadow: '0 0 8px #f59e0b' }} />
+              )}
+              الوقت المتبقي
+            </p>
             <div className="np-countdown-row">
-              <FlipNumber value={countdown.seconds} label={"\u062B\u0627\u0646\u064A\u0629"} />
+              <FlipNumber value={countdown.seconds} label="ثانية" />
               <span className="np-colon">:</span>
-              <FlipNumber value={countdown.minutes} label={"\u062F\u0642\u064A\u0642\u0629"} />
+              <FlipNumber value={countdown.minutes} label="دقيقة" />
               <span className="np-colon">:</span>
-              <FlipNumber value={countdown.hours} label={"\u0633\u0627\u0639\u0629"} />
+              <FlipNumber value={countdown.hours} label="ساعة" />
             </div>
           </div>
 
-          <p className="np-footer-text">{footerText}</p>
+          <p className="np-footer-text" style={{ color: '#64748b' }}>{footerText}</p>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

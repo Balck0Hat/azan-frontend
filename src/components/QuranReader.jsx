@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SURAHS from '../data/readerSurahs';
-import '../styles/quranReader.css';
 
 export default function QuranReader() {
   const [progress, setProgress] = useState({});
@@ -43,58 +43,90 @@ export default function QuranReader() {
     return (read / total) * 100;
   };
 
+  const tp = getTotalProgress();
+
   return (
-    <div className="quran-reader">
-      <div className="quran-header">
-        <h3 className="quran-title">📖 ختمة القرآن</h3>
-        <div className="quran-stats"><span className="juz-badge">{totalJuz}/30 جزء</span></div>
-      </div>
-
-      <div className="quran-main-progress">
-        <div className="progress-info"><span>التقدم الكلي</span><span>{Math.round(getTotalProgress())}%</span></div>
-        <div className="progress-bar"><div className="progress-fill" style={{ width: `${getTotalProgress()}%` }} /></div>
-      </div>
-
-      <button className="toggle-surahs-btn" onClick={() => setShowSurahs(!showSurahs)}>{showSurahs ? 'إخفاء السور ▲' : 'عرض السور ▼'}</button>
-
-      {showSurahs && !selectedSurah && (
-        <div className="surahs-grid">
-          {SURAHS.map(surah => (
-            <button key={surah.num} className={`surah-item ${getSurahProgress(surah) === 100 ? 'completed' : ''}`} onClick={() => loadSurah(surah)}>
-              <span className="surah-num">{surah.num}</span>
-              <div className="surah-info"><span className="surah-name">{surah.name}</span><span className="surah-verses">{surah.verses} آية</span></div>
-              <div className="surah-progress-bar"><div className="surah-progress-fill" style={{ width: `${getSurahProgress(surah)}%` }} /></div>
-            </button>
-          ))}
+    <div className="min-h-screen p-3 sm:p-4 space-y-4">
+      {/* Header */}
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-white/5 backdrop-blur-xl">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold text-white">📖 ختمة القرآن</h3>
+          <span className="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-sm font-semibold border border-indigo-500/30">{totalJuz}/30 جزء</span>
         </div>
-      )}
-
-      {selectedSurah && (
-        <div className="surah-view">
-          <div className="surah-header">
-            <button className="back-btn" onClick={() => setSelectedSurah(null)}>→ العودة</button>
-            <h4>{selectedSurah.name}</h4>
-            <span className="verse-count">{progress[selectedSurah.num] || 0}/{selectedSurah.verses}</span>
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm"><span className="text-slate-400">التقدم الكلي</span><span className="text-indigo-300 font-bold">{Math.round(tp)}%</span></div>
+          <div className="h-3 rounded-full bg-slate-800 overflow-hidden">
+            <motion.div initial={{ width: 0 }} animate={{ width: `${tp}%` }} transition={{ duration: 1, ease: 'easeOut' }}
+              className="h-full rounded-full bg-gradient-to-l from-indigo-500 to-purple-500" />
           </div>
-          {loading ? (
-            <div className="surah-loading"><div className="spinner"></div><p>جاري تحميل السورة...</p></div>
-          ) : (
-            <div className="verses-container">
-              {selectedSurah.num !== 1 && selectedSurah.num !== 9 && <div className="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>}
-              <div className="verses-text">
-                {verses.map((verse, idx) => (
-                  <span key={idx} className={`verse ${(progress[selectedSurah.num] || 0) >= verse.numberInSurah ? 'read' : ''}`}
-                    onClick={() => markVerse(selectedSurah.num, verse.numberInSurah)}>
-                    {verse.text}<span className="verse-number">﴿{verse.numberInSurah}﴾</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-      )}
+      </motion.div>
 
-      <button className="reset-quran-btn" onClick={() => { setProgress({}); localStorage.removeItem('quranProgress'); }}>إعادة تعيين التقدم</button>
+      <motion.button whileTap={{ scale: 0.97 }} onClick={() => setShowSurahs(!showSurahs)}
+        className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 font-medium hover:bg-white/[0.07] transition-colors">
+        {showSurahs ? 'إخفاء السور ▲' : 'عرض السور ▼'}
+      </motion.button>
+
+      <AnimatePresence mode="wait">
+        {showSurahs && !selectedSurah && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+            className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {SURAHS.map((surah, i) => (
+              <motion.button key={surah.num} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.01 }}
+                whileTap={{ scale: 0.95 }} onClick={() => loadSurah(surah)}
+                className={`p-3 rounded-xl border text-start transition-all ${getSurahProgress(surah) === 100
+                  ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'}`}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs flex items-center justify-center font-bold">{surah.num}</span>
+                  <div className="flex-1 min-w-0"><p className="text-white text-sm font-semibold truncate">{surah.name}</p>
+                    <p className="text-slate-500 text-xs">{surah.verses} آية</p></div>
+                </div>
+                <div className="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                  <div className="h-full rounded-full bg-gradient-to-l from-indigo-500 to-purple-500 transition-all" style={{ width: `${getSurahProgress(surah)}%` }} />
+                </div>
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+
+        {selectedSurah && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-4">
+            <div className="flex items-center justify-between p-4 rounded-xl bg-white/[0.04] border border-white/10">
+              <motion.button whileTap={{ scale: 0.9 }} onClick={() => setSelectedSurah(null)} className="text-indigo-400 font-medium text-sm">→ العودة</motion.button>
+              <h4 className="text-white font-bold">{selectedSurah.name}</h4>
+              <span className="text-slate-400 text-sm">{progress[selectedSurah.num] || 0}/{selectedSurah.verses}</span>
+            </div>
+            {loading ? (
+              <div className="flex flex-col items-center justify-center py-16 gap-3">
+                <div className="w-10 h-10 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                <p className="text-slate-400">جاري تحميل السورة...</p>
+              </div>
+            ) : (
+              <div className="rounded-2xl p-4 sm:p-6 bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+                {selectedSurah.num !== 1 && selectedSurah.num !== 9 && (
+                  <p className="text-center text-2xl text-amber-200/80 font-arabic mb-6 py-3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                )}
+                <div className="leading-[2.8] text-right" dir="rtl">
+                  {verses.map((verse) => (
+                    <motion.span key={verse.numberInSurah} whileTap={{ scale: 0.98 }}
+                      onClick={() => markVerse(selectedSurah.num, verse.numberInSurah)}
+                      className={`inline cursor-pointer transition-colors text-2xl sm:text-3xl leading-[2.8] ${(progress[selectedSurah.num] || 0) >= verse.numberInSurah ? 'text-emerald-400/80' : 'text-slate-200 hover:text-indigo-300'}`}>
+                      {verse.text}<span className="text-indigo-400/60 text-lg mx-1">﴿{verse.numberInSurah}﴾</span>
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button whileTap={{ scale: 0.95 }}
+        onClick={() => { setProgress({}); localStorage.removeItem('quranProgress'); }}
+        className="w-full py-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm hover:bg-red-500/20 transition-colors">
+        إعادة تعيين التقدم
+      </motion.button>
     </div>
   );
 }

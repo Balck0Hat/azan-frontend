@@ -1,31 +1,34 @@
+import { motion } from 'framer-motion';
 import SURAHS from '../../data/surahs.json';
 
 export default function BookmarksView({ bookmarks, toggleBookmark, loadSurah }) {
   return (
-    <div className="bookmarks-view">
-      <h3>🔖 الآيات المحفوظة</h3>
+    <div className="space-y-4">
+      <h3 className="text-lg font-bold text-white px-1">🔖 الآيات المحفوظة</h3>
       {bookmarks.length === 0 ? (
-        <p className="no-bookmarks">لا توجد آيات محفوظة</p>
+        <div className="text-center py-16 text-slate-500">
+          <p className="text-4xl mb-3">📑</p>
+          <p>لا توجد آيات محفوظة</p>
+        </div>
       ) : (
-        <div className="bookmarks-list">
-          {bookmarks.map((bookmark) => (
-            <div
-              key={bookmark.key}
-              className="bookmark-item"
-              onClick={() => {
+        <div className="space-y-2">
+          {bookmarks.map((bookmark, i) => (
+            <motion.div key={bookmark.key} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.05 }}
+              className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-all group">
+              <div className="flex-1 cursor-pointer" onClick={() => {
                 const surah = SURAHS.find(s => s.num === bookmark.surah);
                 if (surah) loadSurah(surah);
-              }}
-            >
-              <span className="bookmark-surah">{bookmark.surahName}</span>
-              <span className="bookmark-ayah">الآية {bookmark.ayah}</span>
-              <button
-                className="remove-bookmark"
+              }}>
+                <span className="text-white font-medium">{bookmark.surahName}</span>
+                <span className="text-slate-500 text-sm mr-2">الآية {bookmark.ayah}</span>
+              </div>
+              <motion.button whileTap={{ scale: 0.8 }}
                 onClick={(e) => { e.stopPropagation(); toggleBookmark(bookmark.surah, bookmark.ayah); }}
-              >
+                className="w-8 h-8 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-sm hover:bg-red-500/20 transition-colors opacity-0 group-hover:opacity-100">
                 ✕
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
         </div>
       )}

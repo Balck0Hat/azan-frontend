@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { calculateQibla, requestOrientationPermission } from '../utils/qiblaUtils';
-import '../styles/qiblaCompass.css';
 
 export default function QiblaCompass() {
   const [qiblaDirection, setQiblaDirection] = useState(null);
@@ -9,32 +9,16 @@ export default function QiblaCompass() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      setError('الموقع الجغرافي غير مدعوم');
-      setLoading(false);
-      return;
-    }
-
+    if (!navigator.geolocation) { setError('الموقع الجغرافي غير مدعوم'); setLoading(false); return; }
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setQiblaDirection(calculateQibla(latitude, longitude));
-        setLoading(false);
-      },
-      () => {
-        setQiblaDirection(calculateQibla(31.9454, 35.9284));
-        setError('تم استخدام موقع افتراضي');
-        setLoading(false);
-      },
+      (position) => { const { latitude, longitude } = position.coords; setQiblaDirection(calculateQibla(latitude, longitude)); setLoading(false); },
+      () => { setQiblaDirection(calculateQibla(31.9454, 35.9284)); setError('تم استخدام موقع افتراضي'); setLoading(false); },
       { enableHighAccuracy: true, timeout: 10000 }
     );
   }, []);
 
   useEffect(() => {
-    const handleOrientation = (event) => {
-      if (event.alpha !== null) setDeviceHeading(event.alpha);
-    };
-
+    const handleOrientation = (event) => { if (event.alpha !== null) setDeviceHeading(event.alpha); };
     if (window.DeviceOrientationEvent) {
       if (typeof DeviceOrientationEvent.requestPermission !== 'function') {
         window.addEventListener('deviceorientation', handleOrientation);
@@ -45,42 +29,68 @@ export default function QiblaCompass() {
 
   if (loading) {
     return (
-      <div className="qibla-card qibla-loading">
-        <div className="qibla-spinner"></div>
-        <span>جاري تحديد الموقع...</span>
+      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg flex flex-col items-center justify-center min-h-[280px]">
+        <div className="w-10 h-10 rounded-full border-2 border-indigo-500/30 border-t-indigo-500 animate-spin mb-3" />
+        <span className="text-sm text-slate-400">جاري تحديد الموقع...</span>
       </div>
     );
   }
 
+  const rotation = qiblaDirection - deviceHeading;
+
   return (
-    <div className="qibla-card" onClick={() => requestOrientationPermission(setDeviceHeading)}>
-      <h3 className="qibla-title">🧭 اتجاه القبلة</h3>
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      onClick={() => requestOrientationPermission(setDeviceHeading)}
+      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-white mb-5 text-center">اتجاه القبلة</h3>
 
-      <div className="qibla-compass-container">
-        <div className="qibla-compass" style={{ transform: `rotate(${-deviceHeading}deg)` }}>
-          <div className="compass-directions">
-            <span className="direction north">ش</span>
-            <span className="direction east">شر</span>
-            <span className="direction south">ج</span>
-            <span className="direction west">غ</span>
+      <div className="flex justify-center mb-5">
+        <div className="relative w-52 h-52">
+          {/* Outer ring */}
+          <div className="absolute inset-0 rounded-full border-2 border-white/[0.08]" />
+          <div className="absolute inset-2 rounded-full border border-white/[0.05]" />
+          {/* Gradient glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/10" />
+
+          {/* Compass rotating */}
+          <motion.div animate={{ rotate: -deviceHeading }} transition={{ type: "spring", stiffness: 50, damping: 20 }}
+            className="absolute inset-0 flex items-center justify-center">
+            {/* Direction labels */}
+            <span className="absolute top-3 text-xs font-bold text-indigo-400">ش</span>
+            <span className="absolute bottom-3 text-xs font-bold text-slate-500">ج</span>
+            <span className="absolute right-3 text-xs font-bold text-slate-500">شر</span>
+            <span className="absolute left-3 text-xs font-bold text-slate-500">غ</span>
+
+            {/* Qibla arrow */}
+            <motion.div animate={{ rotate: qiblaDirection }} transition={{ type: "spring", stiffness: 50, damping: 20 }}
+              className="absolute inset-0 flex flex-col items-center">
+              <div className="mt-5 flex flex-col items-center">
+                <div className="w-0.5 h-12 bg-gradient-to-b from-indigo-500 to-transparent rounded-full" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Center kaaba icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div animate={{ rotate: rotation }} transition={{ type: "spring", stiffness: 50, damping: 20 }}
+              className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/20">
+              &#x1f54b;
+            </motion.div>
           </div>
-          <div className="qibla-arrow" style={{ transform: `rotate(${qiblaDirection}deg)` }}>
-            <div className="arrow-head">🕋</div>
-          </div>
-          <div className="compass-ring outer"></div>
-          <div className="compass-ring inner"></div>
         </div>
       </div>
 
-      <div className="qibla-info">
-        <div className="qibla-degree">
-          <span className="degree-value">{Math.round(qiblaDirection || 0)}°</span>
-          <span className="degree-label">من الشمال</span>
+      <div className="text-center space-y-2">
+        <div className="inline-flex items-center gap-2 rounded-xl bg-white/[0.04] border border-white/[0.06] px-4 py-2">
+          <span className="text-2xl font-bold bg-gradient-to-l from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            {Math.round(qiblaDirection || 0)}°
+          </span>
+          <span className="text-xs text-slate-400">من الشمال</span>
         </div>
       </div>
 
-      {error && <p className="qibla-note">{error}</p>}
-      <p className="qibla-tip">💡 وجّه هاتفك نحو الشمال ثم اتبع السهم</p>
-    </div>
+      {error && <p className="text-xs text-amber-400/70 text-center mt-3">{error}</p>}
+      <p className="text-xs text-slate-500 text-center mt-2">وجّه هاتفك نحو الشمال ثم اتبع السهم</p>
+    </motion.div>
   );
 }

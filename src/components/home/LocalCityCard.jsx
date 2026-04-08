@@ -1,22 +1,11 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import api from "../../api";
 import "../../styles/LocalCityCard.css";
+import LocalCityPrayerGrid from "./LocalCityPrayerGrid";
+import LocalCityExtraPrayers from "./LocalCityExtraPrayers";
 
-/* 🇯🇴 كرت مدينتك الحالية – نسخة فاخرة */
 const MAIN_PRAYERS = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
-
-const PRAYER_LABELS = {
-    Fajr: { ar: "الفجر", en: "Fajr", icon: "🌙" },
-    Sunrise: { ar: "الشروق", en: "Sunrise", icon: "🌅" },
-    Dhuhr: { ar: "الظهر", en: "Dhuhr", icon: "☀️" },
-    Asr: { ar: "العصر", en: "Asr", icon: "🌤" },
-    Maghrib: { ar: "المغرب", en: "Maghrib", icon: "🌇" },
-    Isha: { ar: "العشاء", en: "Isha", icon: "🌙" },
-    Imsak: { ar: "الإمساك", en: "Imsak", icon: "⭐" },
-    Midnight: { ar: "منتصف الليل", en: "Midnight", icon: "🌙" },
-    "Last third": { ar: "ثلث الليل الأخير", en: "Last third", icon: "⭐" },
-    Lastthird: { ar: "ثلث الليل الأخير", en: "Last third", icon: "⭐" },
-};
 
 function LocalCityCard() {
     const [data, setData] = useState(null);
@@ -30,7 +19,6 @@ function LocalCityCard() {
                 console.error(e);
             }
         };
-
         fetchLocal();
     }, []);
 
@@ -41,92 +29,77 @@ function LocalCityCard() {
     );
 
     return (
-        <div className="card home-card city-card">
-            {/* 🔹 الهيدر الجديد */}
-            <div className="city-header-row">
+        <motion.div
+            className="card home-card city-card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+            {/* Header */}
+            <div className="flex flex-col gap-3 mb-5 pb-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
+                        <span className="text-lg">📍</span>
+                        <span className="text-sm font-medium" style={{ color: '#94a3b8' }}>
+                            مدينتك الآن
+                        </span>
+                    </div>
+                    {data && (
+                        <span
+                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            style={{
+                                background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))',
+                                color: '#a5b4fc',
+                                border: '1px solid rgba(99,102,241,0.2)',
+                            }}
+                        >
+                            {data.city} – {data.country}
+                        </span>
+                    )}
+                </div>
+
                 {data && (
-                    <div className="city-chip">
-                        {data.city} – {data.country}
+                    <div className="flex items-center gap-2 text-xs" style={{ color: '#64748b' }}>
+                        <span>🕒</span>
+                        <span>المنطقة الزمنية: {data.timezone}</span>
                     </div>
                 )}
 
-                <div className="city-header-text">
-                    <div className="city-location-line">
-                        <span className="city-location-label">مدينتك الآن</span>
-                        <span className="city-location-pin">📍</span>
-                    </div>
-
-                    {data && (
-                        <p className="city-timezone">
-                            <span className="city-timezone-label">المنطقة الزمنية</span>
-                            <span className="city-timezone-sep">:</span>
-                            <span className="city-timezone-value">{data.timezone}</span>
-                            <span className="city-timezone-icon">🕒</span>
-                        </p>
-                    )}
-                </div>
+                {data?.city && (
+                    <h3
+                        className="text-xl font-bold"
+                        style={{
+                            background: 'linear-gradient(135deg, #e2e8f0, #a5b4fc)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                        }}
+                    >
+                        {data.city}
+                    </h3>
+                )}
             </div>
 
             {!data ? (
-                <p className="muted-text">جاري تحديد موقعك وجلب أوقات الصلاة…</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                        <div
+                            key={i}
+                            className="h-20 rounded-xl animate-pulse"
+                            style={{ background: 'rgba(255,255,255,0.04)' }}
+                        />
+                    ))}
+                </div>
             ) : (
                 <>
-                    {/* البلاطات الرئيسية للصلوات الست */}
-                    <div className="city-main-grid">
-                        {mainPrayers.map((key) => {
-                            const time = times[key];
-                            const labels = PRAYER_LABELS[key] || { ar: key, en: key, icon: "🕰" };
-
-                            return (
-                                <div
-                                    key={key}
-                                    className={`city-tile city-tile-${key.toLowerCase()}`}
-                                >
-                                    <div className="city-tile-top">
-                                        <div className="city-tile-icon">{labels.icon}</div>
-                                        <div className="city-tile-time">{time}</div>
-                                    </div>
-                                    <div className="city-tile-bottom">
-                                        <div className="city-tile-ar">{labels.ar}</div>
-                                        <div className="city-tile-en">{labels.en}</div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* أوقات إضافية (إمساك / منتصف الليل / ثلث الليل) */}
+                    <LocalCityPrayerGrid mainPrayers={mainPrayers} times={times} />
                     {extraPrayers.length > 0 && (
-                        <>
-                            <div className="city-extra-title">أوقات إضافية</div>
-                            <div className="city-extra-list">
-                                {extraPrayers.map(([name, time]) => {
-                                    const labels = PRAYER_LABELS[name] || {
-                                        ar: name,
-                                        en: name,
-                                        icon: "⭐",
-                                    };
-                                    return (
-                                        <div key={name} className="city-extra-item">
-                                            <div className="city-extra-left">
-                                                <span className="city-extra-icon">{labels.icon}</span>
-                                                <div className="city-extra-text">
-                                                    <div className="city-extra-ar">{labels.ar}</div>
-                                                    <div className="city-extra-en">{labels.en}</div>
-                                                </div>
-                                            </div>
-                                            <div className="city-extra-time">{time}</div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </>
+                        <LocalCityExtraPrayers extraPrayers={extraPrayers} />
                     )}
                 </>
             )}
-        </div>
+        </motion.div>
     );
 }
-
 
 export default LocalCityCard;

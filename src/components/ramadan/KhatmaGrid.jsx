@@ -1,46 +1,40 @@
-// KhatmaGrid.jsx — Quran khatma progress bar and juz grid
-
-import { khatmaPlan } from "../../data/ramadanData";
+import { motion } from 'framer-motion';
+import { khatmaPlan } from '../../data/ramadanData';
 
 export default function KhatmaGrid({ khatmaJuz, toggleKhatma }) {
   const completedCount = khatmaJuz.length;
   const pct = Math.round((completedCount / 30) * 100);
 
   return (
-    <div className="ram-card">
-      <div className="ram-card-title">📖 ختمة رمضان</div>
-      <div className="ram-khatma-progress">
-        <div className="ram-progress-label">
-          <span>{completedCount} من 30 جزء</span>
-          <span>{pct}%</span>
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+      <p className="text-white font-bold mb-3">📖 ختمة رمضان</p>
+      <div className="space-y-2 mb-4">
+        <div className="flex justify-between text-sm">
+          <span className="text-slate-400">{completedCount} من 30 جزء</span>
+          <span className="text-indigo-300 font-bold">{pct}%</span>
         </div>
-        <div className="ram-progress-bar">
-          <div
-            className="ram-progress-fill"
-            style={{ width: `${(completedCount / 30) * 100}%` }}
-          />
+        <div className="h-2.5 rounded-full bg-slate-800 overflow-hidden">
+          <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }}
+            className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-indigo-500" />
         </div>
       </div>
-      <div className="ram-khatma-grid">
+      <div className="grid grid-cols-5 sm:grid-cols-6 gap-1.5">
         {khatmaPlan.map((item) => {
           const isCompleted = khatmaJuz.includes(item.juz);
           return (
-            <button
-              key={item.juz}
-              className={
-                "ram-khatma-juz" + (isCompleted ? " completed" : "")
-              }
-              onClick={() => toggleKhatma(item.juz)}
-              title={`${item.name}: ${item.from} — ${item.to}`}
-            >
-              <span className="ram-khatma-juz-num">
-                {isCompleted ? "✓" : item.juz}
-              </span>
-              <span className="ram-khatma-juz-range">{item.from}</span>
-            </button>
+            <motion.button key={item.juz} whileTap={{ scale: 0.85 }}
+              onClick={() => toggleKhatma(item.juz)} title={`${item.name}: ${item.from} — ${item.to}`}
+              className={`aspect-square rounded-xl flex flex-col items-center justify-center text-xs transition-all ${
+                isCompleted ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
+                'bg-white/[0.03] text-slate-500 border border-white/5 hover:bg-white/[0.06]'
+              }`}>
+              <span className="font-bold text-sm">{isCompleted ? '✓' : item.juz}</span>
+              <span className="text-[10px] opacity-60 truncate max-w-full px-0.5">{item.from}</span>
+            </motion.button>
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }

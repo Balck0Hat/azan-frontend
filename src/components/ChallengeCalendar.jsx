@@ -1,9 +1,10 @@
+import { motion } from 'framer-motion';
 import { CHALLENGE_PRAYERS } from '../data/challengeData';
 
 export default function ChallengeCalendar({ challengeData, today }) {
   return (
-    <div className="challenge-calendar">
-      <div className="calendar-grid">
+    <div className="rounded-2xl p-4 bg-white/[0.03] border border-white/5">
+      <div className="grid grid-cols-8 sm:grid-cols-10 gap-1.5">
         {Array.from({ length: 40 }, (_, i) => {
           const dayNum = i + 1;
           const startDate = new Date(challengeData.startDate);
@@ -16,10 +17,17 @@ export default function ChallengeCalendar({ challengeData, today }) {
           const isPast = dayDate < new Date() && !isToday;
 
           return (
-            <div key={i} className={`calendar-day ${isComplete ? 'complete' : ''} ${isToday ? 'today' : ''} ${isPast && !isComplete ? 'missed' : ''}`}>
-              <span className="day-num">{dayNum}</span>
-              {isComplete && <span className="day-check">✓</span>}
-            </div>
+            <motion.div key={i} initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.02 }}
+              className={`aspect-square rounded-lg flex flex-col items-center justify-center text-xs font-bold transition-all ${
+                isComplete ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
+                isToday ? 'bg-indigo-500/20 text-indigo-300 border-2 border-indigo-500/40 ring-1 ring-indigo-500/20' :
+                isPast ? 'bg-red-500/10 text-red-400/60 border border-red-500/20' :
+                'bg-white/[0.02] text-slate-600 border border-white/5'
+              }`}>
+              <span>{dayNum}</span>
+              {isComplete && <span className="text-[8px]">✓</span>}
+            </motion.div>
           );
         })}
       </div>

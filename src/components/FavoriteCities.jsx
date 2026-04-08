@@ -1,131 +1,109 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import api from '../api';
-import '../styles/favoriteCities.css';
+
+const PRAYER_ICONS = { Fajr: "🌙", Dhuhr: "☀️", Asr: "🌤️", Maghrib: "🌅", Isha: "🌃" };
+const PRAYER_KEYS = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
 export default function FavoriteCities() {
-    const [favorites, setFavorites] = useState([]);
-    const [prayerData, setPrayerData] = useState({});
-    const [newCity, setNewCity] = useState('');
-    const [loading, setLoading] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  const [prayerData, setPrayerData] = useState({});
+  const [newCity, setNewCity] = useState('');
+  const [loading, setLoading] = useState(false);
 
-    // تحميل المفضلة من localStorage
-    useEffect(() => {
-        const saved = localStorage.getItem('favoriteCities');
-        if (saved) {
-            setFavorites(JSON.parse(saved));
-        }
-    }, []);
+  useEffect(() => {
+    const saved = localStorage.getItem('favoriteCities');
+    if (saved) setFavorites(JSON.parse(saved));
+  }, []);
 
-    // جلب أوقات الصلاة للمدن المفضلة
-    useEffect(() => {
-        const fetchPrayerTimes = async () => {
-            const data = {};
-            for (const city of favorites) {
-                try {
-                    const res = await api.get(`/prayertimes/today?city=${city}`);
-                    data[city] = res.data;
-                } catch (err) {
-                    console.error(`فشل جلب أوقات ${city}:`, err);
-                }
-            }
-            setPrayerData(data);
-        };
-
-        if (favorites.length > 0) {
-            fetchPrayerTimes();
-        }
-    }, [favorites]);
-
-    // حفظ في localStorage
-    const saveFavorites = (newFavs) => {
-        setFavorites(newFavs);
-        localStorage.setItem('favoriteCities', JSON.stringify(newFavs));
+  useEffect(() => {
+    const fetchPrayerTimes = async () => {
+      const data = {};
+      for (const city of favorites) {
+        try { const res = await api.get(`/prayertimes/today?city=${city}`); data[city] = res.data; }
+        catch (err) { console.error(`فشل جلب أوقات ${city}:`, err); }
+      }
+      setPrayerData(data);
     };
+    if (favorites.length > 0) fetchPrayerTimes();
+  }, [favorites]);
 
-    // إضافة مدينة
-    const addCity = async () => {
-        if (!newCity.trim()) return;
+  const saveFavorites = (newFavs) => { setFavorites(newFavs); localStorage.setItem('favoriteCities', JSON.stringify(newFavs)); };
 
-        setLoading(true);
-        try {
-            // تحقق من وجود المدينة
-            const res = await api.get(`/prayertimes/today?city=${newCity}`);
-            if (res.data) {
-                const cityName = res.data.cityName;
-                if (!favorites.includes(cityName)) {
-                    saveFavorites([...favorites, cityName]);
-                    setPrayerData({ ...prayerData, [cityName]: res.data });
-                }
-                setNewCity('');
-            }
-        } catch (err) {
-            toast.error('لم نجد هذه المدينة');
-        } finally {
-            setLoading(false);
-        }
-    };
+  const addCity = async () => {
+    if (!newCity.trim()) return;
+    setLoading(true);
+    try {
+      const res = await api.get(`/prayertimes/today?city=${newCity}`);
+      if (res.data) {
+        const cityName = res.data.cityName;
+        if (!favorites.includes(cityName)) { saveFavorites([...favorites, cityName]); setPrayerData({ ...prayerData, [cityName]: res.data }); }
+        setNewCity('');
+      }
+    } catch { toast.error('لم نجد هذه المدينة'); }
+    finally { setLoading(false); }
+  };
 
-    // حذف مدينة
-    const removeCity = (city) => {
-        const newFavs = favorites.filter(c => c !== city);
-        saveFavorites(newFavs);
-        const newData = { ...prayerData };
-        delete newData[city];
-        setPrayerData(newData);
-    };
+  const removeCity = (city) => {
+    saveFavorites(favorites.filter(c => c !== city));
+    const nd = { ...prayerData }; delete nd[city]; setPrayerData(nd);
+  };
 
-    return (
-        <div className="favorites-card">
-            <h3 className="favorites-title">⭐ المدن المفضلة</h3>
+  return (
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-white mb-5">المدن المفضلة</h3>
 
-            {/* إضافة مدينة جديدة */}
-            <div className="favorites-add">
-                <input
-                    type="text"
-                    value={newCity}
-                    onChange={(e) => setNewCity(e.target.value)}
-                    placeholder="اسم المدينة (بالإنجليزية)..."
-                    onKeyDown={(e) => e.key === 'Enter' && addCity()}
-                />
-                <button onClick={addCity} disabled={loading}>
-                    {loading ? '...' : '+'}
-                </button>
-            </div>
+      <div className="flex gap-2 mb-5">
+        <input type="text" value={newCity} onChange={(e) => setNewCity(e.target.value)}
+          placeholder="اسم المدينة (بالإنجليزية)..." onKeyDown={(e) => e.key === 'Enter' && addCity()}
+          className="flex-1 rounded-xl bg-white/[0.05] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all" />
+        <button onClick={addCity} disabled={loading}
+          className="rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 px-4 py-2.5 text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all disabled:opacity-50">
+          {loading ? '...' : '+'}
+        </button>
+      </div>
 
-            {/* قائمة المفضلة */}
-            {favorites.length === 0 ? (
-                <p className="favorites-empty">لم تضف أي مدن بعد</p>
-            ) : (
-                <div className="favorites-list">
-                    {favorites.map(city => {
-                        const data = prayerData[city];
-                        return (
-                            <div key={city} className="favorite-item">
-                                <div className="favorite-header">
-                                    <span className="favorite-city">{city}</span>
-                                    {data && <span className="favorite-country">{data.country}</span>}
-                                    <button
-                                        className="favorite-remove"
-                                        onClick={() => removeCity(city)}
-                                    >
-                                        ✕
-                                    </button>
-                                </div>
-                                {data && (
-                                    <div className="favorite-times">
-                                        <span>🌙 {data.timings?.Fajr || '--'}</span>
-                                        <span>☀️ {data.timings?.Dhuhr || '--'}</span>
-                                        <span>🌤️ {data.timings?.Asr || '--'}</span>
-                                        <span>🌅 {data.timings?.Maghrib || '--'}</span>
-                                        <span>🌃 {data.timings?.Isha || '--'}</span>
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
-            )}
+      {favorites.length === 0 ? (
+        <div className="text-center py-8 text-sm text-slate-500">لم تضف أي مدن بعد</div>
+      ) : (
+        <div className="space-y-3">
+          <AnimatePresence>
+            {favorites.map((city) => {
+              const data = prayerData[city];
+              return (
+                <motion.div key={city} layout initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9, x: 50 }}
+                  className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-4 hover:bg-white/[0.07] transition-all group">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <motion.span whileTap={{ scale: 1.3, rotate: 72 }}
+                        className="text-amber-400 cursor-pointer">&#x2B50;</motion.span>
+                      <span className="font-semibold text-white">{city}</span>
+                      {data && <span className="text-xs text-slate-500">{data.country}</span>}
+                    </div>
+                    <button onClick={() => removeCity(city)}
+                      className="w-7 h-7 rounded-lg bg-white/[0.05] text-slate-500 hover:bg-red-500/20 hover:text-red-400 transition-all flex items-center justify-center text-xs">
+                      &#x2715;
+                    </button>
+                  </div>
+                  {data && (
+                    <div className="flex flex-wrap gap-2">
+                      {PRAYER_KEYS.map((k) => (
+                        <div key={k} className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/[0.04] px-2.5 py-1 text-xs">
+                          <span>{PRAYER_ICONS[k]}</span>
+                          <span className="text-slate-400 font-mono">{data.timings?.[k] || '--'}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
-    );
+      )}
+    </motion.div>
+  );
 }

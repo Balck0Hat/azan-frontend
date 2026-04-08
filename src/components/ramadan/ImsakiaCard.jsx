@@ -1,33 +1,25 @@
-// ImsakiaCard.jsx — Today's imsakia with fajr/maghrib times and countdown
+import { motion } from 'framer-motion';
+import { formatTime12 } from './ramadanUtils';
 
-import { formatTime12 } from "./ramadanUtils";
-
-export default function ImsakiaCard({
-  fajrTime,
-  maghribTime,
-  countdown,
-  countdownTarget,
-}) {
+export default function ImsakiaCard({ fajrTime, maghribTime, countdown, countdownTarget }) {
   return (
-    <div className="ram-card">
-      <div className="ram-card-title">🕌 إمساكية اليوم</div>
-      <div className="ram-imsakia">
-        <div className="ram-time-box">
-          <div className="ram-time-label">الإمساك (الفجر)</div>
-          <div className="ram-time-value">{formatTime12(fajrTime)}</div>
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+      <p className="text-white font-bold mb-4">🕌 إمساكية اليوم</p>
+      <div className="flex items-center justify-between gap-3">
+        <div className="text-center flex-1">
+          <p className="text-slate-500 text-xs mb-1">الإمساك (الفجر)</p>
+          <p className="text-white font-bold text-lg">{formatTime12(fajrTime)}</p>
         </div>
-        <div className="ram-countdown-box">
-          <div className="ram-countdown-label">
-            {countdownTarget || "العد التنازلي"}
-          </div>
-          <div className="ram-countdown-timer">{countdown}</div>
-          <div className="ram-countdown-target">{countdownTarget}</div>
+        <div className="text-center flex-1 py-3 px-2 rounded-xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20">
+          <p className="text-slate-400 text-xs mb-1">{countdownTarget || 'العد التنازلي'}</p>
+          <p className="text-indigo-300 font-bold text-xl font-mono tracking-wider">{countdown}</p>
         </div>
-        <div className="ram-time-box">
-          <div className="ram-time-label">الإفطار (المغرب)</div>
-          <div className="ram-time-value">{formatTime12(maghribTime)}</div>
+        <div className="text-center flex-1">
+          <p className="text-slate-500 text-xs mb-1">الإفطار (المغرب)</p>
+          <p className="text-white font-bold text-lg">{formatTime12(maghribTime)}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

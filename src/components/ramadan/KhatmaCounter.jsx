@@ -1,41 +1,38 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function KhatmaCounter({ hijriYear }) {
-    const storageKey = `ramadan-khatma-count-${hijriYear}`;
-    const [count, setCount] = useState(() => {
-        try { return parseInt(localStorage.getItem(storageKey)) || 0; }
-        catch { return 0; }
-    });
+  const storageKey = `ramadan-khatma-count-${hijriYear}`;
+  const [count, setCount] = useState(() => {
+    try { return parseInt(localStorage.getItem(storageKey)) || 0; }
+    catch { return 0; }
+  });
 
-    const increment = () => {
-        const next = count + 1;
-        setCount(next);
-        localStorage.setItem(storageKey, next);
-    };
+  const update = (val) => { setCount(val); localStorage.setItem(storageKey, val); };
+  const increment = () => update(count + 1);
+  const decrement = () => update(Math.max(0, count - 1));
 
-    const decrement = () => {
-        const next = Math.max(0, count - 1);
-        setCount(next);
-        localStorage.setItem(storageKey, next);
-    };
+  const msg = count === 0 ? 'ابدأ ختمتك الأولى!' :
+    count === 1 ? 'ما شاء الله! ختمة واحدة — واصل' :
+    count < 5 ? `بارك الله فيك — ${count} ختمات` :
+    `ما شاء الله تبارك الله — ${count} ختمات!`;
 
-    return (
-        <div className="ram-card ram-khatma-counter">
-            <div className="ram-card-title">📖 عداد الختمات</div>
-            <div className="ram-khatma-count-display">
-                <button className="ram-khatma-btn" onClick={decrement}>−</button>
-                <div className="ram-khatma-count-num">
-                    <span className="ram-khatma-big-num">{count}</span>
-                    <span className="ram-khatma-count-label">ختمة</span>
-                </div>
-                <button className="ram-khatma-btn" onClick={increment}>+</button>
-            </div>
-            <div className="ram-khatma-count-msg">
-                {count === 0 && "ابدأ ختمتك الأولى!"}
-                {count === 1 && "ما شاء الله! ختمة واحدة — واصل"}
-                {count >= 2 && count < 5 && `بارك الله فيك — ${count} ختمات`}
-                {count >= 5 && `ما شاء الله تبارك الله — ${count} ختمات!`}
-            </div>
+  return (
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col items-center justify-center">
+      <p className="text-white font-bold mb-4">📖 عداد الختمات</p>
+      <div className="flex items-center gap-6 mb-4">
+        <motion.button whileTap={{ scale: 0.85 }} onClick={decrement}
+          className="w-12 h-12 rounded-xl bg-white/[0.06] text-slate-300 text-xl font-bold hover:bg-white/10 transition-colors border border-white/10">−</motion.button>
+        <div className="text-center">
+          <motion.p key={count} initial={{ scale: 1.3, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            className="text-5xl font-bold text-indigo-300">{count}</motion.p>
+          <p className="text-slate-500 text-sm mt-1">ختمة</p>
         </div>
-    );
+        <motion.button whileTap={{ scale: 0.85 }} onClick={increment}
+          className="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-300 text-xl font-bold hover:bg-indigo-500/30 transition-colors border border-indigo-500/30">+</motion.button>
+      </div>
+      <p className="text-slate-400 text-sm text-center">{msg}</p>
+    </motion.div>
+  );
 }

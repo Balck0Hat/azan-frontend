@@ -1,0 +1,36 @@
+import { Home, Moon, Radio, Clock, Globe2, Map, BookOpen, ScrollText, Wrench, Tv, TreePine } from "lucide-react";
+
+export const ICON_MAP = {
+  home: Home, ramadan: Moon, salah: Clock, "quran-group": BookOpen, more: Wrench,
+  live: Radio, today: Clock, countries: Globe2, globe: Map,
+  quran: BookOpen, rules: ScrollText, tools: Wrench, stream: Tv, prophets: TreePine,
+};
+
+export const NAV_ITEMS = [
+  { key: "home", label: "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629" },
+  { key: "ramadan", label: "\u0631\u0645\u0636\u0627\u0646" },
+  {
+    key: "salah", label: "\u0627\u0644\u0635\u0644\u0627\u0629",
+    children: [
+      { key: "live", label: "\u0627\u0644\u0622\u0646 \u064a\u0624\u0630\u0651\u064e\u0646", desc: "\u062a\u0627\u0628\u0639 \u0627\u0644\u0623\u0630\u0627\u0646 \u0644\u062d\u0638\u0629 \u0628\u0644\u062d\u0638\u0629" },
+      { key: "today", label: "\u0623\u0648\u0642\u0627\u062a \u0627\u0644\u064a\u0648\u0645", desc: "\u0645\u0648\u0627\u0642\u064a\u062a \u0627\u0644\u0635\u0644\u0627\u0629 \u0644\u0645\u062f\u064a\u0646\u062a\u0643" },
+      { key: "countries", label: "\u062d\u0633\u0628 \u0627\u0644\u062f\u0648\u0644\u0629", desc: "\u0623\u0648\u0642\u0627\u062a \u0627\u0644\u0635\u0644\u0627\u0629 \u062d\u0648\u0644 \u0627\u0644\u0639\u0627\u0644\u0645" },
+      { key: "globe", label: "\u062e\u0631\u064a\u0637\u0629 \u0627\u0644\u0639\u0627\u0644\u0645", desc: "\u0634\u0627\u0647\u062f \u0627\u0644\u0623\u0630\u0627\u0646 \u062d\u0648\u0644 \u0627\u0644\u0639\u0627\u0644\u0645" },
+    ],
+  },
+  {
+    key: "quran-group", label: "\u0627\u0644\u0642\u0631\u0622\u0646",
+    children: [
+      { key: "quran", label: "\u0627\u0644\u0642\u0631\u0622\u0646 \u0648\u0627\u0644\u062a\u0641\u0633\u064a\u0631", desc: "\u0627\u0642\u0631\u0623 \u0648\u0627\u0633\u062a\u0645\u0639 \u0648\u062a\u062f\u0628\u0631" },
+      { key: "rules", label: "\u0642\u0648\u0627\u0639\u062f \u0642\u0631\u0622\u0646\u064a\u0629", desc: "\u062a\u0639\u0644\u0651\u0645 \u0623\u062d\u0643\u0627\u0645 \u0627\u0644\u062a\u0644\u0627\u0648\u0629" },
+    ],
+  },
+  {
+    key: "more", label: "\u0627\u0644\u0645\u0632\u064a\u062f",
+    children: [
+      { key: "tools", label: "\u0627\u0644\u0623\u062f\u0648\u0627\u062a", desc: "\u062a\u0633\u0628\u064a\u062d\u060c \u062a\u062a\u0628\u0639\u060c \u0625\u0646\u062c\u0627\u0632\u0627\u062a" },
+      { key: "stream", label: "\u0627\u0644\u0628\u062b \u0627\u0644\u0645\u0628\u0627\u0634\u0631", desc: "\u0628\u062b \u0645\u0628\u0627\u0634\u0631 \u0645\u0646 \u0627\u0644\u062d\u0631\u0645\u064a\u0646" },
+      { key: "prophets", label: "\u0634\u062c\u0631\u0629 \u0627\u0644\u0623\u0646\u0628\u064a\u0627\u0621", desc: "\u062a\u0639\u0631\u0651\u0641 \u0639\u0644\u0649 \u0627\u0644\u0623\u0646\u0628\u064a\u0627\u0621" },
+    ],
+  },
+];

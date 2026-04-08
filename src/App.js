@@ -1,15 +1,18 @@
 import { useState, useEffect, lazy, Suspense } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import "./styles/navbar.css";
 import "./styles/countriesNow.css";
 
 import Navbar from "./components/Navbar";
+import MobileNav from "./components/MobileNav";
 import Footer from "./components/footer";
 import ThemeToggle from "./components/ThemeToggle";
 import NotificationToggle from "./components/NotificationToggle";
 import ErrorBoundary from "./components/ErrorBoundary";
 import LazyFallback from "./components/ui/LazyFallback";
 import TabRouter from "./components/TabRouter";
+import HeroSection from "./components/HeroSection";
 import { fetchPublicSettings } from "./admin/adminApi";
 
 const DEFAULTS = {
@@ -39,20 +42,29 @@ function App() {
                 </div>
             )}
 
-            <header className="site-header">
-                <div className="app-container header-inner">
-                    <div className="brand">
-                        <div className="brand-logo">🕌</div>
-                        <div className="brand-text-block">
-                            <div className="brand-name">الأذان مباشر</div>
-                            <div className="brand-sub">Azan Live</div>
+            <header
+                className="sticky top-0 z-50 border-b border-white/[0.06] transition-all duration-300"
+                style={{
+                    background: "rgba(2,6,23,0.82)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                }}
+            >
+                <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-2.5 shrink-0">
+                        <span className="text-2xl">&#128332;</span>
+                        <div className="flex flex-col leading-none">
+                            <span className="text-[#e2e8f0] font-bold text-base">الأذان مباشر</span>
+                            <span className="text-[#64748b] text-[11px] tracking-wide">Azan Live</span>
                         </div>
                     </div>
 
                     <Navbar activeCard={activeCard} setActiveCard={setActiveCard} />
-                    <div className="header-actions">
+
+                    <div className="flex items-center gap-1">
                         <NotificationToggle />
                         <ThemeToggle />
+                        <MobileNav activeCard={activeCard} setActiveCard={setActiveCard} />
                     </div>
                 </div>
             </header>
@@ -61,17 +73,11 @@ function App() {
                 <div className="app-container">
                 <ErrorBoundary>
                   <Suspense fallback={<LazyFallback />}>
+                    <AnimatePresence mode="wait">
                     {activeCard !== "globe" && (
-                        <section className="hero" id="top">
-                            <div className="hero-badge">
-                                {siteSettings.hero_badge}
-                            </div>
-                            <h1 className="hero-title">{siteSettings.hero_title}</h1>
-                            <p className="hero-subtitle">
-                                {siteSettings.hero_subtitle}
-                            </p>
-                        </section>
+                        <HeroSection settings={siteSettings} />
                     )}
+                    </AnimatePresence>
 
                     <TabRouter activeCard={activeCard} setActiveCard={setActiveCard} />
                   </Suspense>
@@ -101,7 +107,6 @@ function App() {
                     duration: 3000,
                 }}
             />
-
         </div>
     );
 }

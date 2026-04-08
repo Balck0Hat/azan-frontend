@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import {
   HomeOverview, CityPrayerTimes, LiveNow, GlobalNowStats,
   CountriesNow, ProphetsTree, AdhanPlayer, PrayerTracker,
@@ -10,6 +11,14 @@ const MainCol = ({ children, className = "" }) => (
     <section className={`col ${className}`.trim()}>{children}</section>
   </section>
 );
+
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+};
+
+const pageTransition = { duration: 0.25, ease: "easeInOut" };
 
 const tabRenderers = {
   home: ({ setActiveCard }) => <HomeOverview setActiveCard={setActiveCard} />,
@@ -66,7 +75,21 @@ const tabRenderers = {
 function TabRouter({ activeCard, setActiveCard }) {
   const render = tabRenderers[activeCard];
   if (!render) return null;
-  return render({ setActiveCard });
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeCard}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={pageTransition}
+      >
+        {render({ setActiveCard })}
+      </motion.div>
+    </AnimatePresence>
+  );
 }
 
 export default TabRouter;

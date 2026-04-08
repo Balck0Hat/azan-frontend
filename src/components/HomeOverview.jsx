@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import NextPrayerCard from "../components/home/NextPrayerCard";
 import LocalCityCard from "../components/home/LocalCityCard";
 import GlobePreviewCard from "../components/home/GlobePreviewCard";
@@ -11,58 +12,116 @@ import PrayerTrackingCard from "./PrayerTrackingCard";
 import QuranKhatma from "./QuranKhatma";
 import NotificationSettings from "./NotificationSettings";
 
-/**
- * الصفحة الرئيسية - فيها كروت:
- * - العد التنازلي للصلاة القادمة
- * - التقويم الهجري
- * - محتوى يومي (آية وحديث)
- * - مدينتك الحالية
- * - الصلاة القادمة
- * - بوصلة القبلة
- * - المدن المفضلة
- * - الأذكار
- * - خريطة العالم
- */
+const stagger = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+};
+
+const cardVariant = {
+    hidden: { opacity: 0, y: 24, scale: 0.97 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.5, ease: "easeOut" },
+    },
+};
+
+function BentoCard({ children, className = "", span = "" }) {
+    return (
+        <motion.div
+            variants={cardVariant}
+            className={`
+                relative group rounded-2xl p-1 overflow-hidden
+                ${span} ${className}
+            `}
+        >
+            {/* Gradient border on hover */}
+            <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                    background: 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3), rgba(16,185,129,0.2))',
+                }}
+            />
+            <div
+                className="relative rounded-xl h-full transition-transform duration-300 group-hover:-translate-y-0.5"
+                style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                }}
+            >
+                {children}
+            </div>
+        </motion.div>
+    );
+}
 
 function HomeOverview({ setActiveCard }) {
     return (
-        <section className="home-grid">
-            {/* القسم العلوي */}
-            <div className="home-top-section">
+        <motion.section
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 pb-10"
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+        >
+            {/* Top row: Countdown + Hijri */}
+            <BentoCard span="md:col-span-1 lg:col-span-2">
                 <PrayerCountdown />
+            </BentoCard>
+            <BentoCard>
                 <HijriCalendar />
-            </div>
+            </BentoCard>
 
-            {/* المحتوى اليومي */}
-            <DailyContent />
+            {/* Daily content full width */}
+            <BentoCard span="md:col-span-2 lg:col-span-3">
+                <DailyContent />
+            </BentoCard>
 
-            {/* الكروت الأساسية */}
-            <div className="home-main-section">
+            {/* Main cards */}
+            <BentoCard span="md:col-span-1 lg:col-span-2">
                 <LocalCityCard />
+            </BentoCard>
+            <BentoCard>
                 <NextPrayerCard />
-            </div>
+            </BentoCard>
 
-            {/* بوصلة القبلة والمفضلة */}
-            <div className="home-side-section">
+            {/* Qibla + Favorites */}
+            <BentoCard>
                 <QiblaCompass />
+            </BentoCard>
+            <BentoCard span="md:col-span-1 lg:col-span-2">
                 <FavoriteCities />
-            </div>
+            </BentoCard>
 
-            {/* متابعة الصلوات */}
-            <PrayerTrackingCard />
+            {/* Tracking */}
+            <BentoCard span="md:col-span-2 lg:col-span-3">
+                <PrayerTrackingCard />
+            </BentoCard>
 
-            {/* ختمة القرآن */}
-            <QuranKhatma />
+            {/* Quran Khatma */}
+            <BentoCard span="md:col-span-1 lg:col-span-2">
+                <QuranKhatma />
+            </BentoCard>
 
-            {/* الأذكار */}
-            <Adhkar type="afterPrayer" />
+            {/* Adhkar */}
+            <BentoCard>
+                <Adhkar type="afterPrayer" />
+            </BentoCard>
 
-            {/* إعدادات الإشعارات */}
-            <NotificationSettings />
+            {/* Notifications */}
+            <BentoCard>
+                <NotificationSettings />
+            </BentoCard>
 
-            {/* خريطة العالم */}
-            <GlobePreviewCard setActiveCard={setActiveCard} />
-        </section>
+            {/* Globe */}
+            <BentoCard span="md:col-span-1 lg:col-span-2">
+                <GlobePreviewCard setActiveCard={setActiveCard} />
+            </BentoCard>
+        </motion.section>
     );
 }
 

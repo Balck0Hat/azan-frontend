@@ -1,33 +1,42 @@
-import { useTheme } from '../context/ThemeContext';
-import '../styles/themeToggle.css';
+import { useTheme } from "../context/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-    const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
 
-    return (
-        <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={isDark ? 'تفعيل الوضع النهاري' : 'تفعيل الوضع الليلي'}
-            title={isDark ? 'الوضع النهاري' : 'الوضع الليلي'}
-        >
-            {isDark ? (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="M12 2v2"/>
-                    <path d="M12 20v2"/>
-                    <path d="m4.93 4.93 1.41 1.41"/>
-                    <path d="m17.66 17.66 1.41 1.41"/>
-                    <path d="M2 12h2"/>
-                    <path d="M20 12h2"/>
-                    <path d="m6.34 17.66-1.41 1.41"/>
-                    <path d="m19.07 4.93-1.41 1.41"/>
-                </svg>
-            ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-                </svg>
-            )}
-        </button>
-    );
+  return (
+    <button
+      onClick={toggleTheme}
+      aria-label={isDark ? "\u062a\u0641\u0639\u064a\u0644 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0646\u0647\u0627\u0631\u064a" : "\u062a\u0641\u0639\u064a\u0644 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0644\u064a\u0644\u064a"}
+      title={isDark ? "\u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0646\u0647\u0627\u0631\u064a" : "\u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0644\u064a\u0644\u064a"}
+      className="relative w-9 h-9 rounded-full flex items-center justify-center text-[#94a3b8] hover:text-[#e2e8f0] hover:bg-white/[0.06] transition-colors duration-200 cursor-pointer"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {isDark ? (
+          <motion.span
+            key="sun"
+            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.25 }}
+            className="absolute"
+          >
+            <Sun size={18} strokeWidth={1.8} />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="moon"
+            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.25 }}
+            className="absolute"
+          >
+            <Moon size={18} strokeWidth={1.8} />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </button>
+  );
 }
