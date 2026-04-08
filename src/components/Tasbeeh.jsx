@@ -45,10 +45,10 @@ export default function Tasbeeh() {
   return (
     <div className="min-h-screen p-3 sm:p-4 space-y-4">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-white/5 backdrop-blur-xl">
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-[var(--border-color)] backdrop-blur-xl">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-white">📿 المسبحة الإلكترونية</h3>
-          <p className="text-slate-400 text-sm">المجموع الكلي: <span className="text-indigo-300 font-bold">{totalCount.toLocaleString()}</span></p>
+          <h3 className="text-xl font-bold text-[var(--text-primary)]">📿 المسبحة الإلكترونية</h3>
+          <p className="text-[var(--text-secondary)] text-sm">المجموع الكلي: <span className="text-indigo-300 font-bold">{totalCount.toLocaleString()}</span></p>
         </div>
       </motion.div>
 
@@ -59,7 +59,7 @@ export default function Tasbeeh() {
             className={`shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
               selectedPreset.id === preset.id
                 ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                : 'bg-white/[0.04] text-slate-400 border border-white/5 hover:bg-white/[0.07]'
+                : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
             }`}>{preset.text}</motion.button>
         ))}
       </div>
@@ -69,16 +69,16 @@ export default function Tasbeeh() {
 
       <div className="flex gap-2">
         <motion.button whileTap={{ scale: 0.95 }} onClick={() => setCount(0)}
-          className="flex-1 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 font-medium text-sm hover:bg-white/[0.07] transition-colors">↻ إعادة</motion.button>
+          className="flex-1 py-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--bg-hover)] transition-colors">↻ إعادة</motion.button>
         <motion.button whileTap={{ scale: 0.95 }}
           onClick={() => { setVibrate(!vibrate); localStorage.setItem('tasbeehVibrate', (!vibrate).toString()); }}
           className={`flex-1 py-3 rounded-xl text-sm font-medium transition-all ${
-            vibrate ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/25' : 'bg-white/[0.04] text-slate-500 border border-white/10'
+            vibrate ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/25' : 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)]'
           }`}>📳 اهتزاز</motion.button>
         <motion.button whileTap={{ scale: 0.95 }}
           onClick={() => { setSound(!sound); localStorage.setItem('tasbeehSound', (!sound).toString()); }}
           className={`flex-1 py-3 rounded-xl text-sm font-medium transition-all ${
-            sound ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/25' : 'bg-white/[0.04] text-slate-500 border border-white/10'
+            sound ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/25' : 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)]'
           }`}>🔊 صوت</motion.button>
       </div>
     </div>

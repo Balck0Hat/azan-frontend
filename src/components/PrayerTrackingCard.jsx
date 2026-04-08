@@ -21,13 +21,13 @@ export default function PrayerTrackingCard() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
+      className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg">
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
-          <h3 className="text-xl font-bold text-white">متابعة الصلوات</h3>
+          <h3 className="text-xl font-bold text-[var(--text-primary)]">متابعة الصلوات</h3>
         </div>
         <button onClick={() => setShowStats(!showStats)}
-          className="w-9 h-9 rounded-xl bg-white/[0.05] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/[0.1] transition-all">
+          className="w-9 h-9 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-all">
           {showStats ? '✕' : '📊'}
         </button>
       </div>
@@ -36,7 +36,7 @@ export default function PrayerTrackingCard() {
       <div className="flex items-center gap-5 mb-5">
         <div className="relative w-20 h-20 flex-shrink-0">
           <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" />
+            <circle cx="50" cy="50" r="40" fill="none" style={{ stroke: 'var(--border-color)' }} strokeWidth="6" />
             <motion.circle cx="50" cy="50" r="40" fill="none" stroke="url(#progressGrad)"
               strokeWidth="6" strokeLinecap="round" strokeDasharray={circumference}
               initial={{ strokeDashoffset: circumference }}
@@ -49,12 +49,12 @@ export default function PrayerTrackingCard() {
             </defs>
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-lg font-bold text-white">{todayCount}/5</span>
+            <span className="text-lg font-bold text-[var(--text-primary)]">{todayCount}/5</span>
           </div>
         </div>
         <div className="flex-1">
-          <span className="text-sm text-slate-400 block mb-2">صلوات اليوم</span>
-          <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
+          <span className="text-sm text-[var(--text-secondary)] block mb-2">صلوات اليوم</span>
+          <div className="h-2 rounded-full bg-[var(--border-color)] overflow-hidden">
             <motion.div initial={{ width: 0 }} animate={{ width: `${todayPercentage}%` }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="h-full rounded-full bg-gradient-to-l from-indigo-500 to-purple-500" />
@@ -71,13 +71,13 @@ export default function PrayerTrackingCard() {
               transition={{ delay: i * 0.06 }} onClick={() => handleToggle(prayer.key)}
               className={`flex flex-col items-center gap-1.5 rounded-xl p-3 border transition-all ${
                 prayed
-                  ? 'bg-emerald-500/15 border-emerald-500/30 shadow-lg shadow-emerald-500/10'
-                  : 'bg-white/[0.04] border-white/[0.06] hover:bg-white/[0.08]'
+                  ? 'bg-[var(--status-success)]/15 border-[var(--status-success)]/30 shadow-lg shadow-[var(--status-success)]/10'
+                  : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               <span className="text-lg">{prayer.icon}</span>
-              <span className={`text-[11px] font-medium ${prayed ? 'text-emerald-400' : 'text-slate-400'}`}>{prayer.name}</span>
+              <span className={`text-[11px] font-medium ${prayed ? 'text-[var(--status-success)]' : 'text-[var(--text-secondary)]'}`}>{prayer.name}</span>
               <motion.span animate={{ scale: prayed ? [1, 1.4, 1] : 1 }} transition={{ duration: 0.3 }}
-                className={`text-sm font-bold ${prayed ? 'text-emerald-400' : 'text-slate-600'}`}>
+                className={`text-sm font-bold ${prayed ? 'text-[var(--status-success)]' : 'text-[var(--text-muted)]'}`}>
                 {prayed ? '✓' : '○'}
               </motion.span>
             </motion.button>

@@ -23,10 +23,10 @@ export default function RamadanPage() {
     return (
       <div className="min-h-screen p-4 flex items-center justify-center">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-          className="text-center p-8 rounded-3xl bg-gradient-to-br from-indigo-600/10 to-purple-600/10 border border-white/5 backdrop-blur-xl max-w-md w-full">
+          className="text-center p-8 rounded-3xl bg-gradient-to-br from-indigo-600/10 to-purple-600/10 border border-[var(--border-color)] backdrop-blur-xl max-w-md w-full">
           <div className="text-6xl mb-4">🌙</div>
-          <h3 className="text-xl font-bold text-white mb-2">ليس شهر رمضان حالياً</h3>
-          <p className="text-slate-400 leading-relaxed">ستتوفر هذه الصفحة عند دخول شهر رمضان المبارك إن شاء الله.<br/>نسأل الله أن يبلّغنا رمضان.</p>
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">ليس شهر رمضان حالياً</h3>
+          <p className="text-[var(--text-secondary)] leading-relaxed">ستتوفر هذه الصفحة عند دخول شهر رمضان المبارك إن شاء الله.<br/>نسأل الله أن يبلّغنا رمضان.</p>
         </motion.div>
       </div>
     );
@@ -58,9 +58,9 @@ export default function RamadanPage() {
 
       {/* Share Card */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 text-center space-y-3">
-        <p className="text-white font-bold">📤 شارك تقدمك</p>
-        <p className="text-slate-400 text-sm">شارك أصدقاءك تقدمك في رمضان وشجّعهم على المتابعة</p>
+        className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] text-center space-y-3">
+        <p className="text-[var(--text-primary)] font-bold">📤 شارك تقدمك</p>
+        <p className="text-[var(--text-secondary)] text-sm">شارك أصدقاءك تقدمك في رمضان وشجّعهم على المتابعة</p>
         <motion.button whileTap={{ scale: 0.95 }} onClick={state.shareProgress}
           className={`px-6 py-2.5 rounded-xl font-medium text-sm transition-all ${state.shareCopied ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/30'}`}>
           {state.shareCopied ? '✓ تم النسخ!' : '📋 نسخ ومشاركة'}

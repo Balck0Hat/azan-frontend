@@ -68,7 +68,7 @@ export default function NextPrayerProCard() {
           </div>
 
           <div className="np-main-text">
-            <p className="np-label" style={{ color: '#94a3b8' }}>
+            <p className="np-label" style={{ color: 'var(--text-secondary)' }}>
               {isSunrise ? "الوقت القادم" : "الصلاة القادمة"}
             </p>
             <AnimatePresence mode="wait">
@@ -76,7 +76,7 @@ export default function NextPrayerProCard() {
                 key={selectedPrayer}
                 className="np-prayer-name"
                 style={{
-                  background: 'linear-gradient(135deg, #e2e8f0, #a5b4fc)',
+                  background: 'linear-gradient(135deg, var(--text-primary), var(--accent-primary))',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -95,7 +95,7 @@ export default function NextPrayerProCard() {
           <div className="np-countdown">
             <p className="np-countdown-title flex items-center justify-center gap-2">
               {isUrgent && (
-                <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ background: '#f59e0b', boxShadow: '0 0 8px #f59e0b' }} />
+                <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--status-warning)', boxShadow: '0 0 8px var(--status-warning)' }} />
               )}
               الوقت المتبقي
             </p>
@@ -108,7 +108,7 @@ export default function NextPrayerProCard() {
             </div>
           </div>
 
-          <p className="np-footer-text" style={{ color: '#64748b' }}>{footerText}</p>
+          <p className="np-footer-text" style={{ color: 'var(--text-muted)' }}>{footerText}</p>
         </div>
       </motion.div>
     </motion.div>

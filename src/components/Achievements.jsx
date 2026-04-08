@@ -16,7 +16,7 @@ export default function Achievements() {
             <span className="text-3xl">{showNewBadge.icon}</span>
             <div>
               <p className="text-amber-300 text-xs font-medium">شارة جديدة!</p>
-              <p className="text-white font-bold">{showNewBadge.name}</p>
+              <p className="text-[var(--text-primary)] font-bold">{showNewBadge.name}</p>
             </div>
             <span className="text-emerald-300 font-bold text-sm mr-2">+{showNewBadge.points}</span>
           </motion.div>
@@ -25,36 +25,36 @@ export default function Achievements() {
 
       {/* Level Card */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-white/5 backdrop-blur-xl">
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-[var(--border-color)] backdrop-blur-xl">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">{currentLevel.icon}</span>
             <div>
-              <p className="text-white font-bold text-lg">{currentLevel.name}</p>
-              <p className="text-slate-400 text-sm">المستوى {currentLevel.level}</p>
+              <p className="text-[var(--text-primary)] font-bold text-lg">{currentLevel.name}</p>
+              <p className="text-[var(--text-secondary)] text-sm">المستوى {currentLevel.level}</p>
             </div>
           </div>
           <div className="text-left">
             <motion.p key={points} initial={{ scale: 1.2 }} animate={{ scale: 1 }}
               className="text-3xl font-bold text-indigo-300">{points}</motion.p>
-            <p className="text-slate-500 text-xs">نقطة</p>
+            <p className="text-[var(--text-muted)] text-xs">نقطة</p>
           </div>
         </div>
         {nextLevel && (
           <div className="space-y-2">
-            <div className="h-3 rounded-full bg-slate-800/60 overflow-hidden">
+            <div className="h-3 rounded-full bg-[var(--bg-card)] overflow-hidden">
               <motion.div initial={{ width: 0 }} animate={{ width: `${progressToNext}%` }}
                 transition={{ duration: 1, ease: 'easeOut' }}
                 className="h-full rounded-full bg-gradient-to-l from-indigo-400 to-purple-500" />
             </div>
-            <p className="text-slate-500 text-xs text-center">{nextLevel.minPoints - points} نقطة للمستوى التالي</p>
+            <p className="text-[var(--text-muted)] text-xs text-center">{nextLevel.minPoints - points} نقطة للمستوى التالي</p>
           </div>
         )}
       </motion.div>
 
       {/* Badges Grid */}
       <div>
-        <h4 className="text-white font-bold text-lg mb-3 px-1">🏆 الشارات</h4>
+        <h4 className="text-[var(--text-primary)] font-bold text-lg mb-3 px-1">🏆 الشارات</h4>
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
           {BADGES.map((badge, i) => {
             const unlocked = unlockedBadges.includes(badge.id);
@@ -65,10 +65,10 @@ export default function Achievements() {
                 className={`relative flex flex-col items-center p-4 rounded-2xl border transition-all ${
                   unlocked
                     ? 'bg-gradient-to-br from-amber-500/10 to-indigo-500/10 border-amber-500/20 shadow-lg shadow-amber-500/5'
-                    : 'bg-white/[0.02] border-white/5 opacity-40 grayscale'
+                    : 'bg-[var(--bg-card)] border-[var(--border-color)] opacity-40 grayscale'
                 }`}>
                 <span className={`text-3xl mb-2 ${unlocked ? '' : 'blur-[1px]'}`}>{badge.icon}</span>
-                <span className={`text-xs font-medium text-center ${unlocked ? 'text-white' : 'text-slate-600'}`}>{badge.name}</span>
+                <span className={`text-xs font-medium text-center ${unlocked ? 'text-[var(--text-primary)]' : 'text-[var(--text-muted)]'}`}>{badge.name}</span>
                 {!unlocked && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-xl opacity-60">🔒</span>

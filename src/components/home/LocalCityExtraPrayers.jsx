@@ -10,7 +10,7 @@ export default function LocalCityExtraPrayers({ extraPrayers }) {
         <div className="mt-5">
             <div
                 className="text-xs font-medium mb-3 px-1"
-                style={{ color: '#64748b' }}
+                style={{ color: 'var(--text-muted)' }}
             >
                 أوقات إضافية
             </div>
@@ -22,20 +22,20 @@ export default function LocalCityExtraPrayers({ extraPrayers }) {
                             key={name}
                             className="flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors duration-200"
                             style={{
-                                background: 'rgba(255,255,255,0.02)',
-                                border: '1px solid rgba(255,255,255,0.04)',
+                                background: 'var(--bg-card)',
+                                border: '1px solid var(--border-color)',
                             }}
                         >
                             <div className="flex items-center gap-2.5">
                                 <span className="text-sm">{labels.icon}</span>
                                 <div>
-                                    <div className="text-sm" style={{ color: '#cbd5e1' }}>{labels.ar}</div>
-                                    <div className="text-xs" style={{ color: '#64748b' }}>{labels.en}</div>
+                                    <div className="text-sm" style={{ color: 'var(--text-primary)' }}>{labels.ar}</div>
+                                    <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{labels.en}</div>
                                 </div>
                             </div>
                             <span
                                 className="text-sm font-semibold tabular-nums"
-                                style={{ color: '#e2e8f0' }}
+                                style={{ color: 'var(--text-primary)' }}
                             >
                                 {time}
                             </span>

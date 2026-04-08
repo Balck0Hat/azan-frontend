@@ -43,15 +43,15 @@ function BentoCard({ children, className = "", span = "" }) {
             <div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                    background: 'linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3), rgba(16,185,129,0.2))',
+                    background: 'linear-gradient(135deg, color-mix(in srgb, var(--accent-primary) 30%, transparent), color-mix(in srgb, var(--accent-secondary) 30%, transparent))',
                 }}
             />
             <div
                 className="relative rounded-xl h-full transition-transform duration-300 group-hover:-translate-y-0.5"
                 style={{
-                    background: 'rgba(255,255,255,0.03)',
+                    background: 'var(--bg-card)',
                     backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    border: '1px solid var(--border-color)',
                 }}
             >
                 {children}

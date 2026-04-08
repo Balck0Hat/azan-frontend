@@ -1,8 +1,33 @@
-/* ====== Tailwind CSS ====== */
-@import 'tailwindcss';
-
 /* ====== Sacred Luxury — Entry Point ====== */
-/* Design System */
+/* Design System (loaded BEFORE Tailwind so variables are available) */
 @import './styles/base/index.css';
 @import './styles/components/index.css';
 @import './styles/layout/index.css';
+
+/* ====== Tailwind CSS ====== */
+@import 'tailwindcss';
+
+/* ====== Map CSS Variables to Tailwind Theme ====== */
+@theme {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-solid: var(--bg-card-solid);
+  --color-bg-hover: var(--bg-hover);
+  --color-bg-input: var(--bg-input);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-gold: var(--accent-gold);
+
+  --color-border: var(--border-color);
+  --color-border-card: var(--border-card);
+
+  --color-status-success: var(--status-success);
+  --color-status-error: var(--status-error);
+  --color-status-warning: var(--status-warning);
+}

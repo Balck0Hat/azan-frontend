@@ -33,8 +33,8 @@ export default function MonthlyCalendar({ ramadanDay }) {
 
   if (loading) {
     return (
-      <div className="rounded-2xl p-5 bg-white/[0.04] border border-white/10">
-        <p className="text-white font-bold mb-3">📅 إمساكية الشهر</p>
+      <div className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)]">
+        <p className="text-[var(--text-primary)] font-bold mb-3">📅 إمساكية الشهر</p>
         <div className="flex items-center justify-center py-8">
           <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
         </div>
@@ -44,24 +44,24 @@ export default function MonthlyCalendar({ ramadanDay }) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-      <p className="text-white font-bold mb-4">📅 إمساكية رمضان كاملة</p>
+      className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
+      <p className="text-[var(--text-primary)] font-bold mb-4">📅 إمساكية رمضان كاملة</p>
       <div className="overflow-x-auto rounded-xl">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-white/10">
-              <th className="py-2 px-3 text-slate-400 font-medium text-right">اليوم</th>
-              <th className="py-2 px-3 text-slate-400 font-medium text-right">التاريخ</th>
-              <th className="py-2 px-3 text-slate-400 font-medium text-right">الإمساك</th>
-              <th className="py-2 px-3 text-slate-400 font-medium text-right">الإفطار</th>
+            <tr className="border-b border-[var(--border-color)]">
+              <th className="py-2 px-3 text-[var(--text-secondary)] font-medium text-right">اليوم</th>
+              <th className="py-2 px-3 text-[var(--text-secondary)] font-medium text-right">التاريخ</th>
+              <th className="py-2 px-3 text-[var(--text-secondary)] font-medium text-right">الإمساك</th>
+              <th className="py-2 px-3 text-[var(--text-secondary)] font-medium text-right">الإفطار</th>
             </tr>
           </thead>
           <tbody>
             {times.map((row) => (
-              <tr key={row.day} className={`border-b border-white/5 transition-colors ${
-                row.day === ramadanDay ? 'bg-indigo-500/10' : 'hover:bg-white/[0.02]'}`}>
-                <td className={`py-2.5 px-3 font-bold ${row.day === ramadanDay ? 'text-indigo-300' : 'text-slate-300'}`}>{row.day}</td>
-                <td className="py-2.5 px-3 text-slate-400">{row.dateAr}</td>
+              <tr key={row.day} className={`border-b border-[var(--border-color)] transition-colors ${
+                row.day === ramadanDay ? 'bg-indigo-500/10' : 'hover:bg-[var(--bg-hover)]'}`}>
+                <td className={`py-2.5 px-3 font-bold ${row.day === ramadanDay ? 'text-indigo-300' : 'text-[var(--text-primary)]'}`}>{row.day}</td>
+                <td className="py-2.5 px-3 text-[var(--text-secondary)]">{row.dateAr}</td>
                 <td className="py-2.5 px-3 text-amber-300/80 font-mono">{row.fajr}</td>
                 <td className="py-2.5 px-3 text-emerald-300/80 font-mono">{row.maghrib}</td>
               </tr>
@@ -69,7 +69,7 @@ export default function MonthlyCalendar({ ramadanDay }) {
           </tbody>
         </table>
       </div>
-      <p className="text-slate-600 text-xs mt-3 text-center">* الأوقات تقريبية حسب موقعك — قد تختلف بدقائق</p>
+      <p className="text-[var(--text-muted)] text-xs mt-3 text-center">* الأوقات تقريبية حسب موقعك — قد تختلف بدقائق</p>
     </motion.div>
   );
 }

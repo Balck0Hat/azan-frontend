@@ -24,13 +24,13 @@ export default function TarawihTracker({ ramadanDay, hijriYear }) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-      <p className="text-white font-bold mb-4">🌙 متتبع التراويح</p>
+      className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
+      <p className="text-[var(--text-primary)] font-bold mb-4">🌙 متتبع التراويح</p>
       <div className="grid grid-cols-3 gap-3 mb-4">
         {stats.map((s, i) => (
-          <div key={i} className="text-center p-3 rounded-xl bg-white/[0.03] border border-white/5">
+          <div key={i} className="text-center p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
             <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
-            <p className="text-slate-500 text-xs mt-1">{s.label}</p>
+            <p className="text-[var(--text-muted)] text-xs mt-1">{s.label}</p>
           </div>
         ))}
       </div>
@@ -40,7 +40,7 @@ export default function TarawihTracker({ ramadanDay, hijriYear }) {
             className={`aspect-square rounded-lg flex items-center justify-center text-xs font-bold transition-all ${
               nights.includes(n) ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' :
               n === ramadanDay ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 ring-1 ring-indigo-500/30' :
-              'bg-white/[0.03] text-slate-500 border border-white/5 hover:bg-white/[0.06]'
+              'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
             }`}>
             {nights.includes(n) ? '✓' : n}
           </motion.button>

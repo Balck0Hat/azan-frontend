@@ -39,17 +39,17 @@ export default function Challenge40Days() {
   if (!challengeData) return (
     <div className="min-h-screen p-4 flex items-center justify-center">
       <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md w-full text-center p-8 rounded-3xl bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-white/5 backdrop-blur-xl">
+        className="max-w-md w-full text-center p-8 rounded-3xl bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-[var(--border-color)] backdrop-blur-xl">
         <div className="text-6xl mb-4">🎯</div>
-        <h3 className="text-xl font-bold text-white mb-3">تحدي الـ 40 يوم</h3>
-        <p className="text-slate-300 leading-relaxed text-sm mb-4">قال النبي ﷺ: "من صلى أربعين يوماً في جماعة يدرك التكبيرة الأولى كتبت له براءتان: براءة من النار، وبراءة من النفاق"</p>
+        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">تحدي الـ 40 يوم</h3>
+        <p className="text-[var(--text-primary)] leading-relaxed text-sm mb-4">قال النبي ﷺ: "من صلى أربعين يوماً في جماعة يدرك التكبيرة الأولى كتبت له براءتان: براءة من النار، وبراءة من النفاق"</p>
         <div className="space-y-2 mb-6 text-right">
           {['تعزيز الالتزام بالصلاة', 'بناء عادة يومية', 'تتبع تقدمك', 'شارة خاصة عند الإكمال'].map((t, i) => (
             <p key={i} className="text-emerald-400/80 text-sm">✅ {t}</p>
           ))}
         </div>
         <motion.button whileTap={{ scale: 0.95 }} onClick={startChallenge}
-          className="w-full py-3 rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 text-white font-bold hover:shadow-lg hover:shadow-indigo-500/20 transition-shadow">
+          className="w-full py-3 rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 text-[var(--text-primary)] font-bold hover:shadow-lg hover:shadow-indigo-500/20 transition-shadow">
           ابدأ التحدي الآن 🚀</motion.button>
       </motion.div>
     </div>
@@ -61,8 +61,8 @@ export default function Challenge40Days() {
         className="max-w-md w-full text-center p-8 rounded-3xl bg-gradient-to-br from-amber-600/15 to-indigo-600/15 border border-amber-500/10 backdrop-blur-xl">
         <motion.div initial={{ rotate: -10, scale: 0 }} animate={{ rotate: 0, scale: 1 }}
           transition={{ type: 'spring', damping: 10 }} className="text-7xl mb-4">🏆</motion.div>
-        <h3 className="text-xl font-bold text-white mb-2">مبروك! أكملت التحدي</h3>
-        <p className="text-slate-400 mb-4">لقد أتممت صلاة 40 يوماً كاملاً</p>
+        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">مبروك! أكملت التحدي</h3>
+        <p className="text-[var(--text-secondary)] mb-4">لقد أتممت صلاة 40 يوماً كاملاً</p>
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/15 border border-amber-500/25 mb-6">
           <span className="text-2xl">👑</span><span className="text-amber-300 font-bold">بطل الأربعين</span>
         </div><br/>
@@ -78,27 +78,27 @@ export default function Challenge40Days() {
   return (
     <div className="min-h-screen p-3 sm:p-4 space-y-4">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-white/5 backdrop-blur-xl">
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-[var(--border-color)] backdrop-blur-xl">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-white">🎯 تحدي الـ 40 يوم</h3>
+          <h3 className="text-xl font-bold text-[var(--text-primary)]">🎯 تحدي الـ 40 يوم</h3>
           <div className="flex items-baseline gap-1">
             <span className="text-3xl font-bold text-indigo-300">{completeDays}</span>
-            <span className="text-slate-500 text-sm">/ 40 يوم</span>
+            <span className="text-[var(--text-muted)] text-sm">/ 40 يوم</span>
           </div>
         </div>
         <div className="space-y-2">
-          <div className="h-3 rounded-full bg-slate-800/60 overflow-hidden">
+          <div className="h-3 rounded-full bg-[var(--bg-card)] overflow-hidden">
             <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 1 }}
               className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-indigo-500" />
           </div>
-          <p className="text-slate-500 text-xs text-left">{pct}%</p>
+          <p className="text-[var(--text-muted)] text-xs text-left">{pct}%</p>
         </div>
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-        className="rounded-2xl p-5 bg-white/[0.04] border border-white/10">
+        className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)]">
         <div className="flex items-center justify-between mb-4">
-          <span className="text-white font-bold">صلوات اليوم</span>
+          <span className="text-[var(--text-primary)] font-bold">صلوات اليوم</span>
           <span className="text-indigo-300 font-bold text-sm">{CHALLENGE_PRAYERS.filter(p => todayPrayers[p]).length}/5</span>
         </div>
         <div className="grid grid-cols-5 gap-2">
@@ -107,7 +107,7 @@ export default function Challenge40Days() {
               className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-all ${
                 todayPrayers[prayer]
                   ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'
-                  : 'bg-white/[0.03] border border-white/5 text-slate-400 hover:bg-white/[0.06]'
+                  : 'bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'
               }`}>
               <span className="text-xl">{PRAYER_ICONS[prayer]}</span>
               <span className="text-xs font-medium">{PRAYER_NAMES[prayer]}</span>
@@ -118,7 +118,7 @@ export default function Challenge40Days() {
       </motion.div>
 
       <motion.button whileTap={{ scale: 0.97 }} onClick={() => setShowDetails(!showDetails)}
-        className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 font-medium text-sm hover:bg-white/[0.07] transition-colors">
+        className="w-full py-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--bg-hover)] transition-colors">
         {showDetails ? 'إخفاء التفاصيل ▲' : 'عرض التفاصيل ▼'}</motion.button>
 
       <AnimatePresence>

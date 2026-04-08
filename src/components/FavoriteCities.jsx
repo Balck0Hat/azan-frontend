@@ -52,13 +52,13 @@ export default function FavoriteCities() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
-      <h3 className="text-xl font-bold text-white mb-5">المدن المفضلة</h3>
+      className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-5">المدن المفضلة</h3>
 
       <div className="flex gap-2 mb-5">
         <input type="text" value={newCity} onChange={(e) => setNewCity(e.target.value)}
           placeholder="اسم المدينة (بالإنجليزية)..." onKeyDown={(e) => e.key === 'Enter' && addCity()}
-          className="flex-1 rounded-xl bg-white/[0.05] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all" />
+          className="flex-1 rounded-xl bg-[var(--bg-input)] border border-[var(--border-color)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/50 transition-all" />
         <button onClick={addCity} disabled={loading}
           className="rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 px-4 py-2.5 text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all disabled:opacity-50">
           {loading ? '...' : '+'}
@@ -66,7 +66,7 @@ export default function FavoriteCities() {
       </div>
 
       {favorites.length === 0 ? (
-        <div className="text-center py-8 text-sm text-slate-500">لم تضف أي مدن بعد</div>
+        <div className="text-center py-8 text-sm text-[var(--text-muted)]">لم تضف أي مدن بعد</div>
       ) : (
         <div className="space-y-3">
           <AnimatePresence>
@@ -75,25 +75,25 @@ export default function FavoriteCities() {
               return (
                 <motion.div key={city} layout initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9, x: 50 }}
-                  className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-4 hover:bg-white/[0.07] transition-all group">
+                  className="rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] p-4 hover:bg-[var(--bg-hover)] transition-all group">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <motion.span whileTap={{ scale: 1.3, rotate: 72 }}
-                        className="text-amber-400 cursor-pointer">&#x2B50;</motion.span>
-                      <span className="font-semibold text-white">{city}</span>
-                      {data && <span className="text-xs text-slate-500">{data.country}</span>}
+                        className="text-[var(--status-warning)] cursor-pointer">&#x2B50;</motion.span>
+                      <span className="font-semibold text-[var(--text-primary)]">{city}</span>
+                      {data && <span className="text-xs text-[var(--text-muted)]">{data.country}</span>}
                     </div>
                     <button onClick={() => removeCity(city)}
-                      className="w-7 h-7 rounded-lg bg-white/[0.05] text-slate-500 hover:bg-red-500/20 hover:text-red-400 transition-all flex items-center justify-center text-xs">
+                      className="w-7 h-7 rounded-lg bg-[var(--bg-card)] text-[var(--text-muted)] hover:bg-[var(--status-error)]/20 hover:text-[var(--status-error)] transition-all flex items-center justify-center text-xs">
                       &#x2715;
                     </button>
                   </div>
                   {data && (
                     <div className="flex flex-wrap gap-2">
                       {PRAYER_KEYS.map((k) => (
-                        <div key={k} className="flex items-center gap-1.5 rounded-lg bg-white/[0.03] border border-white/[0.04] px-2.5 py-1 text-xs">
+                        <div key={k} className="flex items-center gap-1.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-2.5 py-1 text-xs">
                           <span>{PRAYER_ICONS[k]}</span>
-                          <span className="text-slate-400 font-mono">{data.timings?.[k] || '--'}</span>
+                          <span className="text-[var(--text-secondary)] font-mono">{data.timings?.[k] || '--'}</span>
                         </div>
                       ))}
                     </div>

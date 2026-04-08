@@ -38,8 +38,8 @@ function MobileNav({ activeCard, setActiveCard }) {
               onClick={() => handleNavClick(item)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer
                 ${active
-                  ? "bg-gradient-to-l from-indigo-500/15 to-purple-500/10 text-white"
-                  : "text-[#94a3b8] hover:bg-white/[0.04] hover:text-[#e2e8f0]"
+                  ? "bg-[var(--bg-hover)] text-[var(--text-primary)]"
+                  : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
                 }`}
             >
               {Icon && <Icon size={18} strokeWidth={1.6} />}
@@ -70,8 +70,8 @@ function MobileNav({ activeCard, setActiveCard }) {
                           onClick={() => handleChildClick(child.key)}
                           className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-right text-sm transition-colors cursor-pointer
                             ${activeCard === child.key
-                              ? "text-indigo-300 bg-indigo-500/10"
-                              : "text-[#64748b] hover:text-[#94a3b8] hover:bg-white/[0.03]"
+                              ? "text-[var(--accent-primary)] bg-[var(--bg-hover)]"
+                              : "text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
                             }`}
                         >
                           {ChildIcon && <ChildIcon size={16} strokeWidth={1.5} />}

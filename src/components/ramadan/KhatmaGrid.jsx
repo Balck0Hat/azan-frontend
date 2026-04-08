@@ -7,14 +7,14 @@ export default function KhatmaGrid({ khatmaJuz, toggleKhatma }) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-      <p className="text-white font-bold mb-3">📖 ختمة رمضان</p>
+      className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
+      <p className="text-[var(--text-primary)] font-bold mb-3">📖 ختمة رمضان</p>
       <div className="space-y-2 mb-4">
         <div className="flex justify-between text-sm">
-          <span className="text-slate-400">{completedCount} من 30 جزء</span>
+          <span className="text-[var(--text-secondary)]">{completedCount} من 30 جزء</span>
           <span className="text-indigo-300 font-bold">{pct}%</span>
         </div>
-        <div className="h-2.5 rounded-full bg-slate-800 overflow-hidden">
+        <div className="h-2.5 rounded-full bg-[var(--bg-card)] overflow-hidden">
           <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }}
             className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-indigo-500" />
         </div>
@@ -27,7 +27,7 @@ export default function KhatmaGrid({ khatmaJuz, toggleKhatma }) {
               onClick={() => toggleKhatma(item.juz)} title={`${item.name}: ${item.from} — ${item.to}`}
               className={`aspect-square rounded-xl flex flex-col items-center justify-center text-xs transition-all ${
                 isCompleted ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
-                'bg-white/[0.03] text-slate-500 border border-white/5 hover:bg-white/[0.06]'
+                'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               <span className="font-bold text-sm">{isCompleted ? '✓' : item.juz}</span>
               <span className="text-[10px] opacity-60 truncate max-w-full px-0.5">{item.from}</span>

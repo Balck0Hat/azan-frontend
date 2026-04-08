@@ -20,37 +20,37 @@ export default function LocalCityPrayerGrid({ mainPrayers, times }) {
                         key={key}
                         className="group relative rounded-xl p-3 cursor-default transition-all duration-300"
                         style={{
-                            background: 'rgba(255,255,255,0.03)',
-                            border: '1px solid rgba(255,255,255,0.05)',
+                            background: 'var(--bg-card)',
+                            border: '1px solid var(--border-color)',
                         }}
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.06, duration: 0.4 }}
                         whileHover={{
                             y: -2,
-                            boxShadow: '0 8px 25px rgba(99,102,241,0.12)',
+                            boxShadow: '0 8px 25px color-mix(in srgb, var(--accent-primary) 12%, transparent)',
                         }}
                     >
                         <div
                             className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                             style={{
-                                background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.06))',
+                                background: 'linear-gradient(135deg, color-mix(in srgb, var(--accent-primary) 8%, transparent), color-mix(in srgb, var(--accent-secondary) 6%, transparent))',
                             }}
                         />
                         <div className="relative flex items-center justify-between mb-2">
                             <span className="text-lg">{labels.icon}</span>
                             <span
                                 className="text-base font-bold tabular-nums"
-                                style={{ color: '#e2e8f0' }}
+                                style={{ color: 'var(--text-primary)' }}
                             >
                                 {time}
                             </span>
                         </div>
                         <div className="relative">
-                            <div className="text-sm font-semibold" style={{ color: '#cbd5e1' }}>
+                            <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
                                 {labels.ar}
                             </div>
-                            <div className="text-xs" style={{ color: '#64748b' }}>
+                            <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
                                 {labels.en}
                             </div>
                         </div>

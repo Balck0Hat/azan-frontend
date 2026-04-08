@@ -49,7 +49,7 @@ export default function DailyContent() {
           <span className="text-xl">📖</span>
           <span className="text-indigo-300 font-medium text-sm">آية اليوم</span>
         </div>
-        <p className="text-2xl text-slate-100 leading-relaxed text-center mb-3 py-2">
+        <p className="text-2xl text-[var(--text-primary)] leading-relaxed text-center mb-3 py-2">
           ❝ {verse.text} ❞
         </p>
         <p className="text-amber-400/70 text-sm text-center">{verse.surah}</p>
@@ -62,7 +62,7 @@ export default function DailyContent() {
           <span className="text-xl">🌟</span>
           <span className="text-purple-300 font-medium text-sm">حديث اليوم</span>
         </div>
-        <p className="text-xl text-slate-100 leading-relaxed text-center mb-3 py-2">
+        <p className="text-xl text-[var(--text-primary)] leading-relaxed text-center mb-3 py-2">
           ❝ {hadith.text} ❞
         </p>
         <p className="text-emerald-400/70 text-sm text-center">{hadith.source}</p>

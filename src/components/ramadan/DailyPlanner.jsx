@@ -27,14 +27,14 @@ export default function DailyPlanner({ ramadanDay, hijriYear }) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-      <p className="text-white font-bold mb-3">📋 المخطط اليومي — يوم {ramadanDay}</p>
+      className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
+      <p className="text-[var(--text-primary)] font-bold mb-3">📋 المخطط اليومي — يوم {ramadanDay}</p>
       <div className="space-y-2 mb-4">
         <div className="flex justify-between text-sm">
-          <span className="text-slate-400">{completedCount} من {totalCount} عبادة</span>
+          <span className="text-[var(--text-secondary)]">{completedCount} من {totalCount} عبادة</span>
           <span className="text-indigo-300 font-bold">{progress}%</span>
         </div>
-        <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
+        <div className="h-2 rounded-full bg-[var(--bg-card)] overflow-hidden">
           <motion.div initial={{ width: 0 }} animate={{ width: `${progress}%` }} transition={{ duration: 0.5 }}
             className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-indigo-500" />
         </div>
@@ -46,14 +46,14 @@ export default function DailyPlanner({ ramadanDay, hijriYear }) {
             <motion.div key={item.id} whileTap={{ scale: 0.98 }}
               onClick={() => toggle(item.id)}
               className={`flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all ${
-                checked ? 'bg-emerald-500/10 border border-emerald-500/20' : 'bg-white/[0.02] border border-white/5 hover:bg-white/[0.04]'
+                checked ? 'bg-emerald-500/10 border border-emerald-500/20' : 'bg-[var(--bg-card)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs shrink-0 transition-all ${
-                checked ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-500/40' : 'bg-white/[0.05] border border-white/10 text-transparent'
+                checked ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-500/40' : 'bg-[var(--bg-card)] border border-[var(--border-color)] text-transparent'
               }`}>{checked ? '✓' : ''}</div>
               <span className="text-lg">{item.icon}</span>
-              <span className={`flex-1 text-sm ${checked ? 'text-emerald-300 line-through opacity-70' : 'text-slate-200'}`}>{item.label}</span>
-              <span className="text-slate-600 text-xs">{item.category}</span>
+              <span className={`flex-1 text-sm ${checked ? 'text-emerald-300 line-through opacity-70' : 'text-[var(--text-primary)]'}`}>{item.label}</span>
+              <span className="text-[var(--text-muted)] text-xs">{item.category}</span>
             </motion.div>
           );
         })}

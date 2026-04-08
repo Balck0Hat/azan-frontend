@@ -36,11 +36,11 @@ function LocalCityCard() {
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
             {/* Header */}
-            <div className="flex flex-col gap-3 mb-5 pb-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="flex flex-col gap-3 mb-5 pb-4" style={{ borderBottom: '1px solid var(--border-color)' }}>
                 <div className="flex items-center justify-between flex-wrap gap-2">
                     <div className="flex items-center gap-2">
                         <span className="text-lg">📍</span>
-                        <span className="text-sm font-medium" style={{ color: '#94a3b8' }}>
+                        <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
                             مدينتك الآن
                         </span>
                     </div>
@@ -48,9 +48,9 @@ function LocalCityCard() {
                         <span
                             className="px-3 py-1 rounded-full text-xs font-medium"
                             style={{
-                                background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))',
-                                color: '#a5b4fc',
-                                border: '1px solid rgba(99,102,241,0.2)',
+                                background: 'color-mix(in srgb, var(--accent-primary) 15%, transparent)',
+                                color: 'var(--accent-primary)',
+                                border: '1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent)',
                             }}
                         >
                             {data.city} – {data.country}
@@ -59,7 +59,7 @@ function LocalCityCard() {
                 </div>
 
                 {data && (
-                    <div className="flex items-center gap-2 text-xs" style={{ color: '#64748b' }}>
+                    <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                         <span>🕒</span>
                         <span>المنطقة الزمنية: {data.timezone}</span>
                     </div>
@@ -69,7 +69,7 @@ function LocalCityCard() {
                     <h3
                         className="text-xl font-bold"
                         style={{
-                            background: 'linear-gradient(135deg, #e2e8f0, #a5b4fc)',
+                            background: 'linear-gradient(135deg, var(--text-primary), var(--accent-primary))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
@@ -86,7 +86,7 @@ function LocalCityCard() {
                         <div
                             key={i}
                             className="h-20 rounded-xl animate-pulse"
-                            style={{ background: 'rgba(255,255,255,0.04)' }}
+                            style={{ background: 'var(--bg-card)' }}
                         />
                     ))}
                 </div>

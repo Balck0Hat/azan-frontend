@@ -11,8 +11,8 @@ export default function LastTenNights({ ramadanDay }) {
       className="rounded-2xl p-5 bg-gradient-to-br from-amber-500/10 via-purple-500/10 to-indigo-500/10 border border-amber-500/15 backdrop-blur-xl relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-transparent rounded-2xl animate-pulse" />
       <div className="relative z-10">
-        <p className="text-white font-bold text-center text-lg mb-2">🌟 العشر الأواخر من رمضان</p>
-        <p className="text-center text-slate-300 mb-2">
+        <p className="text-[var(--text-primary)] font-bold text-center text-lg mb-2">🌟 العشر الأواخر من رمضان</p>
+        <p className="text-center text-[var(--text-primary)] mb-2">
           {isOddNight ? 'الليلة ليلة وترية — قد تكون ليلة القدر!' : `الليلة ليلة ${ramadanDay} — اجتهد في العبادة`}
         </p>
         <p className="text-center text-amber-200/80 text-lg my-4">اللهم إنك عفو كريم تحب العفو فاعف عني</p>
@@ -21,16 +21,16 @@ export default function LastTenNights({ ramadanDay }) {
             <motion.div key={night} whileHover={{ scale: 1.1 }}
               className={`aspect-square rounded-xl flex flex-col items-center justify-center text-xs font-bold transition-all ${
                 night === ramadanDay ? 'bg-amber-500/25 text-amber-300 border-2 border-amber-400/40 ring-2 ring-amber-400/20' :
-                night < ramadanDay ? 'bg-white/[0.06] text-slate-500 border border-white/5' :
+                night < ramadanDay ? 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)]' :
                 oddNights.includes(night) ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/20' :
-                'bg-white/[0.03] text-slate-500 border border-white/5'
+                'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)]'
               }`}>
               <span>{night}</span>
               {oddNights.includes(night) && <span className="text-amber-400 text-[10px]">✦</span>}
             </motion.div>
           ))}
         </div>
-        <p className="text-center text-slate-500 text-xs">✦ الليالي الوترية — يُرجى فيها ليلة القدر</p>
+        <p className="text-center text-[var(--text-muted)] text-xs">✦ الليالي الوترية — يُرجى فيها ليلة القدر</p>
       </div>
     </motion.div>
   );

@@ -30,11 +30,11 @@ export default function IftarReminder({ maghribTime }) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-      <p className="text-white font-bold mb-4">🔔 تذكير الدعاء قبل الإفطار</p>
+      className="rounded-2xl p-5 bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
+      <p className="text-[var(--text-primary)] font-bold mb-4">🔔 تذكير الدعاء قبل الإفطار</p>
       {permission !== 'granted' ? (
         <div className="text-center space-y-3">
-          <p className="text-slate-400 text-sm">فعّل الإشعارات لتلقي تذكير قبل الإفطار</p>
+          <p className="text-[var(--text-secondary)] text-sm">فعّل الإشعارات لتلقي تذكير قبل الإفطار</p>
           <motion.button whileTap={{ scale: 0.95 }} onClick={requestPermission}
             className="px-5 py-2.5 rounded-xl bg-indigo-500/20 text-indigo-300 font-medium text-sm border border-indigo-500/30 hover:bg-indigo-500/30 transition-colors">
             🔔 تفعيل الإشعارات</motion.button>
@@ -42,13 +42,13 @@ export default function IftarReminder({ maghribTime }) {
       ) : (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-slate-300 text-sm">ذكّرني قبل الإفطار بـ</label>
+            <label className="text-[var(--text-primary)] text-sm">ذكّرني قبل الإفطار بـ</label>
             <div className="flex items-center gap-2">
               <motion.button whileTap={{ scale: 0.85 }} onClick={() => setMinutesBefore((m) => Math.max(5, m - 5))}
-                className="w-8 h-8 rounded-lg bg-white/[0.06] text-slate-300 text-sm border border-white/10">−</motion.button>
+                className="w-8 h-8 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] text-sm border border-[var(--border-color)]">−</motion.button>
               <span className="text-indigo-300 font-bold text-sm w-20 text-center">{minutesBefore} دقيقة</span>
               <motion.button whileTap={{ scale: 0.85 }} onClick={() => setMinutesBefore((m) => Math.min(60, m + 5))}
-                className="w-8 h-8 rounded-lg bg-white/[0.06] text-slate-300 text-sm border border-white/10">+</motion.button>
+                className="w-8 h-8 rounded-lg bg-[var(--bg-card)] text-[var(--text-primary)] text-sm border border-[var(--border-color)]">+</motion.button>
             </div>
           </div>
           <motion.button whileTap={{ scale: 0.95 }} onClick={() => setReminderSet(!reminderSet)}
@@ -57,7 +57,7 @@ export default function IftarReminder({ maghribTime }) {
               'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'}`}>
             {reminderSet ? '✓ التذكير مفعّل' : 'تفعيل التذكير'}</motion.button>
           {reminderSet && maghribTime && (
-            <p className="text-slate-500 text-xs text-center">سيصلك تذكير قبل أذان المغرب ({maghribTime}) بـ {minutesBefore} دقيقة</p>
+            <p className="text-[var(--text-muted)] text-xs text-center">سيصلك تذكير قبل أذان المغرب ({maghribTime}) بـ {minutesBefore} دقيقة</p>
           )}
         </div>
       )}

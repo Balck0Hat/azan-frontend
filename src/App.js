@@ -43,9 +43,9 @@ function App() {
             )}
 
             <header
-                className="sticky top-0 z-50 border-b border-white/[0.06] transition-all duration-300"
+                className="sticky top-0 z-50 border-b border-[var(--border-color)] transition-all duration-300"
                 style={{
-                    background: "rgba(2,6,23,0.82)",
+                    background: "var(--bg-secondary)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
                 }}
@@ -54,8 +54,8 @@ function App() {
                     <div className="flex items-center gap-2.5 shrink-0">
                         <span className="text-2xl">&#128332;</span>
                         <div className="flex flex-col leading-none">
-                            <span className="text-[#e2e8f0] font-bold text-base">الأذان مباشر</span>
-                            <span className="text-[#64748b] text-[11px] tracking-wide">Azan Live</span>
+                            <span className="text-[var(--text-primary)] font-bold text-base">الأذان مباشر</span>
+                            <span className="text-[var(--text-muted)] text-[11px] tracking-wide">Azan Live</span>
                         </div>
                     </div>
 

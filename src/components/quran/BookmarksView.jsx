@@ -4,9 +4,9 @@ import SURAHS from '../../data/surahs.json';
 export default function BookmarksView({ bookmarks, toggleBookmark, loadSurah }) {
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-bold text-white px-1">🔖 الآيات المحفوظة</h3>
+      <h3 className="text-lg font-bold text-[var(--text-primary)] px-1">🔖 الآيات المحفوظة</h3>
       {bookmarks.length === 0 ? (
-        <div className="text-center py-16 text-slate-500">
+        <div className="text-center py-16 text-[var(--text-muted)]">
           <p className="text-4xl mb-3">📑</p>
           <p>لا توجد آيات محفوظة</p>
         </div>
@@ -15,13 +15,13 @@ export default function BookmarksView({ bookmarks, toggleBookmark, loadSurah }) 
           {bookmarks.map((bookmark, i) => (
             <motion.div key={bookmark.key} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-all group">
+              className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)] transition-all group">
               <div className="flex-1 cursor-pointer" onClick={() => {
                 const surah = SURAHS.find(s => s.num === bookmark.surah);
                 if (surah) loadSurah(surah);
               }}>
-                <span className="text-white font-medium">{bookmark.surahName}</span>
-                <span className="text-slate-500 text-sm mr-2">الآية {bookmark.ayah}</span>
+                <span className="text-[var(--text-primary)] font-medium">{bookmark.surahName}</span>
+                <span className="text-[var(--text-muted)] text-sm mr-2">الآية {bookmark.ayah}</span>
               </div>
               <motion.button whileTap={{ scale: 0.8 }}
                 onClick={(e) => { e.stopPropagation(); toggleBookmark(bookmark.surah, bookmark.ayah); }}

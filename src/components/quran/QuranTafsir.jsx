@@ -19,9 +19,9 @@ export default function QuranTafsir() {
     <div className="min-h-screen p-3 sm:p-4 space-y-4">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-white/5 backdrop-blur-xl">
-        <h2 className="text-xl font-bold text-white mb-1">📖 القرآن الكريم والتفسير</h2>
-        <p className="text-slate-400 text-sm">اقرأ، استمع، وتدبر</p>
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-purple-600/15 border border-[var(--border-color)] backdrop-blur-xl">
+        <h2 className="text-xl font-bold text-[var(--text-primary)] mb-1">📖 القرآن الكريم والتفسير</h2>
+        <p className="text-[var(--text-secondary)] text-sm">اقرأ، استمع، وتدبر</p>
         <div className="flex gap-2 mt-4 flex-wrap">
           {navItems.map(item => (
             <motion.button key={item.key} whileTap={{ scale: 0.95 }}
@@ -29,7 +29,7 @@ export default function QuranTafsir() {
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 reader.view === item.key
                   ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                  : 'bg-white/[0.04] text-slate-400 border border-white/5 hover:bg-white/[0.07]'
+                  : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               {item.key === 'bookmarks' ? `${item.label} (${reader.bookmarks.length})` : item.label}
             </motion.button>
@@ -37,7 +37,7 @@ export default function QuranTafsir() {
           <motion.button whileTap={{ scale: 0.95 }}
             onClick={() => reader.setShowSettings(!reader.showSettings)}
             className={`px-3 py-2 rounded-xl text-sm transition-all ${
-              reader.showSettings ? 'bg-white/10 text-white border border-white/20' : 'bg-white/[0.04] text-slate-400 border border-white/5'
+              reader.showSettings ? 'bg-[var(--bg-hover)] text-[var(--text-primary)] border border-[var(--border-color)]' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border-color)]'
             }`}>⚙️</motion.button>
         </div>
       </motion.div>

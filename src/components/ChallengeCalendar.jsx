@@ -3,7 +3,7 @@ import { CHALLENGE_PRAYERS } from '../data/challengeData';
 
 export default function ChallengeCalendar({ challengeData, today }) {
   return (
-    <div className="rounded-2xl p-4 bg-white/[0.03] border border-white/5">
+    <div className="rounded-2xl p-4 bg-[var(--bg-card)] border border-[var(--border-color)]">
       <div className="grid grid-cols-8 sm:grid-cols-10 gap-1.5">
         {Array.from({ length: 40 }, (_, i) => {
           const dayNum = i + 1;
@@ -23,7 +23,7 @@ export default function ChallengeCalendar({ challengeData, today }) {
                 isComplete ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
                 isToday ? 'bg-indigo-500/20 text-indigo-300 border-2 border-indigo-500/40 ring-1 ring-indigo-500/20' :
                 isPast ? 'bg-red-500/10 text-red-400/60 border border-red-500/20' :
-                'bg-white/[0.02] text-slate-600 border border-white/5'
+                'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)]'
               }`}>
               <span>{dayNum}</span>
               {isComplete && <span className="text-[8px]">✓</span>}

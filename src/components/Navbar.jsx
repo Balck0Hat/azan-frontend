@@ -54,7 +54,7 @@ function Navbar({ activeCard, setActiveCard }) {
             <button
               onClick={() => handleNavClick(item)}
               className={`relative flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer
-                ${active ? "text-white" : "text-[#94a3b8] hover:text-[#e2e8f0]"}`}
+                ${active ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}
             >
               {Icon && <Icon size={16} strokeWidth={1.8} />}
               <span>{item.label}</span>
@@ -65,7 +65,7 @@ function Navbar({ activeCard, setActiveCard }) {
                 <motion.div
                   layoutId="nav-active"
                   className="absolute inset-0 rounded-xl"
-                  style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))", border: "1px solid rgba(99,102,241,0.2)" }}
+                  style={{ background: "color-mix(in srgb, var(--accent-primary) 15%, transparent)", border: "1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent)" }}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}

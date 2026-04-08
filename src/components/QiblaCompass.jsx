@@ -29,9 +29,9 @@ export default function QiblaCompass() {
 
   if (loading) {
     return (
-      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg flex flex-col items-center justify-center min-h-[280px]">
+      <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg flex flex-col items-center justify-center min-h-[280px]">
         <div className="w-10 h-10 rounded-full border-2 border-indigo-500/30 border-t-indigo-500 animate-spin mb-3" />
-        <span className="text-sm text-slate-400">جاري تحديد الموقع...</span>
+        <span className="text-sm text-[var(--text-secondary)]">جاري تحديد الموقع...</span>
       </div>
     );
   }
@@ -41,14 +41,14 @@ export default function QiblaCompass() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
       onClick={() => requestOrientationPermission(setDeviceHeading)}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
-      <h3 className="text-xl font-bold text-white mb-5 text-center">اتجاه القبلة</h3>
+      className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-5 text-center">اتجاه القبلة</h3>
 
       <div className="flex justify-center mb-5">
         <div className="relative w-52 h-52">
           {/* Outer ring */}
-          <div className="absolute inset-0 rounded-full border-2 border-white/[0.08]" />
-          <div className="absolute inset-2 rounded-full border border-white/[0.05]" />
+          <div className="absolute inset-0 rounded-full border-2 border-[var(--border-color)]" />
+          <div className="absolute inset-2 rounded-full border border-[var(--border-color)]" />
           {/* Gradient glow */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/10" />
 
@@ -57,9 +57,9 @@ export default function QiblaCompass() {
             className="absolute inset-0 flex items-center justify-center">
             {/* Direction labels */}
             <span className="absolute top-3 text-xs font-bold text-indigo-400">ش</span>
-            <span className="absolute bottom-3 text-xs font-bold text-slate-500">ج</span>
-            <span className="absolute right-3 text-xs font-bold text-slate-500">شر</span>
-            <span className="absolute left-3 text-xs font-bold text-slate-500">غ</span>
+            <span className="absolute bottom-3 text-xs font-bold text-[var(--text-muted)]">ج</span>
+            <span className="absolute right-3 text-xs font-bold text-[var(--text-muted)]">شر</span>
+            <span className="absolute left-3 text-xs font-bold text-[var(--text-muted)]">غ</span>
 
             {/* Qibla arrow */}
             <motion.div animate={{ rotate: qiblaDirection }} transition={{ type: "spring", stiffness: 50, damping: 20 }}
@@ -81,16 +81,16 @@ export default function QiblaCompass() {
       </div>
 
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-2 rounded-xl bg-white/[0.04] border border-white/[0.06] px-4 py-2">
+        <div className="inline-flex items-center gap-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] px-4 py-2">
           <span className="text-2xl font-bold bg-gradient-to-l from-indigo-400 to-purple-400 bg-clip-text text-transparent">
             {Math.round(qiblaDirection || 0)}°
           </span>
-          <span className="text-xs text-slate-400">من الشمال</span>
+          <span className="text-xs text-[var(--text-secondary)]">من الشمال</span>
         </div>
       </div>
 
-      {error && <p className="text-xs text-amber-400/70 text-center mt-3">{error}</p>}
-      <p className="text-xs text-slate-500 text-center mt-2">وجّه هاتفك نحو الشمال ثم اتبع السهم</p>
+      {error && <p className="text-xs text-[var(--status-warning)]/70 text-center mt-3">{error}</p>}
+      <p className="text-xs text-[var(--text-muted)] text-center mt-2">وجّه هاتفك نحو الشمال ثم اتبع السهم</p>
     </motion.div>
   );
 }

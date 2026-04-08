@@ -49,20 +49,20 @@ export default function HijriCalendar() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+      className="rounded-2xl overflow-hidden bg-[var(--bg-card)] border border-[var(--border-color)] backdrop-blur-sm">
       {/* Main Date */}
       <div className="p-5 bg-gradient-to-br from-indigo-600/15 to-purple-600/10">
         <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-3">
             <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', damping: 10 }}
-              className="text-5xl font-bold text-white">{hijriDate.day}</motion.span>
+              className="text-5xl font-bold text-[var(--text-primary)]">{hijriDate.day}</motion.span>
             <div>
               <p className="text-indigo-300 font-bold text-lg">{HIJRI_MONTHS[hijriDate.month - 1]}</p>
-              <p className="text-slate-500 text-sm">{hijriDate.year} هـ</p>
+              <p className="text-[var(--text-muted)] text-sm">{hijriDate.year} هـ</p>
             </div>
           </div>
-          <div className="px-3 py-1.5 rounded-xl bg-white/[0.06] border border-white/10">
-            <p className="text-slate-300 text-sm font-medium">{weekday}</p>
+          <div className="px-3 py-1.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+            <p className="text-[var(--text-primary)] text-sm font-medium">{weekday}</p>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function HijriCalendar() {
       {todayEvent && (
         <div className="mx-4 mt-4 p-3 rounded-xl bg-gradient-to-l from-amber-500/15 to-indigo-500/10 border border-amber-500/20 flex items-center gap-3">
           <span className="text-2xl">{todayEvent.icon}</span>
-          <span className="text-white font-medium flex-1">{todayEvent.name}</span>
+          <span className="text-[var(--text-primary)] font-medium flex-1">{todayEvent.name}</span>
           <span className="text-xs text-amber-300 px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/25">اليوم</span>
         </div>
       )}
@@ -79,13 +79,13 @@ export default function HijriCalendar() {
       {/* Upcoming Events */}
       {upcomingEvents.length > 0 && (
         <div className="p-4 space-y-2">
-          <p className="text-slate-400 text-sm font-medium mb-2">📅 مناسبات قادمة</p>
+          <p className="text-[var(--text-secondary)] text-sm font-medium mb-2">📅 مناسبات قادمة</p>
           {upcomingEvents.map((event, idx) => (
             <motion.div key={idx} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+              className="flex items-center gap-3 p-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
               <span className="text-lg">{event.icon}</span>
-              <span className="text-slate-200 text-sm flex-1">{event.name}</span>
+              <span className="text-[var(--text-primary)] text-sm flex-1">{event.name}</span>
               <span className="text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-md bg-indigo-500/10">بعد {event.daysLeft} يوم</span>
             </motion.div>
           ))}

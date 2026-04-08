@@ -46,22 +46,22 @@ export default function PrayerTracker() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
+      className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg">
       <div className="flex items-center justify-between mb-5">
-        <h3 className="text-xl font-bold text-white">تتبع صلاتك</h3>
-        <div className="flex items-center gap-2 rounded-xl bg-amber-500/10 border border-amber-500/20 px-3 py-1.5">
-          <span className="text-amber-400 text-lg">&#x1F525;</span>
-          <span className="text-lg font-bold text-amber-400">{streak}</span>
-          <span className="text-xs text-amber-400/70">يوم متتالي</span>
+        <h3 className="text-xl font-bold text-[var(--text-primary)]">تتبع صلاتك</h3>
+        <div className="flex items-center gap-2 rounded-xl bg-[var(--status-warning)]/10 border border-[var(--status-warning)]/20 px-3 py-1.5">
+          <span className="text-[var(--status-warning)] text-lg">&#x1F525;</span>
+          <span className="text-lg font-bold text-[var(--status-warning)]">{streak}</span>
+          <span className="text-xs text-[var(--status-warning)]/70">يوم متتالي</span>
         </div>
       </div>
 
       <div className="mb-5">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-slate-400">صلوات اليوم</span>
+          <span className="text-sm text-[var(--text-secondary)]">صلوات اليوم</span>
           <span className="text-sm font-semibold text-indigo-400">{todayPrayedCount}/5</span>
         </div>
-        <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
+        <div className="h-2 rounded-full bg-[var(--border-color)] overflow-hidden">
           <motion.div initial={{ width: 0 }} animate={{ width: `${todayPercentage}%` }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="h-full rounded-full bg-gradient-to-l from-indigo-500 to-purple-500" />
@@ -77,14 +77,14 @@ export default function PrayerTracker() {
               transition={{ delay: i * 0.06 }} onClick={() => togglePrayer(prayer.key)}
               className={`flex flex-col items-center gap-1.5 rounded-xl p-3 border transition-all ${
                 prayed
-                  ? 'bg-emerald-500/15 border-emerald-500/30 shadow-lg shadow-emerald-500/10'
-                  : 'bg-white/[0.04] border-white/[0.06] hover:bg-white/[0.08]'
+                  ? 'bg-[var(--status-success)]/15 border-[var(--status-success)]/30 shadow-lg shadow-[var(--status-success)]/10'
+                  : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               <span className="text-lg">{prayer.icon}</span>
-              <span className={`text-[11px] font-medium ${prayed ? 'text-emerald-400' : 'text-slate-400'}`}>{prayer.name}</span>
+              <span className={`text-[11px] font-medium ${prayed ? 'text-[var(--status-success)]' : 'text-[var(--text-secondary)]'}`}>{prayer.name}</span>
               <motion.span animate={{ scale: prayed ? [1, 1.3, 1] : 1 }}
                 transition={{ duration: 0.3 }}
-                className={`text-sm font-bold ${prayed ? 'text-emerald-400' : 'text-slate-600'}`}>
+                className={`text-sm font-bold ${prayed ? 'text-[var(--status-success)]' : 'text-[var(--text-muted)]'}`}>
                 {prayed ? '✓' : '○'}
               </motion.span>
             </motion.button>

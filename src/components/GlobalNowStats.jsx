@@ -57,31 +57,31 @@ function GlobalNowStats() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl p-6 shadow-lg">
-      <h2 className="text-xl font-bold text-white mb-4">{t("now_stats_title")}</h2>
+      className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-lg">
+      <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t("now_stats_title")}</h2>
 
-      {loading && <div className="text-sm text-slate-500">{t("loading")}</div>}
-      {error && <div className="rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-red-400 text-sm">{error}</div>}
+      {loading && <div className="text-sm text-[var(--text-muted)]">{t("loading")}</div>}
+      {error && <div className="rounded-xl bg-[var(--status-error)]/10 border border-[var(--status-error)]/20 p-3 text-[var(--status-error)] text-sm">{error}</div>}
 
       {!loading && data && (
         <>
-          <p className="text-sm text-slate-400 mb-4">
+          <p className="text-sm text-[var(--text-secondary)] mb-4">
             {t("now_stats_subtitle", { total: data.totalAny ?? 0 })}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
             {PRAYERS.map((p, i) => (
               <motion.div key={p.key} initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.07 }}
-                className="rounded-xl bg-white/[0.04] border border-white/[0.06] p-4 text-center hover:bg-white/[0.07] transition-all">
+                className="rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] p-4 text-center hover:bg-[var(--bg-hover)] transition-all">
                 <div className="text-lg mb-1">{p.icon}</div>
                 <div className="text-2xl font-bold text-indigo-400">
                   <AnimatedCounter value={data.perPrayer?.[p.key] ?? 0} />
                 </div>
-                <div className="text-xs text-slate-400 mt-1">{t(p.labelKey)}</div>
+                <div className="text-xs text-[var(--text-secondary)] mt-1">{t(p.labelKey)}</div>
               </motion.div>
             ))}
           </div>
-          <div className="flex items-center justify-between text-xs text-slate-500">
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
             <span>{t("now_stats_footer", { minutes: data.windowMinutes ?? 10 })}</span>
             {lastUpdated && <span>{lastUpdatedText}</span>}
           </div>

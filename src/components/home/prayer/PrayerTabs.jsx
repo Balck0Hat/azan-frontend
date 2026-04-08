@@ -16,10 +16,10 @@ export default function PrayerTabs({ selectedPrayer, setSelectedPrayer }) {
                             : "text-slate-400 hover:text-slate-200"
                     )}
                     style={selectedPrayer === p ? {
-                        background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-                        boxShadow: '0 4px 15px rgba(99,102,241,0.3)',
+                        background: 'var(--gradient-emerald)',
+                        boxShadow: '0 4px 15px color-mix(in srgb, var(--accent-primary) 30%, transparent)',
                     } : {
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'var(--bg-card)',
                     }}
                 >
                     {PRAYER_NAMES_AR[p] || p}

@@ -44,19 +44,19 @@ export default function Adhkar({ type = 'afterPrayer' }) {
   return (
     <div className="min-h-screen p-3 sm:p-4 space-y-4">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-emerald-600/10 border border-white/5 backdrop-blur-xl">
+        className="rounded-2xl p-5 bg-gradient-to-br from-indigo-600/15 to-emerald-600/10 border border-[var(--border-color)] backdrop-blur-xl">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-white">📿 {titles[type]}</h3>
+          <h3 className="text-xl font-bold text-[var(--text-primary)]">📿 {titles[type]}</h3>
           <motion.button whileTap={{ scale: 0.9 }} onClick={resetAll}
-            className="px-3 py-1.5 rounded-lg bg-white/[0.06] text-slate-400 text-xs font-medium border border-white/10 hover:bg-white/10 transition-colors">
+            className="px-3 py-1.5 rounded-lg bg-[var(--bg-card)] text-[var(--text-secondary)] text-xs font-medium border border-[var(--border-color)] hover:bg-[var(--bg-hover)] transition-colors">
             ↻ إعادة</motion.button>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-slate-400">{totalProgress} / {totalRequired}</span>
+            <span className="text-[var(--text-secondary)]">{totalProgress} / {totalRequired}</span>
             <span className="text-indigo-300 font-bold">{pct}%</span>
           </div>
-          <div className="h-3 rounded-full bg-slate-800/60 overflow-hidden">
+          <div className="h-3 rounded-full bg-[var(--bg-card)] overflow-hidden">
             <motion.div animate={{ width: `${pct}%` }} transition={{ duration: 0.3 }}
               className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-indigo-500" />
           </div>
@@ -73,17 +73,17 @@ export default function Adhkar({ type = 'afterPrayer' }) {
               transition={{ delay: idx * 0.04 }} whileTap={{ scale: 0.98 }}
               onClick={() => handleCount(idx)}
               className={`relative p-4 rounded-xl border cursor-pointer transition-all overflow-hidden ${
-                completed ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.05]'
+                completed ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-[var(--bg-card)] border-[var(--border-color)] hover:bg-[var(--bg-hover)]'
               }`}>
               <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-l from-indigo-500 to-emerald-500 transition-all"
                 style={{ width: `${dhikrPct}%` }} />
               <div className="flex items-center justify-between gap-3">
-                <p className={`flex-1 text-lg leading-relaxed ${completed ? 'text-emerald-300/80' : 'text-slate-200'}`}>{dhikr.text}</p>
+                <p className={`flex-1 text-lg leading-relaxed ${completed ? 'text-emerald-300/80' : 'text-[var(--text-primary)]'}`}>{dhikr.text}</p>
                 <div className="flex items-center gap-2 shrink-0">
                   <div className="text-center min-w-[50px]">
                     <motion.span key={current} initial={{ scale: 1.3 }} animate={{ scale: 1 }}
                       className={`text-xl font-bold block ${completed ? 'text-emerald-400' : 'text-indigo-300'}`}>{current}</motion.span>
-                    <span className="text-slate-600 text-xs">/ {dhikr.repeat}</span>
+                    <span className="text-[var(--text-muted)] text-xs">/ {dhikr.repeat}</span>
                   </div>
                   {completed && <span className="text-emerald-400 text-lg">✓</span>}
                 </div>

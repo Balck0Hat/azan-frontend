@@ -30,7 +30,7 @@ function MobileMenu({ isOpen, onToggle, children }) {
   return (
     <>
       <button
-        className="lg:hidden relative z-50 p-2 rounded-xl text-[#94a3b8] hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
+        className="lg:hidden relative z-50 p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer"
         onClick={onToggle}
         aria-label="\u0627\u0644\u0642\u0627\u0626\u0645\u0629"
       >
@@ -54,7 +54,7 @@ function MobileMenu({ isOpen, onToggle, children }) {
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 340, damping: 32 }}
               className="fixed top-0 right-0 bottom-0 z-40 w-72 overflow-y-auto lg:hidden"
-              style={{ background: "rgba(15,23,42,0.95)", backdropFilter: "blur(24px)" }}
+              style={{ background: "var(--bg-secondary)", backdropFilter: "blur(24px)" }}
             >
               <div className="pt-20 px-4 pb-8">
                 <ul className="flex flex-col gap-1">
