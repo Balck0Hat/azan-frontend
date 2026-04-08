@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 
 function MobileMenu({ isOpen, onToggle, children }) {
@@ -22,49 +22,36 @@ function MobileMenu({ isOpen, onToggle, children }) {
     return () => {
       document.body.style.position = "";
       document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
     };
   }, [isOpen]);
 
   return (
     <>
       <button
-        className="lg:hidden relative z-50 p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer"
+        className="lg:hidden p-2 rounded-xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors cursor-pointer"
         onClick={onToggle}
-        aria-label="\u0627\u0644\u0642\u0627\u0626\u0645\u0629"
+        aria-label="menu-toggle"
       >
         {isOpen ? <X size={22} /> : <Menu size={22} />}
       </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
-              onClick={onToggle}
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 340, damping: 32 }}
-              className="fixed top-0 right-0 bottom-0 z-40 w-72 overflow-y-auto lg:hidden"
-              style={{ background: "var(--bg-secondary)", backdropFilter: "blur(24px)" }}
-            >
-              <div className="pt-20 px-4 pb-8">
-                <ul className="flex flex-col gap-1">
-                  {children}
-                </ul>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {isOpen && createPortal(
+        <>
+          <div
+            onClick={onToggle}
+            style={{ position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.6)" }}
+          />
+          <div
+            style={{ position: "fixed", top: 0, right: 0, bottom: 0, width: "18rem", zIndex: 9999, background: "var(--bg-card-solid)", overflowY: "auto" }}
+          >
+            <div style={{ padding: "5rem 1rem 2rem" }}>
+              <ul className="flex flex-col gap-1">
+                {children}
+              </ul>
+            </div>
+          </div>
+        </>,
+        document.body
+      )}
     </>
   );
 }

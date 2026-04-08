@@ -60,7 +60,7 @@ export default function FavoriteCities() {
           placeholder="اسم المدينة (بالإنجليزية)..." onKeyDown={(e) => e.key === 'Enter' && addCity()}
           className="flex-1 rounded-xl bg-[var(--bg-input)] border border-[var(--border-color)] px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]/50 transition-all" />
         <button onClick={addCity} disabled={loading}
-          className="rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 px-4 py-2.5 text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all disabled:opacity-50">
+          className="shrink-0 rounded-xl bg-gradient-to-l from-indigo-500 to-purple-500 w-10 h-10 flex items-center justify-center text-white font-semibold hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 active:scale-95 transition-all disabled:opacity-50">
           {loading ? '...' : '+'}
         </button>
       </div>

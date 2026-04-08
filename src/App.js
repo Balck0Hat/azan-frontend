@@ -44,11 +44,7 @@ function App() {
 
             <header
                 className="sticky top-0 z-50 border-b border-[var(--border-color)] transition-all duration-300"
-                style={{
-                    background: "var(--bg-secondary)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                }}
+                style={{ background: "var(--bg-secondary)" }}
             >
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2.5 shrink-0">
